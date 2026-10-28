@@ -17,13 +17,17 @@ class SplashWarmUp extends StatelessWidget {
           children: [
             const FloatingLogo(intro: 1),
             const SizedBox(height: 26),
-            Text('في 90', textDirection: TextDirection.ltr, style: AppText.splashBrand),
+            Text(
+              'في 90',
+              textDirection: TextDirection.ltr,
+              style: AppText.splashBrand,
+            ),
             const SizedBox(height: 6),
             Text('مين يعرف الكورة أكتر؟', style: AppText.splashTagline),
             const LoadBar(progress: 1),
           ],
         ),
-        const ColoredBox(color: AppColors.bg),
+        ColoredBox(color: AppColors.bg),
       ],
     );
   }

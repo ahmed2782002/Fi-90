@@ -16,7 +16,7 @@ class VsBadge extends StatelessWidget {
         gradient: AppColors.grad,
         border: Border.all(color: AppColors.cy, width: 2),
         boxShadow: [
-          const BoxShadow(color: AppColors.bg, spreadRadius: 6),
+          BoxShadow(color: AppColors.bg, spreadRadius: 6),
           BoxShadow(color: AppColors.tint(AppColors.cy, .6), blurRadius: 34),
         ],
       ),

@@ -39,6 +39,9 @@ dependencies:
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
+  easy_localization: ^3.0.8
+  shared_preferences: ^2.5.6
+  audioplayers: ^6.8.1
 
 dev_dependencies:
   flutter_test:
@@ -50,11 +53,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -65,7 +63,12 @@ flutter:
   assets:
     - assets/image/core/
     - assets/image/splash/
+    - assets/image/home/
+    - assets/image/friends/
+    - assets/image/buzzer/
     - assets/icons/
+    - assets/translations/
+    - assets/sounds/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

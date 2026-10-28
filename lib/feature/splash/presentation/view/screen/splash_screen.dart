@@ -22,7 +22,8 @@ class SplashScreen extends StatelessWidget {
       create: (_) => SplashCubit(),
       child: BlocListener<SplashCubit, SplashState>(
         listenWhen: (_, s) => s.status == SplashStatus.done,
-        listener: (context, _) => Nav.replace(context, const OnboardingScreen()),
+        listener: (context, _) =>
+            Nav.replace(context, const OnboardingScreen()),
         child: Scaffold(
           backgroundColor: AppColors.bg,
           body: AppBackground(
@@ -32,20 +33,35 @@ class SplashScreen extends StatelessWidget {
                 onTap: context.read<SplashCubit>().finish,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    gradient: AppGradients.fade(AppColors.cy,
-                        x: .5, y: .42, rx: .6, ry: .35, alpha: .22),
+                    gradient: AppGradients.fade(
+                      AppColors.cy,
+                      x: .5,
+                      y: .42,
+                      rx: .6,
+                      ry: .35,
+                      alpha: .22,
+                    ),
                   ),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      gradient: AppGradients.fade(AppColors.pri,
-                          x: .5, y: 1, rx: .7, ry: .4, alpha: .3),
+                      gradient: AppGradients.fade(
+                        AppColors.pri,
+                        x: .5,
+                        y: 1,
+                        rx: .7,
+                        ry: .4,
+                        alpha: .3,
+                      ),
                     ),
                     child: BlocBuilder<SplashCubit, SplashState>(
                       buildWhen: (a, b) => a.isWarmingUp != b.isWarmingUp,
                       builder: (context, state) => Stack(
                         fit: StackFit.expand,
                         children: [
-                          const TiledSvg(asset: AppImages.starsTile, opacity: .16),
+                          TiledSvg(
+                            asset: AppImages.starsTile,
+                            opacity: AppColors.starOpacity,
+                          ),
                           if (state.isWarmingUp) const SplashWarmUp(),
                           if (!state.isWarmingUp) const SplashHero(),
                           if (!state.isWarmingUp)

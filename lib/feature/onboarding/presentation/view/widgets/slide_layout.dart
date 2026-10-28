@@ -32,12 +32,19 @@ class SlideLayout extends StatelessWidget {
           delay: const Duration(milliseconds: 150),
           child: Column(
             children: [
-              Text(title, textAlign: TextAlign.center, style: AppText.slideTitle),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: AppText.slideTitle,
+              ),
               const SizedBox(height: 10),
               ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 300),
-                child: Text(body,
-                    textAlign: TextAlign.center, style: AppText.slideBody),
+                child: Text(
+                  body,
+                  textAlign: TextAlign.center,
+                  style: AppText.slideBody,
+                ),
               ),
             ],
           ),

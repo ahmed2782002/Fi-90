@@ -1,15 +1,29 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:fii90/core/localization/app_localization.dart';
+import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/startup/app_preloader.dart';
-import 'package:fii90/core/theme/app_colors.dart';
+import 'package:fii90/core/theme/app_theme.dart';
+import 'package:fii90/core/theme/theme_cubit.dart';
 import 'package:fii90/feature/splash/presentation/view/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+  await EasyLocalization.ensureInitialized();
+  final themeCubit = ThemeCubit(await ThemeCubit.loadDark());
+  SystemChrome.setSystemUIOverlayStyle(AppTheme.overlay);
   await AppPreloader.load();
-  runApp(const Fii90App());
+  runApp(
+    EasyLocalization(
+      supportedLocales: AppLocalization.supported,
+      path: AppLocalization.path,
+      startLocale: AppLocalization.arabic,
+      fallbackLocale: AppLocalization.arabic,
+      child: BlocProvider.value(value: themeCubit, child: const Fii90App()),
+    ),
+  );
 }
 
 class Fii90App extends StatelessWidget {
@@ -17,22 +31,19 @@ class Fii90App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'في 90',
-      debugShowCheckedModeBanner: false,
-      locale: const Locale('ar'),
-      supportedLocales: const [Locale('ar'), Locale('en')],
-      localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: AppColors.bg,
-        colorScheme: const ColorScheme.dark(
-          primary: AppColors.pri,
-          secondary: AppColors.cy,
-          surface: AppColors.s1,
-        ),
+    return BlocConsumer<ThemeCubit, bool>(
+      listener: (_, _) => AppTheme.refresh(),
+      builder: (context, _) => MaterialApp(
+        onGenerateTitle: (context) => context.tr(AppStrings.appName),
+        debugShowCheckedModeBanner: false,
+        locale: context.locale,
+        supportedLocales: context.supportedLocales,
+        localizationsDelegates: context.localizationDelegates,
+        builder: (context, child) =>
+            KeyedSubtree(key: ValueKey(context.locale), child: child!),
+        theme: AppTheme.data,
+        home: const SplashScreen(),
       ),
-      home: const SplashScreen(),
     );
   }
 }

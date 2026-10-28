@@ -53,10 +53,12 @@ class VersusSlide extends StatelessWidget {
           child: Enter(
             fx: Fx.pop,
             delay: const Duration(milliseconds: 600),
-            child: Bob(child: ScoreSticker(text: '+20', style: AppText.sticker)),
+            child: Bob(
+              child: ScoreSticker(text: '+20', style: AppText.sticker),
+            ),
           ),
         ),
-        const PositionedDirectional(
+        PositionedDirectional(
           top: 44,
           start: 22,
           child: Enter(

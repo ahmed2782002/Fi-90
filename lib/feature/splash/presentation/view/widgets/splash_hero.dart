@@ -32,8 +32,11 @@ class SplashHero extends StatelessWidget {
           delay: const Duration(milliseconds: 300),
           child: Column(
             children: [
-              Text('في 90',
-                  textDirection: TextDirection.ltr, style: AppText.splashBrand),
+              Text(
+                'في 90',
+                textDirection: TextDirection.ltr,
+                style: AppText.splashBrand,
+              ),
               const SizedBox(height: 6),
               Text('مين يعرف الكورة أكتر؟', style: AppText.splashTagline),
             ],

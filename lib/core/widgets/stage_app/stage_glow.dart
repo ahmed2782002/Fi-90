@@ -15,8 +15,15 @@ class StageGlow extends StatelessWidget {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(44),
-                gradient: AppGradients.fade(AppColors.cy,
-                    x: .5, y: .45, rx: .7, ry: .55, alpha: .18, end: .72),
+                gradient: AppGradients.fade(
+                  AppColors.cy,
+                  x: .5,
+                  y: .45,
+                  rx: .7,
+                  ry: .55,
+                  alpha: .18,
+                  end: .72,
+                ),
               ),
             ),
           ),

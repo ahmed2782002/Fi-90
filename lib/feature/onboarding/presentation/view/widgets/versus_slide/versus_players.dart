@@ -1,3 +1,4 @@
+import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/animation/app_curves.dart';
 import 'package:fii90/core/animation/enter.dart';
 import 'package:fii90/core/animation/fx.dart';
@@ -10,7 +11,7 @@ class VersusPlayers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Enter(
@@ -18,8 +19,7 @@ class VersusPlayers extends StatelessWidget {
           duration: Duration(milliseconds: 700),
           curve: AppCurves.spring,
           child: PlayerCard(
-            name: 'أحمد',
-            initial: 'أ',
+            name: AppStrings.mockPlayerAhmed,
             level: 'LV 24',
             color: AppColors.me,
             onColor: AppColors.meOn,
@@ -32,8 +32,7 @@ class VersusPlayers extends StatelessWidget {
           duration: Duration(milliseconds: 700),
           curve: AppCurves.spring,
           child: PlayerCard(
-            name: 'عمر',
-            initial: 'ع',
+            name: AppStrings.mockPlayerOmar,
             level: 'LV 26',
             color: AppColors.op,
             onColor: AppColors.opOn,

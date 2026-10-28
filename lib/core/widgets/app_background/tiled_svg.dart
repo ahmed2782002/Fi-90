@@ -15,7 +15,9 @@ class TiledSvg extends StatefulWidget {
   static Future<PictureInfo> precache(String asset) {
     return _loading.putIfAbsent(
       asset,
-      () => vg.loadPicture(SvgAssetLoader(asset), null).then((info) => _ready[asset] = info),
+      () => vg
+          .loadPicture(SvgAssetLoader(asset), null)
+          .then((info) => _ready[asset] = info),
     );
   }
 
