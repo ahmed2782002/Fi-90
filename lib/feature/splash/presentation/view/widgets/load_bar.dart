@@ -20,7 +20,7 @@ class LoadBar extends StatelessWidget {
       child: FractionallySizedBox(
         widthFactor: progress,
         heightFactor: 1,
-        child: const DecoratedBox(
+        child: DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(colors: [AppColors.pri, AppColors.gold]),
           ),

@@ -21,9 +21,10 @@ abstract final class AppGradients {
     );
   }
 
-  static RadialGradient closestSide(List<Color> colors,
-          [List<double>? stops]) =>
-      ellipse(x: .5, y: .5, rx: .5, ry: .5, colors: colors, stops: stops);
+  static RadialGradient closestSide(
+    List<Color> colors, [
+    List<double>? stops,
+  ]) => ellipse(x: .5, y: .5, rx: .5, ry: .5, colors: colors, stops: stops);
 
   static RadialGradient fade(
     Color color, {
@@ -33,13 +34,15 @@ abstract final class AppGradients {
     required double ry,
     required double alpha,
     double end = .7,
-  }) =>
-      ellipse(
-        x: x,
-        y: y,
-        rx: rx,
-        ry: ry,
-        colors: [color.withValues(alpha: alpha), color.withValues(alpha: 0)],
-        stops: [0, end],
-      );
+  }) => ellipse(
+    x: x,
+    y: y,
+    rx: rx,
+    ry: ry,
+    colors: [
+      color.withValues(alpha: alpha),
+      color.withValues(alpha: 0),
+    ],
+    stops: [0, end],
+  );
 }

@@ -12,9 +12,11 @@ class LoginCubit extends Cubit<LoginState> {
 
   void openPrivacy() => emit(const LoginState(status: LoginStatus.privacy));
 
-  void signInWithGoogle() => emit(const LoginState(status: LoginStatus.google));
+  void signInWithGoogle() =>
+      emit(const LoginState(status: LoginStatus.signedIn));
 
-  void signInWithApple() => emit(const LoginState(status: LoginStatus.apple));
+  void signInWithApple() =>
+      emit(const LoginState(status: LoginStatus.signedIn));
 
   @override
   Future<void> close() {

@@ -42,7 +42,12 @@ class LogoFace extends StatelessWidget {
               opacity: _flyOpacity,
               child: Transform(
                 transform: Matrix4.identity()
-                  ..translateByDouble(-34 * (1 - _flyEase), 40 * (1 - _flyEase), 0, 1)
+                  ..translateByDouble(
+                    -34 * (1 - _flyEase),
+                    40 * (1 - _flyEase),
+                    0,
+                    1,
+                  )
                   ..scaleByDouble(_flyScale, _flyScale, 1, 1),
                 child: SvgPicture.asset(AppIcons.ball, width: 56, height: 56),
               ),

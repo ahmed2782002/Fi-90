@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class PlayerStat extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(value, style: AppText.statValue),
-        Text(label, style: AppText.statLabel),
+        Text(context.tr(label), style: AppText.statLabel),
       ],
     );
   }

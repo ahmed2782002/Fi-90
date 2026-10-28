@@ -40,7 +40,9 @@ class NewPlayerCard extends StatelessWidget {
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(23),
-                      border: Border.all(color: AppColors.tint(AppColors.white, .18)),
+                      border: Border.all(
+                        color: AppColors.tint(AppColors.white, .18),
+                      ),
                     ),
                   ),
                 ),
@@ -60,7 +62,10 @@ class NewPlayerCard extends StatelessWidget {
               color: AppColors.ok,
               border: Border.all(color: AppColors.bg, width: 3),
               boxShadow: [
-                BoxShadow(color: AppColors.tint(AppColors.ok, .6), blurRadius: 16),
+                BoxShadow(
+                  color: AppColors.tint(AppColors.ok, .6),
+                  blurRadius: 16,
+                ),
               ],
             ),
             child: Text('✓', style: AppText.checkMark),

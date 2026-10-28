@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+
 import 'dart:math' as math;
 
 import 'package:fii90/core/theme/app_colors.dart';
@@ -10,7 +12,6 @@ class PlayerCard extends StatelessWidget {
   const PlayerCard({
     super.key,
     required this.name,
-    required this.initial,
     required this.level,
     required this.color,
     required this.onColor,
@@ -18,7 +19,6 @@ class PlayerCard extends StatelessWidget {
   });
 
   final String name;
-  final String initial;
   final String level;
   final Color color;
   final Color onColor;
@@ -68,14 +68,19 @@ class PlayerCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Text(initial,
-                        style: AppText.cardInitial.copyWith(color: onColor)),
+                    child: Text(
+                      context.tr(name).characters.first,
+                      style: AppText.cardInitial.copyWith(color: onColor),
+                    ),
                   ),
                   const SizedBox(height: 8),
-                  Text(name, style: AppText.cardName),
+                  Text(context.tr(name), style: AppText.cardName),
                   const SizedBox(height: 8),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 2,
+                    ),
                     decoration: BoxDecoration(
                       color: AppColors.s2,
                       borderRadius: BorderRadius.circular(999),

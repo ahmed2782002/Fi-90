@@ -1,3 +1,4 @@
+import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/feature/onboarding/mock_model/onboarding_slide.dart';
 import 'package:fii90/feature/onboarding/presentation/view_model/onboarding_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,8 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   bool get isLast => state.index == slides.length - 1;
 
-  String get buttonLabel => isLast ? 'يلا نبدأ' : 'التالي';
+  String get buttonLabel =>
+      isLast ? AppStrings.onboardingStart : AppStrings.onboardingNext;
 
   void next() => isLast ? skip() : emit(state.copyWith(index: state.index + 1));
 

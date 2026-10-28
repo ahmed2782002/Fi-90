@@ -1,3 +1,5 @@
+import 'package:fii90/core/localization/app_strings.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/auth/presentation/view_model/login_cubit.dart';
 import 'package:flutter/material.dart';
@@ -13,15 +15,15 @@ class LoginTerms extends StatelessWidget {
       TextSpan(
         style: AppText.terms,
         children: [
-          const TextSpan(text: 'بالمتابعة إنت موافق على '),
+          TextSpan(text: context.tr(AppStrings.loginTermsPrefix)),
           TextSpan(
-            text: 'الشروط والأحكام',
+            text: context.tr(AppStrings.termsAndConditions),
             recognizer: cubit.termsRecognizer,
             style: AppText.termsLink,
           ),
-          const TextSpan(text: ' و'),
+          TextSpan(text: context.tr(AppStrings.loginTermsAnd)),
           TextSpan(
-            text: 'سياسة الخصوصية',
+            text: context.tr(AppStrings.privacyPolicy),
             recognizer: cubit.privacyRecognizer,
             style: AppText.termsLink,
           ),

@@ -1,3 +1,5 @@
+import 'package:fii90/core/localization/app_strings.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/constants/app_icons.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
@@ -23,16 +25,25 @@ class NewPlayerCardBody extends StatelessWidget {
                 Column(
                   children: [
                     Text('1', style: AppText.playerLevel),
-                    Text('LV', style: AppText.playerLevelLabel),
+                    Text(
+                      context.tr(AppStrings.levelShort),
+                      style: AppText.playerLevelLabel,
+                    ),
                   ],
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 9,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.tint(AppColors.black, .28),
                     borderRadius: BorderRadius.circular(999),
                   ),
-                  child: Text('لاعب جديد', style: AppText.playerTag),
+                  child: Text(
+                    context.tr(AppStrings.newPlayer),
+                    style: AppText.playerTag,
+                  ),
                 ),
               ],
             ),
@@ -49,7 +60,10 @@ class NewPlayerCardBody extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: AppColors.tint(AppColors.black, .2),
-                    border: Border.all(color: AppColors.tint(AppColors.cy, .6), width: 2),
+                    border: Border.all(
+                      color: AppColors.tint(AppColors.cy, .6),
+                      width: 2,
+                    ),
                   ),
                   child: FractionallySizedBox(
                     widthFactor: 64 / 72,
@@ -61,16 +75,16 @@ class NewPlayerCardBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          Text('إنت؟', style: AppText.playerHeadline),
+          Text(context.tr(AppStrings.isItYou), style: AppText.playerHeadline),
           const SizedBox(height: 8),
           Container(height: 1, color: AppColors.tint(AppColors.white, .2)),
           const SizedBox(height: 8),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              PlayerStat(value: '0', label: 'مباريات'),
-              PlayerStat(value: '0', label: 'XP'),
-              PlayerStat(value: '—', label: 'ترتيب'),
+              PlayerStat(value: '0', label: AppStrings.statMatches),
+              PlayerStat(value: '0', label: AppStrings.statXp),
+              PlayerStat(value: '—', label: AppStrings.statRank),
             ],
           ),
         ],

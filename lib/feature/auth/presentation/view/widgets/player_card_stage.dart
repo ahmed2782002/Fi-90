@@ -1,3 +1,5 @@
+import 'package:fii90/core/localization/app_strings.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/stage_app/dot.dart';
@@ -18,7 +20,11 @@ class PlayerCardStage extends StatelessWidget {
         const Positioned.fill(
           child: FittedBox(
             fit: BoxFit.scaleDown,
-            child: SizedBox(width: 260, height: 260, child: TiltingPlayerCard()),
+            child: SizedBox(
+              width: 260,
+              height: 260,
+              child: TiltingPlayerCard(),
+            ),
           ),
         ),
         FloatingPerk(
@@ -37,8 +43,8 @@ class PlayerCardStage extends StatelessWidget {
           end: .02,
           delay: 900,
           child: InfoChip(
-            label: 'مستوى ومكافآت',
-            leading: const Dot(AppColors.cy, size: 8, glow: true),
+            label: context.tr(AppStrings.perkLevelRewards),
+            leading: Dot(AppColors.cy, size: 8, glow: true),
             style: AppText.perk,
             hPad: 13,
           ),
@@ -48,8 +54,11 @@ class PlayerCardStage extends StatelessWidget {
           start: 0,
           delay: 1500,
           child: InfoChip(
-            label: 'ترتيبك محفوظ',
-            leading: Text('▲', style: AppText.perk.copyWith(color: AppColors.okInk)),
+            label: context.tr(AppStrings.perkRankSaved),
+            leading: Text(
+              '▲',
+              style: AppText.perk.copyWith(color: AppColors.okInk),
+            ),
             style: AppText.perk,
             hPad: 13,
           ),
@@ -59,8 +68,8 @@ class PlayerCardStage extends StatelessWidget {
           end: .06,
           delay: 500,
           child: InfoChip(
-            label: 'سجل مبارياتك',
-            leading: const Dot(AppColors.op, size: 8),
+            label: context.tr(AppStrings.perkMatchHistory),
+            leading: Dot(AppColors.op, size: 8),
             style: AppText.perk,
             hPad: 13,
           ),

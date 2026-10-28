@@ -15,8 +15,10 @@ class LogoInsetPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final rrect =
-        RRect.fromRectAndRadius(Offset.zero & size, Radius.circular(radius));
+    final rrect = RRect.fromRectAndRadius(
+      Offset.zero & size,
+      Radius.circular(radius),
+    );
     canvas.save();
     canvas.clipRRect(rrect);
 
@@ -27,7 +29,10 @@ class LogoInsetPainter extends CustomPainter {
       outer,
       Path()..addRRect(rrect.shift(Offset(0, topLight))),
     );
-    canvas.drawPath(lip, Paint()..color = AppColors.white.withValues(alpha: .38));
+    canvas.drawPath(
+      lip,
+      Paint()..color = AppColors.white.withValues(alpha: .38),
+    );
 
     final shade = Path.combine(
       PathOperation.difference,

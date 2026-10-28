@@ -36,7 +36,9 @@ class PodiumAvatar extends StatelessWidget {
             color: fill,
             shape: BoxShape.circle,
             border: Border.all(color: ring, width: 2.5),
-            boxShadow: [BoxShadow(color: AppColors.tint(ring, .45), blurRadius: 16)],
+            boxShadow: [
+              BoxShadow(color: AppColors.tint(ring, .45), blurRadius: 16),
+            ],
           ),
           child: Text(
             initial,
@@ -51,10 +53,13 @@ class PodiumAvatar extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 boxShadow: [
-                  BoxShadow(color: AppColors.tint(AppColors.gold, .5), blurRadius: 10),
+                  BoxShadow(
+                    color: AppColors.tint(AppColors.gold, .5),
+                    blurRadius: 10,
+                  ),
                 ],
               ),
-              child: const LineIcon(AppIcons.crown, color: AppColors.gold),
+              child: LineIcon(AppIcons.crown, color: AppColors.gold),
             ),
           ),
       ],

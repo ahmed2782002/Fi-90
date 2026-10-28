@@ -5,7 +5,7 @@ class OnboardingState {
   final bool finished;
 
   OnboardingState copyWith({int? index, bool? finished}) => OnboardingState(
-        index: index ?? this.index,
-        finished: finished ?? this.finished,
-      );
+    index: index ?? this.index,
+    finished: finished ?? this.finished,
+  );
 }

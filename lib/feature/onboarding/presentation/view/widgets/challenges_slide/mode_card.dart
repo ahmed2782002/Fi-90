@@ -46,7 +46,9 @@ class ModeCard extends StatelessWidget {
             end: 8,
             child: Text(
               number,
-              style: AppText.modeNumber.copyWith(color: color.withValues(alpha: .18)),
+              style: AppText.modeNumber.copyWith(
+                color: color.withValues(alpha: .18),
+              ),
             ),
           ),
           Container(

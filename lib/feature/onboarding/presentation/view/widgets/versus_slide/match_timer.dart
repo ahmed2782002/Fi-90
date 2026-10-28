@@ -25,7 +25,7 @@ class MatchTimer extends StatelessWidget {
         children: [
           Text(time, style: AppText.timer),
           const SizedBox(width: 6),
-          const Dot(AppColors.bad, size: 8, glow: true),
+          Dot(AppColors.bad, size: 8, glow: true),
         ],
       ),
     );

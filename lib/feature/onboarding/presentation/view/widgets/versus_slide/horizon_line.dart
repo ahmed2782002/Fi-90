@@ -9,12 +9,14 @@ class HorizonLine extends StatelessWidget {
     return Container(
       height: 2,
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [
-          AppColors.tint(AppColors.cy, 0),
-          AppColors.cy,
-          AppColors.tint(AppColors.cy, 0),
-        ]),
-        boxShadow: const [BoxShadow(color: AppColors.cy, blurRadius: 12)],
+        gradient: LinearGradient(
+          colors: [
+            AppColors.tint(AppColors.cy, 0),
+            AppColors.cy,
+            AppColors.tint(AppColors.cy, 0),
+          ],
+        ),
+        boxShadow: [BoxShadow(color: AppColors.cy, blurRadius: 12)],
       ),
     );
   }

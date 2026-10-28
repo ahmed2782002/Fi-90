@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/animation/app_curves.dart';
 import 'package:fii90/core/animation/enter.dart';
 import 'package:fii90/core/animation/fx.dart';
@@ -11,7 +12,6 @@ class PodiumPlace extends StatelessWidget {
     super.key,
     required this.rank,
     required this.name,
-    required this.initial,
     required this.xp,
     required this.barHeight,
     required this.accent,
@@ -27,7 +27,6 @@ class PodiumPlace extends StatelessWidget {
 
   final String rank;
   final String name;
-  final String initial;
   final String xp;
   final double barHeight;
   final Color accent;
@@ -51,7 +50,7 @@ class PodiumPlace extends StatelessWidget {
             fx: Fx.pop,
             delay: Duration(milliseconds: avatarDelay),
             child: PodiumAvatar(
-              initial: initial,
+              initial: context.tr(name).characters.first,
               size: avatarSize,
               fill: fill,
               onFill: onFill,
@@ -64,7 +63,7 @@ class PodiumPlace extends StatelessWidget {
             fx: Fx.fadeIn,
             duration: const Duration(milliseconds: 400),
             delay: Duration(milliseconds: nameDelay),
-            child: Text(name, style: AppText.podiumName),
+            child: Text(context.tr(name), style: AppText.podiumName),
           ),
           const SizedBox(height: 8),
           Enter(
@@ -72,7 +71,13 @@ class PodiumPlace extends StatelessWidget {
             duration: const Duration(milliseconds: 600),
             delay: Duration(milliseconds: barDelay),
             curve: AppCurves.grow,
-            child: PodiumBar(height: barHeight, rank: rank, xp: xp, accent: accent, ink: ink),
+            child: PodiumBar(
+              height: barHeight,
+              rank: rank,
+              xp: xp,
+              accent: accent,
+              ink: ink,
+            ),
           ),
         ],
       ),

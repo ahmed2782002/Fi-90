@@ -55,11 +55,17 @@ class LogoFacePainter extends CustomPainter {
   void _paintFrame(Canvas canvas) {
     final shade = Paint()..color = AppColors.logoInk.withValues(alpha: .5);
     canvas.drawRRect(
-      RRect.fromRectAndRadius(const Rect.fromLTWH(4.6, 7, 45.4, 2.8), _barRadius),
+      RRect.fromRectAndRadius(
+        const Rect.fromLTWH(4.6, 7, 45.4, 2.8),
+        _barRadius,
+      ),
       shade,
     );
     canvas.drawRRect(
-      RRect.fromRectAndRadius(const Rect.fromLTWH(49.7, 7, 2.8, 49), _barRadius),
+      RRect.fromRectAndRadius(
+        const Rect.fromLTWH(49.7, 7, 2.8, 49),
+        _barRadius,
+      ),
       shade,
     );
     canvas.drawRRect(
@@ -83,7 +89,10 @@ class LogoFacePainter extends CustomPainter {
   }
 
   void _paintNine(Canvas canvas) {
-    canvas.saveLayer(null, Paint()..color = Color.fromRGBO(0, 0, 0, nineOpacity));
+    canvas.saveLayer(
+      null,
+      Paint()..color = Color.fromRGBO(0, 0, 0, nineOpacity),
+    );
     canvas.translate(0, nineDy);
     _drawNine(canvas, 19.4, 54.6, nineStyle.copyWith(color: AppColors.logoInk));
     _drawNine(canvas, 18.7, 53.7, nineStyle.copyWith(color: AppColors.priD));

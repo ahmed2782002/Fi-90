@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:fii90/core/animation/enter.dart';
 import 'package:fii90/core/animation/fx.dart';
 import 'package:fii90/core/routing/nav.dart';
@@ -34,8 +35,14 @@ class OnboardingScreen extends StatelessWidget {
             body: AppBackground(
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  gradient: AppGradients.fade(AppColors.pri,
-                      x: .5, y: .3, rx: 1, ry: .45, alpha: .2),
+                  gradient: AppGradients.fade(
+                    AppColors.pri,
+                    x: .5,
+                    y: .3,
+                    rx: 1,
+                    ry: .45,
+                    alpha: .2,
+                  ),
                 ),
                 child: SafeArea(
                   child: Padding(
@@ -48,7 +55,9 @@ class OnboardingScreen extends StatelessWidget {
                             behavior: HitTestBehavior.opaque,
                             onHorizontalDragEnd: (d) => cubit.swipe(
                               d.primaryVelocity ?? 0,
-                              isRtl: Directionality.of(context) == TextDirection.rtl,
+                              isRtl:
+                                  Directionality.of(context) ==
+                                  TextDirection.rtl,
                             ),
                             child: KeyedSubtree(
                               key: ValueKey(state.index),
@@ -56,8 +65,8 @@ class OnboardingScreen extends StatelessWidget {
                                 fx: Fx.fadeIn,
                                 duration: const Duration(milliseconds: 350),
                                 child: SlideLayout(
-                                  title: cubit.slide.title,
-                                  body: cubit.slide.body,
+                                  title: context.tr(cubit.slide.title),
+                                  body: context.tr(cubit.slide.body),
                                   illustration: switch (state.index) {
                                     0 => const VersusSlide(),
                                     1 => const ChallengesSlide(),
@@ -68,9 +77,15 @@ class OnboardingScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        PageDots(count: cubit.slides.length, index: state.index),
+                        PageDots(
+                          count: cubit.slides.length,
+                          index: state.index,
+                        ),
                         const SizedBox(height: 22),
-                        PrimaryButton(label: cubit.buttonLabel, onTap: cubit.next),
+                        PrimaryButton(
+                          label: context.tr(cubit.buttonLabel),
+                          onTap: cubit.next,
+                        ),
                       ],
                     ),
                   ),

@@ -23,8 +23,10 @@ class Loop extends StatefulWidget {
 }
 
 class LoopState extends State<Loop> with SingleTickerProviderStateMixin {
-  late final AnimationController _c =
-      AnimationController(vsync: this, duration: widget.period);
+  late final AnimationController _c = AnimationController(
+    vsync: this,
+    duration: widget.period,
+  );
   bool _started = false;
   Timer? _delay;
 
