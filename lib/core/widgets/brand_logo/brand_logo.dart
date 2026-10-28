@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../theme/app_colors.dart';
+import '../../theme/app_shadows.dart';
 import '../top_gloss.dart';
 import 'logo_face.dart';
 import 'logo_inset_painter.dart';
@@ -22,40 +23,55 @@ class BrandLogo extends StatelessWidget {
   });
 
   BrandLogo.small({Key? key})
-      : this._(
-          key: key,
-          size: 64,
-          faceSize: 61,
-          radius: 22,
-          borderWidth: 1.5,
-          highlight: AppColors.logoSmallHighlight,
-          shadows: [
-            BoxShadow(color: AppColors.tint(AppColors.cy, .35), blurRadius: 18),
-          ],
-          glossStop: .42,
-          glossAlpha: .22,
-          insetTop: 2,
-          insetBottomBlur: 8,
-        );
+    : this._(
+        key: key,
+        size: 64,
+        faceSize: 61,
+        radius: 22,
+        borderWidth: 1.5,
+        highlight: AppColors.logoSmallHighlight,
+        shadows: [
+          BoxShadow(color: AppColors.tint(AppColors.neon, .35), blurRadius: 18),
+        ],
+        glossStop: .42,
+        glossAlpha: .22,
+        insetTop: 2,
+        insetBottomBlur: 8,
+      );
+
+  BrandLogo.nav({Key? key})
+    : this._(
+        key: key,
+        size: 56,
+        faceSize: 53,
+        radius: 20,
+        borderWidth: 1.5,
+        highlight: AppColors.logoSmallHighlight,
+        shadows: AppShadows.glow,
+        glossStop: .42,
+        glossAlpha: .22,
+        insetTop: 2,
+        insetBottomBlur: 8,
+      );
 
   BrandLogo.hero({Key? key, double intro = 1})
-      : this._(
-          key: key,
-          size: 196,
-          faceSize: 192,
-          radius: 58,
-          borderWidth: 2,
-          highlight: AppColors.logoHeroHighlight,
-          shadows: [
-            BoxShadow(color: AppColors.tint(AppColors.cy, .5), blurRadius: 34),
-            BoxShadow(color: AppColors.tint(AppColors.pri, .45), blurRadius: 80),
-          ],
-          glossStop: .40,
-          glossAlpha: .26,
-          insetTop: 4,
-          insetBottomBlur: 24,
-          intro: intro,
-        );
+    : this._(
+        key: key,
+        size: 196,
+        faceSize: 192,
+        radius: 58,
+        borderWidth: 2,
+        highlight: AppColors.logoHeroHighlight,
+        shadows: [
+          BoxShadow(color: AppColors.tint(AppColors.neon, .5), blurRadius: 34),
+          BoxShadow(color: AppColors.tint(AppColors.pri, .45), blurRadius: 80),
+        ],
+        glossStop: .40,
+        glossAlpha: .26,
+        insetTop: 4,
+        insetBottomBlur: 24,
+        intro: intro,
+      );
 
   final double size;
   final double faceSize;
@@ -76,12 +92,17 @@ class BrandLogo extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
-        border: Border.all(color: AppColors.cy, width: borderWidth),
+        border: Border.all(color: AppColors.neon, width: borderWidth),
         boxShadow: shadows,
         gradient: RadialGradient(
           center: const Alignment(-.4, -.8),
           radius: 1.05,
-          colors: [highlight, AppColors.gradStart, AppColors.priD, AppColors.logoDeep],
+          colors: [
+            highlight,
+            AppColors.gradStart,
+            AppColors.priD,
+            AppColors.logoDeep,
+          ],
           stops: const [0, .4, .75, 1],
         ),
       ),

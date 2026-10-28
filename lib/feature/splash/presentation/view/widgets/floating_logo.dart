@@ -58,15 +58,20 @@ class FloatingLogo extends StatelessWidget {
                     wave: AppCurves.wave(t),
                     offset: const Offset(6, 14),
                     depth: -20,
-                    child: const LogoSlab(colors: [AppColors.logoDeep, AppColors.logoInk]),
+                    child: const LogoSlab(
+                      colors: [AppColors.logoDeep, AppColors.logoInk],
+                    ),
                   ),
                   FloatLayer(
                     wave: AppCurves.wave(t),
                     offset: const Offset(3, 7),
                     depth: -10,
-                    child: const LogoSlab(colors: [AppColors.priD, AppColors.stk2]),
+                    child: LogoSlab(colors: [AppColors.priD, AppColors.stk2]),
                   ),
-                  FloatLayer(wave: AppCurves.wave(t), child: BrandLogo.hero(intro: intro)),
+                  FloatLayer(
+                    wave: AppCurves.wave(t),
+                    child: BrandLogo.hero(intro: intro),
+                  ),
                 ],
               ),
             ),

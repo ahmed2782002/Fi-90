@@ -1,3 +1,6 @@
+import 'package:fii90/core/localization/app_strings.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 import 'dart:math' as math;
 
 import 'package:fii90/core/animation/app_curves.dart';
@@ -15,18 +18,66 @@ import 'package:flutter/material.dart';
 class ChallengesSlide extends StatelessWidget {
   const ChallengesSlide({super.key});
 
-  static const _cards = [
-    (n: '4', icon: AppIcons.swap, color: AppColors.m4, ink: AppColors.m4Ink, dx: -134.0, top: 34.0, deg: -12.0, delay: 350),
-    (n: '3', icon: AppIcons.bell, color: AppColors.m3, ink: AppColors.m3Ink, dx: -79.0, top: 8.0, deg: -4.0, delay: 260),
-    (n: '2', icon: AppIcons.gavel, color: AppColors.gold, ink: AppColors.goldInk, dx: -25.0, top: 8.0, deg: 4.0, delay: 170),
-    (n: '1', icon: AppIcons.brain, color: AppColors.cy, ink: AppColors.priInk, dx: 30.0, top: 34.0, deg: 12.0, delay: 80),
+  static List<
+    ({
+      String n,
+      String icon,
+      Color color,
+      Color ink,
+      double dx,
+      double top,
+      double deg,
+      int delay,
+    })
+  >
+  get _cards => [
+    (
+      n: '4',
+      icon: AppIcons.swap,
+      color: AppColors.m4,
+      ink: AppColors.m4Ink,
+      dx: -134.0,
+      top: 34.0,
+      deg: -12.0,
+      delay: 350,
+    ),
+    (
+      n: '3',
+      icon: AppIcons.bell,
+      color: AppColors.m3,
+      ink: AppColors.m3Ink,
+      dx: -79.0,
+      top: 8.0,
+      deg: -4.0,
+      delay: 260,
+    ),
+    (
+      n: '2',
+      icon: AppIcons.gavel,
+      color: AppColors.gold,
+      ink: AppColors.goldInk,
+      dx: -25.0,
+      top: 8.0,
+      deg: 4.0,
+      delay: 170,
+    ),
+    (
+      n: '1',
+      icon: AppIcons.brain,
+      color: AppColors.cy,
+      ink: AppColors.priInk,
+      dx: 30.0,
+      top: 34.0,
+      deg: 12.0,
+      delay: 80,
+    ),
   ];
 
-  static const _chips = [
-    (label: 'ماذا تعرف؟', color: AppColors.cy, delay: 500),
-    (label: 'المزاد', color: AppColors.gold, delay: 580),
-    (label: 'الجرس', color: AppColors.m3, delay: 660),
-    (label: 'التعويض', color: AppColors.m4, delay: 740),
+  static List<({String label, Color color, int delay})> get _chips => [
+    (label: AppStrings.modeWhatDoYouKnow, color: AppColors.cy, delay: 500),
+    (label: AppStrings.modeAuction, color: AppColors.gold, delay: 580),
+    (label: AppStrings.modeBell, color: AppColors.m3, delay: 660),
+    (label: AppStrings.modeComeback, color: AppColors.m4, delay: 740),
   ];
 
   @override
@@ -47,7 +98,12 @@ class ChallengesSlide extends StatelessWidget {
                 child: Transform.rotate(
                   angle: c.deg * math.pi / 180,
                   alignment: const Alignment(0, 1.4),
-                  child: ModeCard(number: c.n, icon: c.icon, color: c.color, ink: c.ink),
+                  child: ModeCard(
+                    number: c.n,
+                    icon: c.icon,
+                    color: c.color,
+                    ink: c.ink,
+                  ),
                 ),
               ),
             ),
@@ -66,7 +122,7 @@ class ChallengesSlide extends StatelessWidget {
                     duration: const Duration(milliseconds: 400),
                     delay: Duration(milliseconds: c.delay),
                     child: InfoChip(
-                      label: c.label,
+                      label: context.tr(c.label),
                       leading: Dot(c.color),
                       style: AppText.chip,
                       border: c.color,

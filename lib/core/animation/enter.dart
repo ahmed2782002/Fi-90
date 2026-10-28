@@ -29,8 +29,10 @@ class Enter extends StatefulWidget {
 }
 
 class EnterState extends State<Enter> with SingleTickerProviderStateMixin {
-  late final AnimationController _c =
-      AnimationController(vsync: this, duration: widget.duration);
+  late final AnimationController _c = AnimationController(
+    vsync: this,
+    duration: widget.duration,
+  );
 
   Timer? _delay;
 
@@ -55,17 +57,20 @@ class EnterState extends State<Enter> with SingleTickerProviderStateMixin {
 
   double get _eased => widget.fx == Fx.pop
       ? widget.curve.transform(
-          _popFirstHalf ? _c.value / .6 : (_c.value - .6) / .4)
+          _popFirstHalf ? _c.value / .6 : (_c.value - .6) / .4,
+        )
       : widget.curve.transform(_c.value);
 
-  double get _opacity => !widget.fade ? 1.0 : switch (widget.fx) {
-        Fx.growUp => 1.0,
-        Fx.pop => _popFirstHalf ? _eased : 1.0,
-        _ => _eased,
-      }
-          .clamp(0.0, 1.0);
+  double get _opacity => !widget.fade
+      ? 1.0
+      : switch (widget.fx) {
+          Fx.growUp => 1.0,
+          Fx.pop => _popFirstHalf ? _eased : 1.0,
+          _ => _eased,
+        }.clamp(0.0, 1.0);
 
-  Offset get _offset => switch (widget.fx) {
+  Offset get _offset =>
+      switch (widget.fx) {
         Fx.fadeUp => const Offset(0, 14),
         Fx.slideS => const Offset(60, 0),
         Fx.slideE => const Offset(-60, 0),
@@ -77,8 +82,8 @@ class EnterState extends State<Enter> with SingleTickerProviderStateMixin {
   double get _scale => widget.fx != Fx.pop
       ? 1
       : _popFirstHalf
-          ? lerpDouble(.6, 1.07, _eased)!
-          : lerpDouble(1.07, 1, _eased)!;
+      ? lerpDouble(.6, 1.07, _eased)!
+      : lerpDouble(1.07, 1, _eased)!;
 
   double get _scaleY => widget.fx == Fx.growUp ? _eased : _scale;
 
