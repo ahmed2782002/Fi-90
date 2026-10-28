@@ -15,12 +15,22 @@ class AppBackground extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: AppColors.bg,
-        gradient: AppGradients.fade(AppColors.bg2, x: .5, y: 0, rx: .9, ry: .4, alpha: 1),
+        gradient: AppGradients.fade(
+          AppColors.bg2,
+          x: .5,
+          y: 0,
+          rx: .9,
+          ry: .4,
+          alpha: 1,
+        ),
       ),
       child: Stack(
         fit: StackFit.expand,
         children: [
-          const TiledSvg(asset: AppImages.patternTile, opacity: .09),
+          TiledSvg(
+            asset: AppImages.patternTile,
+            opacity: AppColors.patternOpacity,
+          ),
           child,
         ],
       ),

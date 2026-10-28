@@ -9,4 +9,31 @@ abstract final class AppIcons {
   static const person = 'assets/icons/person.svg';
   static const google = 'assets/icons/google.svg';
   static const apple = 'assets/icons/apple.svg';
+
+  static const navHome = 'assets/icons/nav_home.svg';
+  static const navFriends = 'assets/icons/nav_friends.svg';
+  static const navJourney = 'assets/icons/nav_journey.svg';
+  static const navProfile = 'assets/icons/nav_profile.svg';
+  static const notification = 'assets/icons/notification.svg';
+  static const plus = 'assets/icons/plus.svg';
+  static const chevronBack = 'assets/icons/chevron_back.svg';
+  static const coin = 'assets/icons/coin.svg';
+  static const robot = 'assets/icons/robot.svg';
+  static const globe = 'assets/icons/globe.svg';
+  static const inviteFriend = 'assets/icons/invite_friend.svg';
+
+  static const profileUser = 'assets/icons/profile_user.svg';
+  static const sound = 'assets/icons/sound.svg';
+  static const plans = 'assets/icons/plans.svg';
+  static const friends = 'assets/icons/friends.svg';
+  static const settingsNotification = 'assets/icons/settings_notification.svg';
+  static const theme = 'assets/icons/theme.svg';
+  static const complaint = 'assets/icons/complaint.svg';
+  static const faq = 'assets/icons/faq.svg';
+  static const privacy = 'assets/icons/privacy.svg';
+  static const terms = 'assets/icons/terms.svg';
+  static const logout = 'assets/icons/logout.svg';
+  static const back = 'assets/icons/back.svg';
+  static const music = 'assets/icons/music.svg';
+  static const vibration = 'assets/icons/vibration.svg';
 }

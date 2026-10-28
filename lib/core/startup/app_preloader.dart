@@ -13,13 +13,15 @@ abstract final class AppPreloader {
   static const _timeout = Duration(seconds: 4);
 
   static Future<void> load() async {
-    await Future.wait([
-      _fonts(),
-      TiledSvg.precache(AppImages.patternTile),
-      TiledSvg.precache(AppImages.starsTile),
-      _svg(AppIcons.ball),
-      _image(AppImages.brandFi),
-    ].map((task) => task.timeout(_timeout).catchError((_) => null)));
+    await Future.wait(
+      [
+        _fonts(),
+        TiledSvg.precache(AppImages.patternTile),
+        TiledSvg.precache(AppImages.starsTile),
+        _svg(AppIcons.ball),
+        _image(AppImages.brandFi),
+      ].map((task) => task.timeout(_timeout).catchError((_) => null)),
+    );
   }
 
   static Future<void> _fonts() {
