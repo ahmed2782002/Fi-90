@@ -16,12 +16,14 @@ class SubPage extends StatelessWidget {
     required this.children,
     this.gap = 18,
     this.bottom,
+    this.action,
   });
 
   final String title;
   final List<Widget> children;
   final double gap;
   final Widget? bottom;
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +71,7 @@ class SubPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 12),
                     Expanded(child: Text(title, style: AppText.pageTitle)),
+                    ?action,
                   ],
                 ),
                 SizedBox(height: gap),

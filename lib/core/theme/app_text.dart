@@ -769,4 +769,52 @@ abstract final class AppText {
     height: 1.7,
   );
   static TextStyle get wordChip => _cairo(12, weight: FontWeight.w700);
+  static TextStyle get shopBalanceLabel =>
+      _cairo(13, weight: FontWeight.w600, color: AppColors.shopLabel);
+  static TextStyle get shopBalanceValue => _cairo(
+    34,
+    weight: FontWeight.w900,
+    color: AppColors.shopCoins,
+    height: 1.1,
+  );
+  static TextStyle get shopBalanceUnit =>
+      _cairo(14, weight: FontWeight.w700, color: AppColors.white);
+  static TextStyle packTag(Color color) =>
+      _cairo(10, weight: FontWeight.w800, color: color, height: 1.8);
+  static TextStyle get packAmount =>
+      _cairo(22, weight: FontWeight.w900, height: 1.2);
+  static TextStyle get packBonus =>
+      _cairo(11, weight: FontWeight.w800, color: AppColors.okInk);
+  static TextStyle get shopTip =>
+      _cairo(12, weight: FontWeight.w600, color: AppColors.tx2, height: 1.7);
+  static TextStyle get shopTipValue => _cairo(
+    12,
+    weight: FontWeight.w700,
+    color: AppColors.goldInk,
+    height: 1.7,
+  );
+  static TextStyle get shopNotice =>
+      _cairo(11, color: AppColors.dim, height: 1.7);
+  static TextStyle get readAll =>
+      _cairo(12, weight: FontWeight.w700, color: AppColors.priInk);
+  static TextStyle get notificationsMuted => _cairo(
+    12,
+    weight: FontWeight.w600,
+    color: AppColors.goldInk,
+    height: 1.7,
+  );
+  static TextStyle get notificationsGroup =>
+      _cairo(12, weight: FontWeight.w700, color: AppColors.dim);
+  static TextStyle notificationGlyph(Color color) =>
+      _cairo(14, weight: FontWeight.w900, color: color);
+  static TextStyle get notificationTitle =>
+      _cairo(14, weight: FontWeight.w700, height: 1.5);
+  static TextStyle get notificationTime =>
+      _cairo(11, weight: FontWeight.w500, color: AppColors.dim);
+  static TextStyle get notificationBody =>
+      _cairo(13, color: AppColors.tx2, height: 1.7);
+  static TextStyle get notificationPoints =>
+      _cairo(13, weight: FontWeight.w900, color: AppColors.stickerInk);
+  static TextStyle get emptyTitle => _cairo(15, weight: FontWeight.w700);
+  static TextStyle get emptyHint => _cairo(13, color: AppColors.mu);
 }

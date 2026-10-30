@@ -1,7 +1,11 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/widgets/app_toast/app_toast.dart';
+import 'package:fii90/feature/coins_shop/presentation/view_model/coins_cubit.dart';
+import 'package:fii90/feature/coins_shop/presentation/view_model/coins_state.dart';
 import 'package:fii90/feature/friendship/presentation/view_model/friendship_cubit.dart';
 import 'package:fii90/feature/friendship/presentation/view_model/friendship_state.dart';
+import 'package:fii90/feature/notifications/presentation/view_model/notifications_cubit.dart';
+import 'package:fii90/feature/notifications/presentation/view_model/notifications_state.dart';
 import 'package:fii90/feature/plans/presentation/view_model/plans_cubit.dart';
 import 'package:fii90/feature/plans/presentation/view_model/plans_state.dart';
 import 'package:fii90/feature/profile/presentation/view_model/profile_state.dart';
@@ -34,6 +38,8 @@ class LayoutScreen extends StatelessWidget {
         BlocProvider(create: (_) => PlansCubit()),
         BlocProvider(create: (_) => FriendshipCubit()),
         BlocProvider(create: (_) => SoundCubit()),
+        BlocProvider(create: (_) => CoinsCubit()),
+        BlocProvider(create: (_) => NotificationsCubit()),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -46,6 +52,14 @@ class LayoutScreen extends StatelessWidget {
             listener: (context, s) => AppToast.show(context, s.toast!),
           ),
           BlocListener<SoundCubit, SoundState>(
+            listenWhen: (_, s) => s.toast != null,
+            listener: (context, s) => AppToast.show(context, s.toast!),
+          ),
+          BlocListener<CoinsCubit, CoinsState>(
+            listenWhen: (_, s) => s.toast != null,
+            listener: (context, s) => AppToast.show(context, s.toast!),
+          ),
+          BlocListener<NotificationsCubit, NotificationsState>(
             listenWhen: (_, s) => s.toast != null,
             listener: (context, s) => AppToast.show(context, s.toast!),
           ),

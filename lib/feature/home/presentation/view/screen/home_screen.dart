@@ -1,5 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/localization/app_strings.dart';
+import 'package:fii90/core/routing/nav.dart';
+import 'package:fii90/feature/coins_shop/presentation/view/screen/coins_shop_screen.dart';
+import 'package:fii90/feature/coins_shop/presentation/view_model/coins_cubit.dart';
+import 'package:fii90/feature/notifications/presentation/view/screen/notifications_screen.dart';
+import 'package:fii90/feature/notifications/presentation/view_model/notifications_cubit.dart';
+import 'package:fii90/feature/profile/presentation/view_model/profile_cubit.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/theme/gradients.dart';
@@ -45,9 +51,32 @@ class HomeScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                CoinsButton(coins: _summary.coins, onTap: () {}),
+                CoinsButton(
+                  coins: context.watch<CoinsCubit>().state.coins,
+                  onTap: () => Nav.push(
+                    context,
+                    BlocProvider.value(
+                      value: context.read<CoinsCubit>(),
+                      child: const CoinsShopScreen(),
+                    ),
+                  ),
+                ),
                 const Spacer(),
-                NotificationButton(count: _summary.notifications, onTap: () {}),
+                NotificationButton(
+                  count: context.watch<NotificationsCubit>().unreadCount,
+                  onTap: () => Nav.push(
+                    context,
+                    MultiBlocProvider(
+                      providers: [
+                        BlocProvider.value(
+                          value: context.read<NotificationsCubit>(),
+                        ),
+                        BlocProvider.value(value: context.read<ProfileCubit>()),
+                      ],
+                      child: const NotificationsScreen(),
+                    ),
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 18),

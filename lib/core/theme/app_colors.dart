@@ -237,6 +237,15 @@ abstract final class AppColors {
     colors: [gradStart, priD],
   );
 
+  static const shopBalance = RadialGradient(
+    center: Alignment(.7, -1),
+    radius: 1.2,
+    colors: [Color(0xFF3B1A6E), Color(0xFF160A3A), Color(0xFF0B0624)],
+    stops: [0, .55, 1],
+  );
+  static const shopLabel = Color(0xFFE9D9FF);
+  static const shopCoins = Color(0xFFFFD43F);
+
   static const photoHero = [
     Color(0xFF5BE0FF),
     Color(0xFF1592E0),
