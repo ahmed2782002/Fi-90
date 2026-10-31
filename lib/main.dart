@@ -42,6 +42,7 @@ class Fii90App extends StatelessWidget {
         builder: (context, child) =>
             KeyedSubtree(key: ValueKey(context.locale), child: child!),
         theme: AppTheme.data,
+        // fix ui
         home: const SplashScreen(),
       ),
     );
