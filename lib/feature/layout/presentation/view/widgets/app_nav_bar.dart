@@ -10,6 +10,7 @@ import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:fii90/feature/layout/presentation/view/widgets/nav_item.dart';
 import 'package:fii90/feature/layout/presentation/view_model/layout_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppNavBar extends StatelessWidget {
   const AppNavBar({
@@ -26,28 +27,28 @@ class AppNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 84,
+      height: 84.r,
       child: Stack(
         children: [
           Positioned(
             left: 0,
             right: 0,
             bottom: 0,
-            height: 66,
+            height: 66.r,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(28),
+                borderRadius: BorderRadius.circular(28.r),
                 boxShadow: AppShadows.sh2,
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(28),
+                borderRadius: BorderRadius.circular(28.r),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: EdgeInsets.symmetric(horizontal: 8.w),
                     decoration: BoxDecoration(
                       color: AppColors.glass,
-                      borderRadius: BorderRadius.circular(28),
+                      borderRadius: BorderRadius.circular(28.r),
                       border: Border.all(color: AppColors.line),
                     ),
                     child: Row(
@@ -64,7 +65,7 @@ class AppNavBar extends StatelessWidget {
                           selected: tab == LayoutTab.friends,
                           onTap: () => onSelect(LayoutTab.friends),
                         ),
-                        const SizedBox(width: 56),
+                        SizedBox(width: 56.w),
                         NavItem(
                           icon: AppIcons.navJourney,
                           label: context.tr(AppStrings.navJourney),

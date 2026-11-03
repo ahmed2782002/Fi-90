@@ -4,6 +4,7 @@ import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LinkedAccountField extends StatelessWidget {
@@ -17,19 +18,19 @@ class LinkedAccountField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(context.tr(AppStrings.linkedAccount), style: AppText.fieldLabel),
-        const SizedBox(height: 6),
+        SizedBox(height: 6.h),
         Container(
-          height: 52,
-          padding: const EdgeInsets.symmetric(horizontal: 18),
+          height: 52.r,
+          padding: EdgeInsets.symmetric(horizontal: 18.w),
           decoration: BoxDecoration(
             color: AppColors.s1,
-            borderRadius: BorderRadius.circular(999),
+            borderRadius: BorderRadius.circular(999.r),
             border: Border.all(color: AppColors.line2, width: 1.5),
           ),
           child: Row(
             children: [
-              SvgPicture.asset(AppIcons.google, width: 18, height: 18),
-              const SizedBox(width: 10),
+              SvgPicture.asset(AppIcons.google, width: 18.r, height: 18.r),
+              SizedBox(width: 10.w),
               Expanded(
                 child: Text(
                   email,
@@ -38,10 +39,10 @@ class LinkedAccountField extends StatelessWidget {
                       ? TextAlign.right
                       : TextAlign.left,
                   overflow: TextOverflow.ellipsis,
-                  style: AppText.fieldText(AppColors.tx, size: 14),
+                  style: AppText.fieldText(AppColors.tx, size: 14.r),
                 ),
               ),
-              const SizedBox(width: 10),
+              SizedBox(width: 10.w),
               Text(context.tr(AppStrings.linked), style: AppText.linked),
             ],
           ),

@@ -9,6 +9,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InvalidRoomOverlay extends StatelessWidget {
   const InvalidRoomOverlay({super.key, required this.onRetry});
@@ -23,21 +24,21 @@ class InvalidRoomOverlay extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
         child: Container(
           color: AppColors.scrim,
-          padding: const EdgeInsets.all(24),
+          padding: EdgeInsets.all(24.r),
           alignment: Alignment.center,
           child: Enter(
             fx: Fx.pop,
             child: Container(
-              padding: const EdgeInsets.all(22),
+              padding: EdgeInsets.all(22.r),
               decoration: BoxDecoration(
                 color: AppColors.s1,
-                borderRadius: BorderRadius.circular(28),
+                borderRadius: BorderRadius.circular(28.r),
                 border: Border.all(color: AppColors.line2),
                 boxShadow: AppShadows.sh2,
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                spacing: 10,
+                spacing: 10.r,
                 children: [
                   Text(
                     context.tr(AppStrings.invalidRoom),
@@ -49,11 +50,11 @@ class InvalidRoomOverlay extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: AppText.dialogBody,
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: 4.h),
                   PrimaryButton(
                     label: context.tr(AppStrings.retypeCode),
                     onTap: onRetry,
-                    height: 54,
+                    height: 54.r,
                   ),
                 ],
               ),

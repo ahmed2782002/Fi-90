@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BidActions extends StatelessWidget {
   const BidActions({
@@ -32,11 +33,11 @@ class BidActions extends StatelessWidget {
                 child: Opacity(
                   opacity: canRaise ? 1 : .45,
                   child: Container(
-                    height: 56,
+                    height: 56.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: AppColors.gold,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                       boxShadow: const [
                         BoxShadow(
                           color: AppColors.goldDeep,
@@ -53,16 +54,16 @@ class BidActions extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 8),
+            SizedBox(width: 8.w),
             Expanded(
               child: PressScale(
                 onTap: onPass,
                 child: Container(
-                  height: 56,
+                  height: 56.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: AppColors.tint(AppColors.bad, .1),
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                     border: Border.all(color: AppColors.bad, width: 1.5),
                   ),
                   child: Text(
@@ -74,7 +75,7 @@ class BidActions extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8.h),
         Text(hint, textAlign: TextAlign.center, style: AppText.bidHint),
       ],
     );

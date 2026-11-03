@@ -10,6 +10,7 @@ import 'package:fii90/core/widgets/stage_app/score_sticker.dart';
 import 'package:fii90/core/widgets/stage_app/stage_glow.dart';
 import 'package:fii90/feature/onboarding/presentation/view/widgets/ranking_slide/podium_place.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RankingSlide extends StatelessWidget {
   const RankingSlide({super.key});
@@ -22,7 +23,7 @@ class RankingSlide extends StatelessWidget {
         Positioned(
           left: 0,
           right: 0,
-          bottom: 10,
+          bottom: 10.r,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -42,7 +43,7 @@ class RankingSlide extends StatelessWidget {
                 nameDelay: 450,
                 barDelay: 50,
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 10.w),
               PodiumPlace(
                 rank: '2',
                 name: AppStrings.mockPlayerSara,
@@ -57,7 +58,7 @@ class RankingSlide extends StatelessWidget {
                 nameDelay: 580,
                 barDelay: 180,
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 10.w),
               PodiumPlace(
                 rank: '3',
                 name: AppStrings.mockPlayerOmar,
@@ -76,8 +77,8 @@ class RankingSlide extends StatelessWidget {
           ),
         ),
         PositionedDirectional(
-          top: 14,
-          start: 14,
+          top: 14.r,
+          start: 14.w,
           child: Enter(
             fx: Fx.pop,
             delay: const Duration(milliseconds: 750),
@@ -87,13 +88,13 @@ class RankingSlide extends StatelessWidget {
           ),
         ),
         PositionedDirectional(
-          top: 22,
-          end: 14,
+          top: 22.r,
+          end: 14.w,
           child: Enter(
             fx: Fx.fadeUp,
             delay: const Duration(milliseconds: 850),
             child: InfoChip(
-              height: 36,
+              height: 36.r,
               hPad: 14,
               label: context.tr(AppStrings.rankingClimbed),
               leading: Text(

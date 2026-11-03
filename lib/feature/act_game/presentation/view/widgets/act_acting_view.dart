@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/friends_app/judge_buttons.dart';
 import 'package:fii90/core/widgets/match_app/countdown_ring.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ActActingView extends StatelessWidget {
   const ActActingView({
@@ -30,11 +31,11 @@ class ActActingView extends StatelessWidget {
   Widget build(BuildContext context) {
     final urgent = seconds <= 10;
     return Column(
-      spacing: 12,
+      spacing: 12.r,
       children: [
         CountdownRing(
-          size: 180,
-          width: 15,
+          size: 180.r,
+          width: 15.r,
           progress: seconds / total,
           color: urgent ? AppColors.bad : AppColors.op,
           rest: AppColors.s3,
@@ -60,13 +61,13 @@ class ActActingView extends StatelessWidget {
           context.tr(AppStrings.pointsIfGuessed, args: [levelLabel, '$points']),
           style: AppText.pageIntro,
         ),
-        const SizedBox(height: 4),
+        SizedBox(height: 4.h),
         JudgeButtons(
           okLabel: context.tr(AppStrings.theyGotIt),
           badLabel: context.tr(AppStrings.theyMissed),
           onOk: () => onJudge(true),
           onBad: () => onJudge(false),
-          height: 60,
+          height: 60.r,
         ),
       ],
     );

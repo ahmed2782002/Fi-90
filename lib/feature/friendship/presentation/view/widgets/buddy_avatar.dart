@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuddyAvatar extends StatelessWidget {
   const BuddyAvatar({
@@ -22,8 +23,8 @@ class BuddyAvatar extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: 44,
-          height: 44,
+          width: 44.r,
+          height: 44.r,
           alignment: Alignment.center,
           decoration: BoxDecoration(color: background, shape: BoxShape.circle),
           child: Text(initial, style: AppText.buddyInitial(foreground)),
@@ -33,8 +34,8 @@ class BuddyAvatar extends StatelessWidget {
             bottom: 0,
             end: 0,
             child: Container(
-              width: 12,
-              height: 12,
+              width: 12.r,
+              height: 12.r,
               decoration: BoxDecoration(
                 color: status,
                 shape: BoxShape.circle,

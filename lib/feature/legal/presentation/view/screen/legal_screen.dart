@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/sub_page.dart';
 import 'package:fii90/feature/legal/mock_model/legal_section.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LegalScreen extends StatelessWidget {
   const LegalScreen({
@@ -26,7 +27,7 @@ class LegalScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(context.tr(section.titleKey), style: AppText.legalTitle),
-              const SizedBox(height: 6),
+              SizedBox(height: 6.h),
               Text(context.tr(section.bodyKey), style: AppText.legalBody),
             ],
           ),

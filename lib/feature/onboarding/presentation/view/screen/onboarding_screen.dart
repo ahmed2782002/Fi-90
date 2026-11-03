@@ -17,6 +17,7 @@ import 'package:fii90/feature/onboarding/presentation/view_model/onboarding_cubi
 import 'package:fii90/feature/onboarding/presentation/view_model/onboarding_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -46,7 +47,7 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 child: SafeArea(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(22, 8, 22, 16),
+                    padding: EdgeInsets.fromLTRB(22.w, 8.h, 22.w, 16.h),
                     child: Column(
                       children: [
                         OnboardingHeader(onSkip: cubit.skip),
@@ -81,7 +82,7 @@ class OnboardingScreen extends StatelessWidget {
                           count: cubit.slides.length,
                           index: state.index,
                         ),
-                        const SizedBox(height: 22),
+                        SizedBox(height: 22.h),
                         PrimaryButton(
                           label: context.tr(cubit.buttonLabel),
                           onTap: cubit.next,

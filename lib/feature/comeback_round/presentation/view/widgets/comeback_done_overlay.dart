@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/theme/gradients.dart';
 import 'package:fii90/core/widgets/match_app/points_badge.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ComebackDoneOverlay extends StatelessWidget {
   const ComebackDoneOverlay({
@@ -32,7 +33,7 @@ class ComebackDoneOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     final who = winner;
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(24.r),
       decoration: BoxDecoration(
         color: AppColors.bg,
         gradient: AppGradients.ellipse(
@@ -53,12 +54,12 @@ class ComebackDoneOverlay extends StatelessWidget {
             fx: Fx.pop,
             duration: const Duration(milliseconds: 600),
             child: Container(
-              width: 128,
-              height: 128,
+              width: 128.r,
+              height: 128.r,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: AppColors.s1,
-                borderRadius: BorderRadius.circular(42),
+                borderRadius: BorderRadius.circular(42.r),
                 border: Border.all(color: AppColors.m4, width: 2),
                 boxShadow: [
                   BoxShadow(
@@ -73,19 +74,19 @@ class ComebackDoneOverlay extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           Text(player, textAlign: TextAlign.center, style: AppText.display(32)),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           Text(meta, style: AppText.detailLine),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           if (who != null) ...[
             Text(
               context.tr(AppStrings.knewFromWho, args: [who, '$revealed']),
               style: AppText.feedbackTitle(winnerColor ?? AppColors.tx, 16),
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12.h),
             PointsBadge(label: '+$points'),
-            const SizedBox(height: 12),
+            SizedBox(height: 12.h),
             flip
                 ? Enter(
                     fx: Fx.pop,

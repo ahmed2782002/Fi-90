@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StatPill extends StatelessWidget {
   const StatPill({
@@ -18,16 +19,16 @@ class StatPill extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 12),
+        padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 12.h),
         decoration: BoxDecoration(
           color: AppColors.s1,
-          borderRadius: BorderRadius.circular(999),
+          borderRadius: BorderRadius.circular(999.r),
           border: Border.all(color: AppColors.line),
         ),
         child: Column(
           children: [
             Text(value, style: AppText.statPillValue(color ?? AppColors.tx)),
-            const SizedBox(height: 5),
+            SizedBox(height: 5.h),
             Text(label, style: AppText.statPillLabel),
           ],
         ),

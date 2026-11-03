@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/app_text.dart';
@@ -22,8 +23,8 @@ class MiniFutCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final glow = highlight;
     return Container(
-      width: 52,
-      height: 72,
+      width: 52.r,
+      height: 72.r,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -33,7 +34,7 @@ class MiniFutCard extends StatelessWidget {
           ),
           if (glow != null) BoxShadow(color: glow, blurRadius: 7),
         ],
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       child: Stack(
         children: [
@@ -65,15 +66,15 @@ class MiniFutCard extends StatelessWidget {
                 child: Stack(
                   children: [
                     Positioned(
-                      left: 4,
-                      top: 9,
+                      left: 4.w,
+                      top: 9.r,
                       child: Text(
                         '$rating',
                         style: AppText.miniRating(palette.ink),
                       ),
                     ),
                     Positioned.fill(
-                      top: 18,
+                      top: 18.r,
                       child: Center(
                         child: Text(
                           initial,

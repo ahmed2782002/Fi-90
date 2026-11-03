@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/buzzer_round/presentation/view/widgets/bell_stage.dart';
 import 'package:fii90/feature/buzzer_round/presentation/view_model/buzzer_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuzzerBellZone extends StatelessWidget {
   const BuzzerBellZone({
@@ -82,7 +83,7 @@ class BuzzerBellZone extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16.h),
         if (phase == BuzzerPhase.active)
           Text(
             context.tr(AppStrings.nobodyPressed, args: ['$seconds']),

@@ -6,6 +6,7 @@ import 'package:fii90/feature/friends/mock_model/friend_game.dart';
 import 'package:fii90/feature/friends/presentation/view/widgets/friend_game_card.dart';
 import 'package:fii90/feature/game_setup/presentation/view/screen/game_setup_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FriendsScreen extends StatelessWidget {
   const FriendsScreen({super.key});
@@ -17,26 +18,26 @@ class FriendsScreen extends StatelessWidget {
     return SafeArea(
       bottom: false,
       child: ListView(
-        padding: const EdgeInsets.fromLTRB(18, 9, 18, 110),
+        padding: EdgeInsets.fromLTRB(18.w, 9.h, 18.w, 110.h),
         children: [
           Text(
             context.tr(AppStrings.friendsGamesTitle),
             style: AppText.screenTitle,
           ),
-          const SizedBox(height: 2),
+          SizedBox(height: 2.h),
           Text(
             context.tr(AppStrings.friendsGamesSubtitle),
             style: AppText.screenSubtitle,
           ),
-          const SizedBox(height: 14),
+          SizedBox(height: 14.h),
           for (var row = 0; row < _games.length; row += 2) ...[
-            if (row > 0) const SizedBox(height: 12),
+            if (row > 0) SizedBox(height: 12.h),
             IntrinsicHeight(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   for (final game in _games.sublist(row, row + 2)) ...[
-                    if (game != _games[row]) const SizedBox(width: 12),
+                    if (game != _games[row]) SizedBox(width: 12.w),
                     Expanded(
                       child: FriendGameCard(
                         title: context.tr(game.titleKey),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/app_text.dart';
@@ -31,12 +32,12 @@ class ScoreChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final gain = delta;
     final avatar = Container(
-      width: 36,
-      height: 36,
+      width: 36.r,
+      height: 36.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: fill,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
       ),
       child: Text(initial, style: AppText.hudInitial(onFill)),
     );
@@ -62,12 +63,12 @@ class ScoreChip extends StatelessWidget {
         children: [
           AnimatedContainer(
             duration: const Duration(milliseconds: 300),
-            padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 7),
+            padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 7.h),
             decoration: BoxDecoration(
               color: active
                   ? AppColors.mix(fill, .16, AppColors.s1)
                   : AppColors.s1,
-              borderRadius: BorderRadius.circular(999),
+              borderRadius: BorderRadius.circular(999.r),
               border: Border.all(
                 color: active ? fill : AppColors.line,
                 width: 1.5,
@@ -78,29 +79,29 @@ class ScoreChip extends StatelessWidget {
                   ? MainAxisAlignment.end
                   : MainAxisAlignment.start,
               children: mirrored
-                  ? [info, const SizedBox(width: 8), avatar]
-                  : [avatar, const SizedBox(width: 8), info],
+                  ? [info, SizedBox(width: 8.w), avatar]
+                  : [avatar, SizedBox(width: 8.w), info],
             ),
           ),
           if (active)
             PositionedDirectional(
               top: -9,
-              start: mirrored ? 8 : null,
-              end: mirrored ? null : 8,
+              start: mirrored ? 8.w : null,
+              end: mirrored ? null : 8.w,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
                 decoration: BoxDecoration(
                   color: fill,
-                  borderRadius: BorderRadius.circular(7),
+                  borderRadius: BorderRadius.circular(7.r),
                 ),
                 child: Text(turnLabel, style: AppText.turnTag(onFill)),
               ),
             ),
           if (gain != null)
             PositionedDirectional(
-              bottom: 6,
-              start: mirrored ? 10 : null,
-              end: mirrored ? null : 10,
+              bottom: 6.r,
+              start: mirrored ? 10.w : null,
+              end: mirrored ? null : 10.w,
               child: TweenAnimationBuilder<double>(
                 tween: Tween(begin: 0, end: 1),
                 duration: const Duration(milliseconds: 1500),

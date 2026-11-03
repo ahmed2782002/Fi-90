@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PodiumColumn extends StatelessWidget {
   const PodiumColumn({
@@ -56,9 +57,9 @@ class PodiumColumn extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 6),
+          SizedBox(height: 6.h),
           Text(name, style: AppText.leaderName),
-          const SizedBox(height: 6),
+          SizedBox(height: 6.h),
           Container(
             height: barHeight,
             alignment: Alignment.center,
@@ -74,9 +75,9 @@ class PodiumColumn extends StatelessWidget {
                       ],
                     )
                   : null,
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(18),
-                bottom: Radius.circular(6),
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(18.r),
+                bottom: Radius.circular(6.r),
               ),
               border: first
                   ? Border.all(color: AppColors.gold, width: 1.5)

@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/trivia_round/presentation/view/widgets/feedback_panel.dart';
 import 'package:fii90/feature/trivia_round/presentation/view_model/trivia_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BoardFeedback extends StatelessWidget {
   const BoardFeedback({
@@ -95,11 +96,11 @@ class BoardFeedback extends StatelessWidget {
       FeedbackKind.dup => Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          margin: const EdgeInsets.all(12),
-          padding: const EdgeInsets.all(12),
+          margin: EdgeInsets.all(12.r),
+          padding: EdgeInsets.all(12.r),
           decoration: BoxDecoration(
             color: AppColors.gold,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(14.r),
           ),
           child: Text(
             context.tr(AppStrings.alreadyOnBoard),

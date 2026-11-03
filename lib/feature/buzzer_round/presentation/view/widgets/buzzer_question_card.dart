@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuzzerQuestionCard extends StatelessWidget {
   const BuzzerQuestionCard({
@@ -23,11 +24,11 @@ class BuzzerQuestionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final count = countdown;
     return Container(
-      constraints: const BoxConstraints(minHeight: 124),
-      padding: const EdgeInsets.all(16),
+      constraints: BoxConstraints(minHeight: 124.r),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
@@ -38,10 +39,10 @@ class BuzzerQuestionCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+                padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 3.h),
                 decoration: BoxDecoration(
                   color: AppColors.tint(AppColors.m3, .14),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Text(
                   context.tr(AppStrings.modeBell),
@@ -54,7 +55,7 @@ class BuzzerQuestionCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           if (count != null)
             Row(
               children: [
@@ -66,11 +67,11 @@ class BuzzerQuestionCard extends StatelessWidget {
                         FractionallySizedBox(
                           widthFactor: f,
                           child: Container(
-                            height: 14,
-                            margin: const EdgeInsets.only(bottom: 8),
+                            height: 14.r,
+                            margin: EdgeInsets.only(bottom: 8.h),
                             decoration: BoxDecoration(
                               color: AppColors.s2,
-                              borderRadius: BorderRadius.circular(7),
+                              borderRadius: BorderRadius.circular(7.r),
                             ),
                           ),
                         ),
@@ -78,7 +79,7 @@ class BuzzerQuestionCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: 14),
+                SizedBox(width: 14.w),
                 Text('$count', style: AppText.readyCount),
               ],
             )

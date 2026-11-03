@@ -2,16 +2,17 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectChip extends StatelessWidget {
-  const SelectChip({
+  SelectChip({
     super.key,
     required this.label,
     required this.selected,
     required this.onTap,
     this.gradient = false,
-    this.height = 40,
-  });
+    double? height,
+  }) : height = height ?? 40.r;
 
   final String label;
   final bool selected;
@@ -27,7 +28,7 @@ class SelectChip extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         height: height,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: grad
@@ -36,7 +37,7 @@ class SelectChip extends StatelessWidget {
               ? AppColors.tint(AppColors.cy, .16)
               : AppColors.s1,
           gradient: grad ? AppColors.grad : null,
-          borderRadius: BorderRadius.circular(999),
+          borderRadius: BorderRadius.circular(999.r),
           border: Border.all(
             color: selected
                 ? (gradient ? AppColors.neon : AppColors.cy)

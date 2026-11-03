@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnboardingHeader extends StatelessWidget {
   const OnboardingHeader({super.key, required this.onSkip});
@@ -19,7 +20,7 @@ class OnboardingHeader extends StatelessWidget {
           onPressed: onSkip,
           style: TextButton.styleFrom(
             foregroundColor: AppColors.mu,
-            padding: const EdgeInsets.all(10),
+            padding: EdgeInsets.all(10.r),
             minimumSize: Size.zero,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),

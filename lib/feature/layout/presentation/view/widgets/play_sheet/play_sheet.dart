@@ -13,6 +13,7 @@ import 'package:fii90/feature/match/presentation/view/screen/match_screen.dart';
 import 'package:fii90/feature/private_room/presentation/view/screen/private_room_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlaySheet extends StatelessWidget {
   const PlaySheet({super.key, this.modeKey});
@@ -47,16 +48,14 @@ class PlaySheet extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               color: AppColors.s1,
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(34),
-              ),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(34.r)),
               border: Border(top: BorderSide(color: AppColors.line2)),
               boxShadow: AppShadows.sh2,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              spacing: 12,
+              spacing: 12.r,
               children: [
                 PlaySheetHeader(
                   subtitle: mode == null
@@ -92,7 +91,7 @@ class PlaySheet extends StatelessWidget {
                   icon: AppIcons.robot,
                   tint: AppColors.gold,
                   ink: AppColors.gold,
-                  iconSize: 34,
+                  iconSize: 34.r,
                   keepIconColors: true,
                   selected: state.aiOpen,
                   title: context.tr(AppStrings.playAi),

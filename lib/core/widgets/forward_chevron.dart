@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants/app_icons.dart';
 import '../theme/app_colors.dart';
 
 class ForwardChevron extends StatelessWidget {
-  const ForwardChevron({super.key, this.size = 18, this.color});
+  ForwardChevron({super.key, double? size, this.color}) : size = size ?? 18.r;
 
   final double size;
   final Color? color;

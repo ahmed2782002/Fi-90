@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpyFlipCard extends StatelessWidget {
   const SpyFlipCard({
@@ -39,13 +40,13 @@ class SpyFlipCard extends StatelessWidget {
               ..setEntry(3, 2, .0009)
               ..rotateY(angle),
             child: Container(
-              width: 216,
-              height: 324,
+              width: 216.r,
+              height: 324.r,
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
                 color: isSpy && front ? null : AppColors.cardDeep,
                 gradient: isSpy && front ? AppColors.spyCard : null,
-                borderRadius: BorderRadius.circular(18),
+                borderRadius: BorderRadius.circular(18.r),
                 border: front ? Border.all(color: edge, width: 2) : null,
                 boxShadow: [
                   BoxShadow(color: AppColors.tint(edge, .45), blurRadius: 28),
@@ -56,17 +57,17 @@ class SpyFlipCard extends StatelessWidget {
                   : Transform.flip(
                       flipX: true,
                       child: Padding(
-                        padding: const EdgeInsets.all(18),
+                        padding: EdgeInsets.all(18.r),
                         child: Column(
                           mainAxisAlignment: isSpy
                               ? MainAxisAlignment.center
                               : MainAxisAlignment.end,
-                          spacing: isSpy ? 14 : 4,
+                          spacing: isSpy ? 14.r : 4.r,
                           children: isSpy
                               ? [
                                   Container(
-                                    width: 84,
-                                    height: 84,
+                                    width: 84.r,
+                                    height: 84.r,
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                       color: AppColors.spyDeep,

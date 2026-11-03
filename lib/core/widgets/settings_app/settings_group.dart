@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsGroup extends StatelessWidget {
   const SettingsGroup({super.key, this.title, required this.children});
@@ -16,16 +17,16 @@ class SettingsGroup extends StatelessWidget {
       children: [
         if (title != null) ...[
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
             child: Text(title!, style: AppText.groupTitle),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
         ],
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
           decoration: BoxDecoration(
             color: AppColors.s1,
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: BorderRadius.circular(28.r),
             border: Border.all(color: AppColors.line),
             boxShadow: AppShadows.sh1,
           ),
@@ -34,8 +35,8 @@ class SettingsGroup extends StatelessWidget {
               for (var i = 0; i < children.length; i++) ...[
                 if (i > 0)
                   Container(
-                    height: 1,
-                    margin: const EdgeInsetsDirectional.only(start: 54),
+                    height: 1.r,
+                    margin: EdgeInsetsDirectional.only(start: 54.w),
                     color: AppColors.line,
                   ),
                 children[i],

@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/trivia_round/presentation/view/widgets/strike_column.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StrikesHeader extends StatelessWidget {
   const StrikesHeader({
@@ -12,24 +13,26 @@ class StrikesHeader extends StatelessWidget {
     required this.oppStrikes,
     required this.mePass,
     required this.oppPass,
+    required this.question,
   });
 
   final int meStrikes;
   final int oppStrikes;
   final ({bool used, bool ready}) mePass;
   final ({bool used, bool ready}) oppPass;
+  final int question;
 
   @override
   Widget build(BuildContext context) {
     final sides = [(meStrikes, mePass, false), (oppStrikes, oppPass, true)];
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: EdgeInsets.symmetric(horizontal: 4.w),
       child: Row(
         children: [
           for (final (i, (strikes, pass, end)) in sides.indexed) ...[
             if (i == 1)
               Text(
-                context.tr(AppStrings.threeStrikesOut),
+                context.tr(AppStrings.questionNo[question]),
                 textAlign: TextAlign.center,
                 style: AppText.strikesNote,
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/app_text.dart';
@@ -28,8 +29,8 @@ class FutCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final ink = palette.ink;
     return SizedBox(
-      width: 252,
-      height: 373,
+      width: 252.r,
+      height: 373.r,
       child: Stack(
         children: [
           Positioned.fill(
@@ -60,10 +61,10 @@ class FutCard extends StatelessWidget {
                 child: Stack(
                   children: [
                     Positioned(
-                      left: 92,
-                      top: 40,
-                      width: 156,
-                      height: 186,
+                      left: 92.w,
+                      top: 40.r,
+                      width: 156.r,
+                      height: 186.r,
                       child: Center(
                         child: Text(
                           initial,
@@ -72,22 +73,22 @@ class FutCard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      left: 17,
-                      top: 42,
-                      width: 67,
+                      left: 17.w,
+                      top: 42.r,
+                      width: 67.r,
                       child: Column(
                         children: [
                           Text(rating, style: AppText.futRating(ink)),
-                          const SizedBox(height: 4),
+                          SizedBox(height: 4.h),
                           Text(position, style: AppText.futPosition(ink)),
                         ],
                       ),
                     ),
                     Positioned(
-                      left: 14,
-                      right: 14,
-                      top: 229,
-                      height: 35,
+                      left: 14.w,
+                      right: 14.w,
+                      top: 229.r,
+                      height: 35.r,
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
@@ -98,16 +99,16 @@ class FutCard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      left: 18,
-                      right: 18,
-                      top: 268,
-                      height: 1.5,
+                      left: 18.w,
+                      right: 18.w,
+                      top: 268.r,
+                      height: 1.5.r,
                       child: ColoredBox(color: AppColors.tint(ink, .45)),
                     ),
                     Positioned(
-                      left: 28,
-                      right: 28,
-                      top: 277,
+                      left: 28.w,
+                      right: 28.w,
+                      top: 277.r,
                       child: Row(
                         children: [
                           for (final half in [0, 3])
@@ -116,7 +117,7 @@ class FutCard extends StatelessWidget {
                                 children: [
                                   for (var i = half; i < half + 3; i++)
                                     SizedBox(
-                                      height: 23,
+                                      height: 23.r,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -125,16 +126,16 @@ class FutCard extends StatelessWidget {
                                         textBaseline: TextBaseline.alphabetic,
                                         children: [
                                           SizedBox(
-                                            width: 30,
+                                            width: 30.r,
                                             child: Text(
                                               statValues[i],
                                               textAlign: TextAlign.right,
                                               style: AppText.futStatValue(ink),
                                             ),
                                           ),
-                                          const SizedBox(width: 7),
+                                          SizedBox(width: 7.w),
                                           SizedBox(
-                                            width: 41,
+                                            width: 41.r,
                                             child: Text(
                                               statLabels[i],
                                               style: AppText.futStatLabel(ink),
@@ -150,10 +151,10 @@ class FutCard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      left: 125.3,
-                      top: 279,
-                      width: 1.5,
-                      height: 64,
+                      left: 125.3.w,
+                      top: 279.r,
+                      width: 1.5.r,
+                      height: 64.r,
                       child: ColoredBox(color: AppColors.tint(ink, .45)),
                     ),
                   ],

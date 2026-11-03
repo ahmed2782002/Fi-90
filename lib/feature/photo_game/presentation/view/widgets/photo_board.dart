@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/photo_game/mock_model/lineup_player.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PhotoBoard extends StatelessWidget {
   const PhotoBoard({super.key, required this.spots, this.reveal = false});
@@ -19,7 +20,7 @@ class PhotoBoard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           color: AppColors.photoBase,
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(28.r),
           border: Border.all(color: AppColors.line2, width: 1.5),
           boxShadow: AppShadows.sh1,
         ),
@@ -55,10 +56,10 @@ class PhotoBoard extends StatelessWidget {
                   child: FractionalTranslation(
                     translation: const Offset(-.5, 0),
                     child: Container(
-                      constraints: const BoxConstraints(maxWidth: 74),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 7,
-                        vertical: 2,
+                      constraints: BoxConstraints(maxWidth: 74.r),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 7.w,
+                        vertical: 2.h,
                       ),
                       decoration: BoxDecoration(
                         color: by != null
@@ -67,7 +68,7 @@ class PhotoBoard extends StatelessWidget {
                                 AppColors.photoBase,
                                 reveal ? .88 : .7,
                               ),
-                        borderRadius: BorderRadius.circular(999),
+                        borderRadius: BorderRadius.circular(999.r),
                         border: Border.all(
                           color: AppColors.tint(AppColors.white, .25),
                         ),

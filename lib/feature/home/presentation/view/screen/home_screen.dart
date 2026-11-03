@@ -25,6 +25,7 @@ import 'package:fii90/feature/layout/presentation/view_model/layout_cubit.dart';
 import 'package:fii90/feature/layout/presentation/view_model/layout_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -47,7 +48,7 @@ class HomeScreen extends StatelessWidget {
       child: SafeArea(
         bottom: false,
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(18, 9, 18, 110),
+          padding: EdgeInsets.fromLTRB(18.w, 9.h, 18.w, 110.h),
           children: [
             Row(
               children: [
@@ -79,24 +80,24 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             MatchHeroCard(
               onlinePlayers: _summary.onlinePlayers,
               onStart: () => PlaySheet.show(context),
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             SectionHeader(
               title: context.tr(AppStrings.playOneChallenge),
               action: context.tr(AppStrings.quickRound),
               actionStyle: AppText.sectionHint,
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             QuickModeGrid(
               modes: QuickMode.mock,
               onSelect: (mode) =>
                   PlaySheet.show(context, modeKey: mode.titleKey),
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             DailyChallengeCard(
               done: _summary.dailyDone,
               total: _summary.dailyTotal,
@@ -104,7 +105,7 @@ class HomeScreen extends StatelessWidget {
               hoursLeft: _summary.dailyHoursLeft,
               xp: _summary.dailyXp,
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             SectionHeader(
               title: context.tr(AppStrings.lastMatch),
               action: context.tr(AppStrings.matchHistory),
@@ -114,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                 context.read<LayoutCubit>().select(LayoutTab.journey);
               },
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             LastMatchTile(record: MatchRecord.mock.first),
           ],
         ),

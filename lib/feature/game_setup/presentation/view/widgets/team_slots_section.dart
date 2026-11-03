@@ -3,6 +3,7 @@ import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/feature/game_setup/presentation/view/widgets/team_names_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TeamSlotsSection extends StatelessWidget {
   const TeamSlotsSection({super.key, required this.slots, required this.pairs});
@@ -36,12 +37,12 @@ class TeamSlotsSection extends StatelessWidget {
     return pairs
         ? Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            spacing: 10,
+            spacing: 10.r,
             children: cards,
           )
         : Row(
             crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 10,
+            spacing: 10.r,
             children: [for (final c in cards) Expanded(child: c)],
           );
   }

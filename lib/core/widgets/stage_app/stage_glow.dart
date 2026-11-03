@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/gradients.dart';
@@ -14,7 +15,7 @@ class StageGlow extends StatelessWidget {
           Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(44),
+                borderRadius: BorderRadius.circular(44.r),
                 gradient: AppGradients.fade(
                   AppColors.cy,
                   x: .5,
@@ -30,8 +31,8 @@ class StageGlow extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            bottom: 6,
-            height: 46,
+            bottom: 6.r,
+            height: 46.r,
             child: FractionallySizedBox(
               widthFactor: .84,
               child: DecoratedBox(

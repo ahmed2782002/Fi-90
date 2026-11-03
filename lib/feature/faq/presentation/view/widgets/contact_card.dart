@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ContactCard extends StatelessWidget {
   const ContactCard({super.key, required this.onContact});
@@ -13,11 +14,11 @@ class ContactCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 6),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.only(top: 6.h),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: AppColors.s2,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(24.r),
       ),
       child: Row(
         children: [
@@ -33,10 +34,10 @@ class ContactCard extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           PrimaryButton(
             label: context.tr(AppStrings.contactUs),
-            height: 42,
+            height: 42.r,
             expand: false,
             style: AppText.actionButton(13),
             onTap: onContact,

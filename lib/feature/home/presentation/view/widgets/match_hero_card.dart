@@ -7,6 +7,7 @@ import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:fii90/feature/home/presentation/view/widgets/hero_backdrop.dart';
 import 'package:fii90/feature/home/presentation/view/widgets/online_players_pill.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MatchHeroCard extends StatelessWidget {
   const MatchHeroCard({
@@ -21,11 +22,11 @@ class MatchHeroCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(minHeight: 230),
+      constraints: BoxConstraints(minHeight: 230.r),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         gradient: AppColors.grad,
-        borderRadius: BorderRadius.circular(34),
+        borderRadius: BorderRadius.circular(34.r),
         border: Border.all(color: AppColors.neon, width: 1.5),
         boxShadow: AppShadows.glow,
       ),
@@ -33,7 +34,7 @@ class MatchHeroCard extends StatelessWidget {
         children: [
           const Positioned.fill(child: HeroBackdrop()),
           Padding(
-            padding: const EdgeInsets.all(22),
+            padding: EdgeInsets.all(22.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -41,25 +42,25 @@ class MatchHeroCard extends StatelessWidget {
                   alignment: AlignmentDirectional.centerStart,
                   child: OnlinePlayersPill(count: onlinePlayers),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 Text(
                   context.tr(AppStrings.heroTitle),
                   style: AppText.heroTitle,
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: 4.h),
                 Text(
                   context.tr(AppStrings.heroSubtitle),
                   style: AppText.heroSubtitle,
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 PressScale(
                   onTap: onStart,
                   child: Container(
-                    height: 58,
+                    height: 58.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: AppColors.white,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                       boxShadow: AppShadows.raised,
                     ),
                     child: Row(
@@ -69,7 +70,7 @@ class MatchHeroCard extends StatelessWidget {
                           context.tr(AppStrings.startMatch),
                           style: AppText.heroButton,
                         ),
-                        const SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         Text(
                           context.tr(AppStrings.forwardArrow),
                           style: AppText.heroArrow,

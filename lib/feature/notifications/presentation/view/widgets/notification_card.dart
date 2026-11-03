@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationCard extends StatelessWidget {
   const NotificationCard({
@@ -40,12 +41,12 @@ class NotificationCard extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.all(14),
+            padding: EdgeInsets.all(14.r),
             decoration: BoxDecoration(
               color: unread
                   ? AppColors.mix(AppColors.cy, .06, AppColors.s1)
                   : AppColors.s1,
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(24.r),
               border: Border.all(
                 color: unread ? AppColors.line2 : AppColors.line,
               ),
@@ -55,17 +56,17 @@ class NotificationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: 44,
-                  height: 44,
+                  width: 44.r,
+                  height: 44.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: tile,
                     gradient: tileGradient,
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(15.r),
                   ),
                   child: Text(glyph, style: AppText.notificationGlyph(ink)),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 12.w),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,26 +79,26 @@ class NotificationCard extends StatelessWidget {
                               style: AppText.notificationTitle,
                             ),
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(width: 8.w),
                           Text(time, style: AppText.notificationTime),
                         ],
                       ),
-                      const SizedBox(height: 3),
+                      SizedBox(height: 3.h),
                       Text(body, style: AppText.notificationBody),
                       if (pts != null)
                         Padding(
-                          padding: const EdgeInsets.only(top: 7),
+                          padding: EdgeInsets.only(top: 7.h),
                           child: Transform(
                             transform: Matrix4.skewX(-.175),
                             alignment: Alignment.center,
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 2,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10.w,
+                                vertical: 2.h,
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.gold,
-                                borderRadius: BorderRadius.circular(9),
+                                borderRadius: BorderRadius.circular(9.r),
                               ),
                               child: Text(
                                 pts,
@@ -107,10 +108,7 @@ class NotificationCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                      if (actions != null) ...[
-                        const SizedBox(height: 11),
-                        actions,
-                      ],
+                      if (actions != null) ...[SizedBox(height: 11.h), actions],
                     ],
                   ),
                 ),
@@ -119,11 +117,11 @@ class NotificationCard extends StatelessWidget {
           ),
           if (unread)
             PositionedDirectional(
-              top: 18,
-              start: 8,
+              top: 18.r,
+              start: 8.w,
               child: Container(
-                width: 7,
-                height: 7,
+                width: 7.r,
+                height: 7.r,
                 decoration: BoxDecoration(
                   color: AppColors.cy,
                   shape: BoxShape.circle,

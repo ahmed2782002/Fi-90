@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuickModeCard extends StatelessWidget {
   const QuickModeCard({
@@ -32,7 +33,7 @@ class QuickModeCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           color: AppColors.s1,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(24.r),
           border: Border.all(color: AppColors.tint(accent, .5), width: 1.5),
           boxShadow: AppShadows.card(glow),
         ),
@@ -51,7 +52,7 @@ class QuickModeCard extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 12),
+                padding: EdgeInsets.fromLTRB(10.w, 10.h, 10.w, 12.h),
                 decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(
@@ -63,15 +64,15 @@ class QuickModeCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      width: 4,
-                      height: 30,
+                      width: 4.r,
+                      height: 30.r,
                       decoration: BoxDecoration(
                         color: accent,
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius: BorderRadius.circular(9.r),
                         boxShadow: AppShadows.accent(glow),
                       ),
                     ),
-                    const SizedBox(width: 8),
+                    SizedBox(width: 8.w),
                     Expanded(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,

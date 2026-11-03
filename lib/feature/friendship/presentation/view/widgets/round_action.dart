@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoundAction extends StatelessWidget {
   const RoundAction({
@@ -26,8 +27,8 @@ class RoundAction extends StatelessWidget {
       child: PressScale(
         onTap: onTap,
         child: Container(
-          width: 40,
-          height: 40,
+          width: 40.r,
+          height: 40.r,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: filled,

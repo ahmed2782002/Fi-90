@@ -21,6 +21,7 @@ import 'package:fii90/feature/photo_game/presentation/view/screen/photo_game_scr
 import 'package:fii90/feature/spy_game/presentation/view/screen/spy_game_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GameSetupScreen extends StatelessWidget {
   const GameSetupScreen({super.key, required this.game});
@@ -85,7 +86,7 @@ class GameSetupScreen extends StatelessWidget {
                   style: AppText.segment,
                   activeGradient: AppColors.grad,
                   activeShadow: AppShadows.segment,
-                  height: 42,
+                  height: 42.r,
                   padding: 4,
                   expand: true,
                 ),
@@ -108,7 +109,7 @@ class GameSetupScreen extends StatelessWidget {
                 child: PrimaryButton(
                   label: context.tr(AppStrings.letsStart),
                   onTap: cubit.start,
-                  height: 56,
+                  height: 56.r,
                 ),
               ),
             ],

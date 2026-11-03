@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/app_shadows.dart';
 
 class InfoChip extends StatelessWidget {
-  const InfoChip({
+  InfoChip({
     super.key,
     required this.label,
     required this.leading,
@@ -12,9 +13,10 @@ class InfoChip extends StatelessWidget {
     this.border,
     this.borderWidth = 1,
     this.glow,
-    this.height = 34,
-    this.hPad = 12,
-  });
+    double? height,
+    double? hPad,
+  }) : height = height ?? 34.r,
+       hPad = hPad ?? 12.w;
 
   final String label;
   final Widget leading;
@@ -32,7 +34,7 @@ class InfoChip extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: hPad),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(999),
+        borderRadius: BorderRadius.circular(999.r),
         border: Border.all(
           color: border ?? AppColors.line2,
           width: borderWidth,
@@ -45,7 +47,7 @@ class InfoChip extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           leading,
-          const SizedBox(width: 6),
+          SizedBox(width: 6.w),
           Text(label, style: style),
         ],
       ),

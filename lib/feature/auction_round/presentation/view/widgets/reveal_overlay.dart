@@ -8,6 +8,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/match_app/fut_card.dart';
 import 'package:fii90/feature/auction_round/mock_model/auction_player.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RevealOverlay extends StatelessWidget {
   const RevealOverlay({
@@ -43,15 +44,15 @@ class RevealOverlay extends StatelessWidget {
       filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
       child: Container(
         color: AppColors.scrim,
-        padding: const EdgeInsets.all(20),
+        padding: EdgeInsets.all(20.r),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
+              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 5.h),
               decoration: BoxDecoration(
                 color: free ? AppColors.ok : AppColors.gold,
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: BorderRadius.circular(999.r),
               ),
               child: Text(
                 tag,
@@ -60,16 +61,16 @@ class RevealOverlay extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 14),
+            SizedBox(height: 14.h),
             ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 300),
+              constraints: BoxConstraints(maxWidth: 300.r),
               child: Text(
                 message,
                 textAlign: TextAlign.center,
                 style: AppText.revealMessage,
               ),
             ),
-            const SizedBox(height: 14),
+            SizedBox(height: 14.h),
             Flexible(
               child: Enter(
                 fx: Fx.pop,
@@ -105,12 +106,12 @@ class RevealOverlay extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Text(name, style: AppText.revealName),
             if (note != null) ...[
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 300),
+                constraints: BoxConstraints(maxWidth: 300.r),
                 child: Text(
                   note,
                   textAlign: TextAlign.center,

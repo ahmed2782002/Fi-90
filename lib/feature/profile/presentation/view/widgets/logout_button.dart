@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LogoutButton extends StatelessWidget {
@@ -17,10 +18,10 @@ class LogoutButton extends StatelessWidget {
     return PressScale(
       onTap: onTap,
       child: Container(
-        height: 54,
+        height: 54.r,
         decoration: BoxDecoration(
           color: AppColors.tint(AppColors.bad, .1),
-          borderRadius: BorderRadius.circular(999),
+          borderRadius: BorderRadius.circular(999.r),
           border: Border.all(color: AppColors.bad, width: 1.5),
         ),
         child: Row(
@@ -28,11 +29,11 @@ class LogoutButton extends StatelessWidget {
           children: [
             SvgPicture.asset(
               AppIcons.logout,
-              width: 20,
-              height: 20,
+              width: 20.r,
+              height: 20.r,
               colorFilter: ColorFilter.mode(AppColors.badInk, BlendMode.srcIn),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: 10.w),
             Text(context.tr(AppStrings.logout), style: AppText.logout),
           ],
         ),

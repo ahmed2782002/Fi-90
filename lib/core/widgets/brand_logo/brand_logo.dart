@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/app_shadows.dart';
@@ -25,9 +26,9 @@ class BrandLogo extends StatelessWidget {
   BrandLogo.small({Key? key})
     : this._(
         key: key,
-        size: 64,
+        size: 64.r,
         faceSize: 61,
-        radius: 22,
+        radius: 22.r,
         borderWidth: 1.5,
         highlight: AppColors.logoSmallHighlight,
         shadows: [
@@ -42,9 +43,9 @@ class BrandLogo extends StatelessWidget {
   BrandLogo.nav({Key? key})
     : this._(
         key: key,
-        size: 56,
+        size: 56.r,
         faceSize: 53,
-        radius: 20,
+        radius: 20.r,
         borderWidth: 1.5,
         highlight: AppColors.logoSmallHighlight,
         shadows: AppShadows.glow,
@@ -57,9 +58,9 @@ class BrandLogo extends StatelessWidget {
   BrandLogo.hero({Key? key, double intro = 1})
     : this._(
         key: key,
-        size: 196,
+        size: 196.r,
         faceSize: 192,
-        radius: 58,
+        radius: 58.r,
         borderWidth: 2,
         highlight: AppColors.logoHeroHighlight,
         shadows: [

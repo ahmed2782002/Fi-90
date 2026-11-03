@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Dot extends StatelessWidget {
-  const Dot(this.color, {super.key, this.size = 7, this.glow = false});
+  Dot(this.color, {super.key, double? size, this.glow = false})
+    : size = size ?? 7.r;
 
   final Color color;
   final double size;

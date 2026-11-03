@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlanDetails extends StatelessWidget {
   const PlanDetails({
@@ -37,7 +38,7 @@ class PlanDetails extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: 10.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -47,14 +48,14 @@ class PlanDetails extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: 5.h),
         for (final feature in features) ...[
-          const SizedBox(height: 7),
+          SizedBox(height: 7.h),
           Row(
             children: [
               Container(
-                width: 18,
-                height: 18,
+                width: 18.r,
+                height: 18.r,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: AppColors.tint(AppColors.ok, .18),
@@ -62,7 +63,7 @@ class PlanDetails extends StatelessWidget {
                 ),
                 child: Text('✓', style: AppText.featureCheck),
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: 8.w),
               Expanded(child: Text(feature, style: AppText.feature)),
             ],
           ),

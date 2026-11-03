@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/spy_game/presentation/view/widgets/spy_choice_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpyDecideView extends StatelessWidget {
   const SpyDecideView({
@@ -23,21 +24,18 @@ class SpyDecideView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 12,
+      spacing: 12.r,
       children: [
         Enter(
           fx: Fx.fadeIn,
           child: Column(
-            spacing: 10,
+            spacing: 10.r,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 5,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 5.h),
                 decoration: BoxDecoration(
                   color: AppColors.s2,
-                  borderRadius: BorderRadius.circular(999),
+                  borderRadius: BorderRadius.circular(999.r),
                 ),
                 child: Text(
                   context.tr(AppStrings.roundDone, args: ['$round']),
@@ -58,7 +56,7 @@ class SpyDecideView extends StatelessWidget {
           ),
         ),
         Row(
-          spacing: 10,
+          spacing: 10.r,
           children: [
             Expanded(
               child: SpyChoiceTile(

@@ -5,6 +5,7 @@ import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoomPlayerTile extends StatelessWidget {
   const RoomPlayerTile({
@@ -30,25 +31,25 @@ class RoomPlayerTile extends StatelessWidget {
       fx: Fx.fadeUp,
       duration: const Duration(milliseconds: 400),
       child: Container(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(12.r),
         decoration: BoxDecoration(
           color: AppColors.s1,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.r),
           border: Border.all(color: AppColors.tint(fill, .45), width: 1.5),
         ),
         child: Row(
           children: [
             Container(
-              width: 46,
-              height: 46,
+              width: 46.r,
+              height: 46.r,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: fill,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
               ),
               child: Text(initial, style: AppText.bigInitial(20, onFill)),
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,13 +61,10 @@ class RoomPlayerTile extends StatelessWidget {
             ),
             if (ready)
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 5,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
                 decoration: BoxDecoration(
                   color: AppColors.tint(AppColors.ok, .15),
-                  borderRadius: BorderRadius.circular(9),
+                  borderRadius: BorderRadius.circular(9.r),
                 ),
                 child: Text(
                   context.tr(AppStrings.readyCheck),

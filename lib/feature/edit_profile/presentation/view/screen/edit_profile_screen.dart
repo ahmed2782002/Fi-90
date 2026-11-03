@@ -12,6 +12,7 @@ import 'package:fii90/feature/edit_profile/presentation/view_model/edit_profile_
 import 'package:fii90/feature/profile/presentation/view_model/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -39,7 +40,7 @@ class EditProfileScreen extends StatelessWidget {
               title: context.tr(AppStrings.profileEdit),
               bottom: PrimaryButton(
                 label: context.tr(AppStrings.saveChanges),
-                height: 56,
+                height: 56.r,
                 style: AppText.actionButton(16),
                 onTap: cubit.save,
               ),
@@ -52,7 +53,7 @@ class EditProfileScreen extends StatelessWidget {
                       context.tr(AppStrings.nameLabel),
                       style: AppText.fieldLabel,
                     ),
-                    const SizedBox(height: 6),
+                    SizedBox(height: 6.h),
                     AppTextField(controller: cubit.nameController),
                   ],
                 ),
@@ -63,7 +64,7 @@ class EditProfileScreen extends StatelessWidget {
                       context.tr(AppStrings.usernameLabel),
                       style: AppText.fieldLabel,
                     ),
-                    const SizedBox(height: 6),
+                    SizedBox(height: 6.h),
                     AppTextField(
                       controller: cubit.usernameController,
                       readOnly: true,

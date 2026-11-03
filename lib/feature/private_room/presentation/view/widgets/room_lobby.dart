@@ -9,6 +9,7 @@ import 'package:fii90/feature/private_room/presentation/view/widgets/room_player
 import 'package:fii90/feature/private_room/presentation/view_model/private_room_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoomLobby extends StatelessWidget {
   const RoomLobby({super.key});
@@ -21,7 +22,7 @@ class RoomLobby extends StatelessWidget {
     final friend = context.tr(AppStrings.mockPlayerOmar);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 12,
+      spacing: 12.r,
       children: [
         Text(context.tr(AppStrings.players), style: AppText.pageIntro),
         RoomPlayerTile(
@@ -43,15 +44,15 @@ class RoomLobby extends StatelessWidget {
           )
         else
           Container(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(12.r),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.r),
               border: Border.all(color: AppColors.line2, width: 1.5),
             ),
             child: Row(
               children: [
-                SpinRing(size: 46, color: AppColors.op, width: 3),
-                const SizedBox(width: 12),
+                SpinRing(size: 46.r, color: AppColors.op, width: 3.r),
+                SizedBox(width: 12.w),
                 Expanded(
                   child: Text(
                     context.tr(AppStrings.waitingFriend),
@@ -65,13 +66,13 @@ class RoomLobby extends StatelessWidget {
           onTap: cubit.toggleReady,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            height: 54,
+            height: 54.r,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: state.meReady
                   ? AppColors.s2
                   : AppColors.tint(AppColors.ok, .15),
-              borderRadius: BorderRadius.circular(999),
+              borderRadius: BorderRadius.circular(999.r),
               border: Border.all(
                 color: state.meReady ? AppColors.line2 : AppColors.ok,
                 width: 1.5,

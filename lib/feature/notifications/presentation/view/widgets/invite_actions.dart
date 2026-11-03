@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InviteActions extends StatelessWidget {
   const InviteActions({
@@ -25,27 +26,27 @@ class InviteActions extends StatelessWidget {
         Expanded(
           child: PrimaryButton(
             label: acceptLabel,
-            height: 40,
+            height: 40.r,
             style: AppText.actionButton(13),
             onTap: onAccept,
           ),
         ),
-        const SizedBox(width: 8),
+        SizedBox(width: 8.w),
         Expanded(
           child: PressScale(
             onTap: onDecline,
             child: Container(
-              height: 40,
+              height: 40.r,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: BorderRadius.circular(999.r),
                 border: Border.all(color: AppColors.line2),
               ),
               child: Text(
                 declineLabel,
                 style: AppText.fieldText(
                   AppColors.tx,
-                  size: 13,
+                  size: 13.r,
                   weight: FontWeight.w700,
                 ),
               ),

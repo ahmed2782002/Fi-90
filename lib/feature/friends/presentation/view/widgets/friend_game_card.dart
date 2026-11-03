@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FriendGameCard extends StatelessWidget {
   const FriendGameCard({
@@ -29,11 +30,11 @@ class FriendGameCard extends StatelessWidget {
     return PressScale(
       onTap: onTap,
       child: Container(
-        constraints: const BoxConstraints(minHeight: 262),
+        constraints: BoxConstraints(minHeight: 262.r),
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           color: AppColors.s1,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(24.r),
           border: Border.all(
             color: AppColors.mix(AppColors.cy, .4, AppColors.line),
             width: 1.5,
@@ -64,24 +65,24 @@ class FriendGameCard extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(12, 12, 12, 14),
+                padding: EdgeInsets.fromLTRB(12.w, 12.h, 12.w, 14.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(title, style: AppText.gameTitle),
-                    const SizedBox(height: 6),
+                    SizedBox(height: 6.h),
                     Text(description, style: AppText.gameDescription),
                     const Spacer(),
-                    const SizedBox(height: 6),
+                    SizedBox(height: 6.h),
                     Container(
-                      constraints: const BoxConstraints(minHeight: 22),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 9,
-                        vertical: 2,
+                      constraints: BoxConstraints(minHeight: 22.r),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 9.w,
+                        vertical: 2.h,
                       ),
                       decoration: BoxDecoration(
                         color: AppColors.s2,
-                        borderRadius: BorderRadius.circular(999),
+                        borderRadius: BorderRadius.circular(999.r),
                       ),
                       child: Text(
                         length,

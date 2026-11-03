@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FinalScoreCard extends StatelessWidget {
   const FinalScoreCard({
@@ -29,10 +30,10 @@ class FinalScoreCard extends StatelessWidget {
     final left = rtl ? oppScore : meScore;
     final right = rtl ? meScore : oppScore;
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
@@ -55,16 +56,16 @@ class FinalScoreCard extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    width: 50,
-                    height: 50,
+                    width: 50.r,
+                    height: 50.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: fill,
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: Text(initial, style: AppText.bigInitial(21, onFill)),
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6.h),
                   Text(name, style: AppText.lastOpponent),
                 ],
               ),

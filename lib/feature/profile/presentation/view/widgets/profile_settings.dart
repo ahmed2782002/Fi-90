@@ -5,9 +5,10 @@ import 'package:fii90/core/routing/nav.dart';
 import 'package:fii90/core/theme/theme_cubit.dart';
 import 'package:fii90/core/widgets/app_toast/app_toast.dart';
 import 'package:fii90/core/widgets/app_toast/toast_message.dart';
+import 'package:fii90/feature/coins_shop/presentation/view/screen/coins_shop_screen.dart';
+import 'package:fii90/feature/coins_shop/presentation/view_model/coins_cubit.dart';
 import 'package:fii90/feature/friendship/presentation/view/screen/friendship_screen.dart';
 import 'package:fii90/feature/friendship/presentation/view_model/friendship_cubit.dart';
-import 'package:fii90/feature/plans/mock_model/plan.dart';
 import 'package:fii90/feature/plans/presentation/view/screen/plans_screen.dart';
 import 'package:fii90/feature/plans/presentation/view_model/plans_cubit.dart';
 import 'package:fii90/feature/edit_profile/presentation/view/screen/edit_profile_screen.dart';
@@ -18,6 +19,7 @@ import 'package:fii90/feature/profile/presentation/view_model/profile_cubit.dart
 import 'package:fii90/feature/sound/presentation/view_model/sound_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileSettings extends StatelessWidget {
   const ProfileSettings({super.key});
@@ -45,7 +47,7 @@ class ProfileSettings extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         AccountSettings(
-          coins: Plan.coinsBalance,
+          coins: context.watch<CoinsCubit>().state.coins,
           soundHint: context.tr(sound.summaryKey),
           planHint: context.tr(
             AppStrings.plansHint,
@@ -61,10 +63,17 @@ class ProfileSettings extends StatelessWidget {
           requests: friendship.requests.length,
           onEdit: () => open(const EditProfileScreen()),
           onSound: () => open(const SoundScreen()),
+          onCoins: () => Nav.push(
+            context,
+            BlocProvider.value(
+              value: context.read<CoinsCubit>(),
+              child: const CoinsShopScreen(),
+            ),
+          ),
           onPlans: () => open(const PlansScreen()),
           onFriends: () => open(const FriendshipScreen()),
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16.h),
         PreferencesSettings(
           languageIndex: AppLocalization.supported.indexOf(context.locale),
           onLanguage: (i) {

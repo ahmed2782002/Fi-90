@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VsPlayerBanner extends StatelessWidget {
   const VsPlayerBanner({
@@ -29,12 +30,12 @@ class VsPlayerBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final tags = [(level, AppColors.tx), (tier, AppColors.goldInk)];
     final avatar = Container(
-      width: 104,
-      height: 104,
+      width: 104.r,
+      height: 104.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: fill,
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: BorderRadius.circular(32.r),
         boxShadow: AppShadows.sh2,
       ),
       child: Text(initial, style: AppText.bigInitial(46, onFill)),
@@ -45,20 +46,17 @@ class VsPlayerBanner extends StatelessWidget {
           : CrossAxisAlignment.start,
       children: [
         Text(name, style: AppText.vsName),
-        const SizedBox(height: 6),
+        SizedBox(height: 6.h),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             for (final (text, color) in mirrored ? tags.reversed : tags)
               Container(
-                margin: const EdgeInsetsDirectional.only(end: 6),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 4,
-                ),
+                margin: EdgeInsetsDirectional.only(end: 6.w),
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                 decoration: BoxDecoration(
                   color: AppColors.glass,
-                  borderRadius: BorderRadius.circular(9),
+                  borderRadius: BorderRadius.circular(9.r),
                 ),
                 child: Text(text, style: AppText.vsTag(color)),
               ),
@@ -74,8 +72,8 @@ class VsPlayerBanner extends StatelessWidget {
             ? MainAxisAlignment.end
             : MainAxisAlignment.start,
         children: mirrored
-            ? [info, const SizedBox(width: 16), avatar]
-            : [avatar, const SizedBox(width: 16), info],
+            ? [info, SizedBox(width: 16.w), avatar]
+            : [avatar, SizedBox(width: 16.w), info],
       ),
     );
   }

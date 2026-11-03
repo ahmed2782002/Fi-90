@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../theme/app_colors.dart';
 
 class TintedIconBox extends StatelessWidget {
-  const TintedIconBox({
+  TintedIconBox({
     super.key,
     required this.icon,
     required this.tint,
     required this.ink,
-    this.size = 38,
-    this.radius = 13,
-    this.iconSize = 20,
+    double? size,
+    double? radius,
+    double? iconSize,
     this.tintAlpha = .14,
     this.keepColors = false,
-  });
+  }) : size = size ?? 38.r,
+       radius = radius ?? 13.r,
+       iconSize = iconSize ?? 20.r;
 
   final String icon;
   final Color tint;

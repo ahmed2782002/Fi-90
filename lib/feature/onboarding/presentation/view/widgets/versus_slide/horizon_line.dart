@@ -1,5 +1,6 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HorizonLine extends StatelessWidget {
   const HorizonLine({super.key});
@@ -7,7 +8,7 @@ class HorizonLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 2,
+      height: 2.r,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [

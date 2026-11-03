@@ -5,6 +5,7 @@ import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MatchEventRow extends StatelessWidget {
   const MatchEventRow({
@@ -26,21 +27,21 @@ class MatchEventRow extends StatelessWidget {
       fx: Fx.fadeUp,
       duration: const Duration(milliseconds: 300),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
         decoration: BoxDecoration(
           color: goal ? AppColors.tint(color, .12) : AppColors.s1,
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(18.r),
           border: Border.all(color: goal ? color : AppColors.line),
         ),
         child: Row(
           children: [
             Container(
-              constraints: const BoxConstraints(minWidth: 38),
-              height: 26,
+              constraints: BoxConstraints(minWidth: 38.r),
+              height: 26.r,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: AppColors.s2,
-                borderRadius: BorderRadius.circular(9),
+                borderRadius: BorderRadius.circular(9.r),
               ),
               child: Text(
                 "$minute'",
@@ -48,29 +49,26 @@ class MatchEventRow extends StatelessWidget {
                 style: AppText.eventMinute,
               ),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: 10.w),
             Container(
-              width: 4,
-              height: 22,
+              width: 4.r,
+              height: 22.r,
               decoration: BoxDecoration(
                 color: color,
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(4.r),
               ),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: 10.w),
             Expanded(child: Text(text, style: AppText.eventText(goal))),
             if (goal)
               Transform(
                 alignment: Alignment.center,
                 transform: Matrix4.skewX(-.1763),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 9,
-                    vertical: 2,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 2.h),
                   decoration: BoxDecoration(
                     color: AppColors.gold,
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.r),
                   ),
                   child: Text(
                     context.tr(AppStrings.goal),

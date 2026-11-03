@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/top_gloss.dart';
 import 'package:fii90/feature/auth/presentation/view/widgets/new_player_card_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewPlayerCard extends StatelessWidget {
   const NewPlayerCard({super.key});
@@ -15,11 +16,11 @@ class NewPlayerCard extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       children: [
         Container(
-          width: 148,
-          height: 200,
+          width: 148.r,
+          height: 200.r,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(30.r),
             gradient: AppColors.grad,
             border: Border.all(color: AppColors.cy, width: 2),
             boxShadow: [
@@ -36,10 +37,10 @@ class NewPlayerCard extends StatelessWidget {
               const TopGloss(fraction: .44, alpha: .22),
               Positioned.fill(
                 child: Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: EdgeInsets.all(8.r),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(23),
+                      borderRadius: BorderRadius.circular(23.r),
                       border: Border.all(
                         color: AppColors.tint(AppColors.white, .18),
                       ),
@@ -54,8 +55,8 @@ class NewPlayerCard extends StatelessWidget {
         Positioned(
           bottom: -26,
           child: Container(
-            width: 40,
-            height: 40,
+            width: 40.r,
+            height: 40.r,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               shape: BoxShape.circle,

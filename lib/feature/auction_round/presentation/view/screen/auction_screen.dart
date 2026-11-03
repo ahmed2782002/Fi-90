@@ -15,6 +15,7 @@ import 'package:fii90/feature/match/presentation/view/widgets/round_frame.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuctionScreen extends StatelessWidget {
   const AuctionScreen({super.key});
@@ -58,7 +59,7 @@ class AuctionScreen extends StatelessWidget {
                     ),
                   ),
                   child: ListView(
-                    padding: const EdgeInsets.fromLTRB(16, 4, 16, 28),
+                    padding: EdgeInsets.fromLTRB(16.w, 4.h, 16.w, 28.h),
                     children: [
                       AuctionTopBar(
                         meLabel: context.tr(AppStrings.you),
@@ -81,7 +82,7 @@ class AuctionScreen extends StatelessWidget {
                           ),
                         },
                       ),
-                      const SizedBox(height: 12),
+                      SizedBox(height: 12.h),
                       if (state.phase == AuctionPhase.setup)
                         AuctionSetup(onPick: cubit.pickSize)
                       else if (sim != null && cubit.inMatch)
@@ -100,7 +101,7 @@ class AuctionScreen extends StatelessWidget {
                       else
                         const AuctionLotSection(),
                       if (state.phase != AuctionPhase.setup) ...[
-                        const SizedBox(height: 12),
+                        SizedBox(height: 12.h),
                         const AuctionPitches(),
                       ],
                     ],

@@ -9,6 +9,7 @@ import 'package:fii90/feature/auction_round/presentation/view/widgets/sim_scoreb
 import 'package:fii90/feature/auction_round/presentation/view_model/auction_state.dart';
 import 'package:fii90/feature/match/mock_model/round_result.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuctionMatchView extends StatelessWidget {
   const AuctionMatchView({
@@ -43,7 +44,7 @@ class AuctionMatchView extends StatelessWidget {
     String nameOf(MatchSide side) => side == MatchSide.me ? team : opponent;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 12,
+      spacing: 12.r,
       children: [
         SimScoreboard(
           minuteLabel: done ? context.tr(AppStrings.fullTime) : "$minute'",
@@ -72,10 +73,10 @@ class AuctionMatchView extends StatelessWidget {
         ),
         if (events.isEmpty && !done)
           Container(
-            padding: const EdgeInsets.all(14),
+            padding: EdgeInsets.all(14.r),
             decoration: BoxDecoration(
               color: AppColors.s1,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(20.r),
               border: Border.all(color: AppColors.line),
             ),
             child: Text(
@@ -102,7 +103,7 @@ class AuctionMatchView extends StatelessWidget {
           ),
         if (!done)
           SizedBox(
-            height: 48,
+            height: 48.r,
             child: OutlinedButton(
               onPressed: onSkip,
               style: OutlinedButton.styleFrom(

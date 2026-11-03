@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VsBadge extends StatelessWidget {
   const VsBadge({super.key});
@@ -8,8 +9,8 @@ class VsBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 78,
-      height: 78,
+      width: 78.r,
+      height: 78.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         shape: BoxShape.circle,

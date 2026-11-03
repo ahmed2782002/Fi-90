@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ActCardTile extends StatelessWidget {
   const ActCardTile({
@@ -32,7 +33,7 @@ class ActCardTile extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: label == null ? AppColors.cardDeep : AppColors.s1,
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(14.r),
             border: Border.all(
               color: result ?? AppColors.tint(AppColors.neon, .55),
               width: 1.5,
@@ -57,13 +58,13 @@ class ActCardTile extends StatelessWidget {
                 Align(
                   alignment: const Alignment(0, .86),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 7,
-                      vertical: 1,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 7.w,
+                      vertical: 1.h,
                     ),
                     decoration: BoxDecoration(
                       color: AppColors.tint(AppColors.cardDeep, .75),
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                       border: Border.all(
                         color: AppColors.tint(AppColors.neon, .6),
                       ),
@@ -87,7 +88,7 @@ class ActCardTile extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(2, 0, 2, 4),
+                    padding: EdgeInsets.fromLTRB(2.w, 0, 2.w, 4.h),
                     child: Text(
                       label,
                       maxLines: 2,
@@ -97,11 +98,11 @@ class ActCardTile extends StatelessWidget {
                   ),
                 ),
                 PositionedDirectional(
-                  top: 3,
-                  end: 3,
+                  top: 3.r,
+                  end: 3.w,
                   child: Container(
-                    width: 17,
-                    height: 17,
+                    width: 17.r,
+                    height: 17.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: result,

@@ -13,6 +13,7 @@ import 'package:fii90/feature/round_result/presentation/view/widgets/round_progr
 import 'package:fii90/feature/round_result/presentation/view/widgets/round_scores.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoundResultScreen extends StatelessWidget {
   const RoundResultScreen({super.key});
@@ -39,27 +40,27 @@ class RoundResultScreen extends StatelessWidget {
       ),
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 19, 20, 44),
+          padding: EdgeInsets.fromLTRB(20.w, 19.h, 20.w, 44.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 4,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 4.h,
                     ),
                     decoration: BoxDecoration(
                       color: AppColors.tint(result.mode.accent, .16),
-                      borderRadius: BorderRadius.circular(9),
+                      borderRadius: BorderRadius.circular(9.r),
                     ),
                     child: Text(
                       context.tr(result.mode.nameKey),
                       style: AppText.modeTag(result.mode.ink),
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Text(
                     context.tr(
                       AppStrings.endOfRound,
@@ -85,14 +86,14 @@ class RoundResultScreen extends StatelessWidget {
                           style: AppText.display(32),
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      PointsBadge(label: '+${result.points}', size: 24),
+                      SizedBox(height: 8.h),
+                      PointsBadge(label: '+${result.points}', size: 24.r),
                     ] else
                       Text(
                         context.tr(AppStrings.noPointsRound),
                         style: AppText.noPoints,
                       ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8.h),
                     Text(
                       context.tr(
                         result.detailKey,
@@ -102,7 +103,7 @@ class RoundResultScreen extends StatelessWidget {
                       ),
                       style: AppText.detailLine,
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     RoundScores(
                       meName: me,
                       meScore: state.meScore,
@@ -111,7 +112,7 @@ class RoundResultScreen extends StatelessWidget {
                       oppScore: state.oppScore,
                       aheadLabel: context.tr(AppStrings.ahead),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     RoundProgress(
                       modes: state.modes,
                       current: state.roundIndex,

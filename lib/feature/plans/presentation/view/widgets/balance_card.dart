@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BalanceCard extends StatelessWidget {
@@ -15,17 +16,17 @@ class BalanceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: EdgeInsets.all(18.r),
       decoration: BoxDecoration(
         gradient: AppColors.grad,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.neon, width: 1.5),
         boxShadow: AppShadows.glow,
       ),
       child: Row(
         children: [
-          SvgPicture.asset(AppIcons.coin, width: 52, height: 52),
-          const SizedBox(width: 14),
+          SvgPicture.asset(AppIcons.coin, width: 52.r, height: 52.r),
+          SizedBox(width: 14.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -12,6 +12,7 @@ import 'package:fii90/feature/friendship/presentation/view_model/friendship_cubi
 import 'package:fii90/feature/friendship/presentation/view_model/friendship_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FriendshipScreen extends StatelessWidget {
   const FriendshipScreen({super.key});
@@ -32,14 +33,14 @@ class FriendshipScreen extends StatelessWidget {
                   child: AppTextField(
                     controller: cubit.searchController,
                     hint: context.tr(AppStrings.friendSearchHint),
-                    height: 50,
-                    fontSize: 14,
+                    height: 50.r,
+                    fontSize: 14.sp,
                   ),
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 8.w),
                 PrimaryButton(
                   label: context.tr(AppStrings.addFriend),
-                  height: 50,
+                  height: 50.r,
                   expand: false,
                   style: AppText.actionButton(14),
                   onTap: cubit.add,

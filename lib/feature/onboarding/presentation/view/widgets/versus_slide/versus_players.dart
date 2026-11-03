@@ -5,6 +5,7 @@ import 'package:fii90/core/animation/fx.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/feature/onboarding/presentation/view/widgets/versus_slide/player_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VersusPlayers extends StatelessWidget {
   const VersusPlayers({super.key});
@@ -26,7 +27,7 @@ class VersusPlayers extends StatelessWidget {
             angle: -8,
           ),
         ),
-        SizedBox(width: 44),
+        SizedBox(width: 44.w),
         Enter(
           fx: Fx.slideE,
           duration: Duration(milliseconds: 700),

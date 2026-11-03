@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/friends_app/initial_badge.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpyWordsList extends StatelessWidget {
   const SpyWordsList({
@@ -20,23 +21,23 @@ class SpyWordsList extends StatelessWidget {
     final heading = title;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 6,
+      spacing: 6.r,
       children: [
         if (heading != null && words.isNotEmpty)
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+            padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
             child: Text(heading, style: AppText.listHeader),
           ),
         for (final (:player, :words) in words)
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
             decoration: BoxDecoration(
               color: AppColors.s1,
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(18.r),
               border: Border.all(color: AppColors.line),
             ),
             child: Row(
-              spacing: 10,
+              spacing: 10.r,
               children: [
                 InitialBadge(
                   name: players[player],
@@ -46,18 +47,18 @@ class SpyWordsList extends StatelessWidget {
                 Expanded(
                   child: Wrap(
                     alignment: WrapAlignment.end,
-                    spacing: 6,
-                    runSpacing: 6,
+                    spacing: 6.r,
+                    runSpacing: 6.r,
                     children: [
                       for (final w in words)
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 3,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                            vertical: 3.h,
                           ),
                           decoration: BoxDecoration(
                             color: AppColors.s2,
-                            borderRadius: BorderRadius.circular(999),
+                            borderRadius: BorderRadius.circular(999.r),
                           ),
                           child: Text(w, style: AppText.wordChip),
                         ),

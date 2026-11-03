@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/onboarding/presentation/view/widgets/ranking_slide/podium_avatar.dart';
 import 'package:fii90/feature/onboarding/presentation/view/widgets/ranking_slide/podium_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PodiumPlace extends StatelessWidget {
   const PodiumPlace({
@@ -42,7 +43,7 @@ class PodiumPlace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 96,
+      width: 96.r,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -58,14 +59,14 @@ class PodiumPlace extends StatelessWidget {
               crowned: crowned,
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
           Enter(
             fx: Fx.fadeIn,
             duration: const Duration(milliseconds: 400),
             delay: Duration(milliseconds: nameDelay),
             child: Text(context.tr(name), style: AppText.podiumName),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
           Enter(
             fx: Fx.growUp,
             duration: const Duration(milliseconds: 600),

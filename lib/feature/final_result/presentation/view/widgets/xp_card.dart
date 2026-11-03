@@ -2,6 +2,7 @@ import 'package:fii90/core/constants/app_icons.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class XpCard extends StatelessWidget {
@@ -24,10 +25,10 @@ class XpCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final bonus = coins;
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
       ),
       child: Column(
@@ -39,13 +40,13 @@ class XpCard extends StatelessWidget {
                 alignment: Alignment.center,
                 transform: Matrix4.skewX(-.1763),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 5,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w,
+                    vertical: 5.h,
                   ),
                   decoration: BoxDecoration(
                     color: AppColors.gold,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Text(
                     '+$xp XP',
@@ -55,18 +56,22 @@ class XpCard extends StatelessWidget {
                 ),
               ),
               if (bonus != null) ...[
-                const SizedBox(width: 8),
+                SizedBox(width: 8.w),
                 Container(
-                  padding: const EdgeInsetsDirectional.fromSTEB(8, 5, 12, 5),
+                  padding: EdgeInsetsDirectional.fromSTEB(8.w, 5.h, 12.w, 5.h),
                   decoration: BoxDecoration(
                     color: AppColors.s1,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(color: AppColors.gold, width: 1.5),
                   ),
                   child: Row(
                     children: [
-                      SvgPicture.asset(AppIcons.coin, width: 18, height: 18),
-                      const SizedBox(width: 6),
+                      SvgPicture.asset(
+                        AppIcons.coin,
+                        width: 18.r,
+                        height: 18.r,
+                      ),
+                      SizedBox(width: 6.w),
                       Text(
                         '+$bonus',
                         textDirection: TextDirection.ltr,
@@ -78,15 +83,15 @@ class XpCard extends StatelessWidget {
               ],
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           ClipRRect(
-            borderRadius: BorderRadius.circular(9),
+            borderRadius: BorderRadius.circular(9.r),
             child: TweenAnimationBuilder<double>(
               tween: Tween(begin: 0, end: progress),
               duration: const Duration(milliseconds: 1200),
               curve: Curves.easeOut,
               builder: (context, value, _) => Container(
-                height: 8,
+                height: 8.r,
                 color: AppColors.s3,
                 alignment: AlignmentDirectional.centerStart,
                 child: FractionallySizedBox(
@@ -102,7 +107,7 @@ class XpCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

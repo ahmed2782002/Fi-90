@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/forward_chevron.dart';
 import 'package:fii90/core/widgets/tinted_icon_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingsRow extends StatelessWidget {
   const SettingsRow({
@@ -15,6 +16,7 @@ class SettingsRow extends StatelessWidget {
     this.tint = AppColors.pri,
     this.ink,
     this.tintAlpha = .14,
+    this.keepIconColors = false,
   });
 
   final String icon;
@@ -25,6 +27,7 @@ class SettingsRow extends StatelessWidget {
   final Color tint;
   final Color? ink;
   final double tintAlpha;
+  final bool keepIconColors;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +36,8 @@ class SettingsRow extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
       child: Container(
-        constraints: const BoxConstraints(minHeight: 56),
-        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
+        constraints: BoxConstraints(minHeight: 56.r),
+        padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 6.h),
         child: Row(
           children: [
             TintedIconBox(
@@ -42,8 +45,9 @@ class SettingsRow extends StatelessWidget {
               tint: tint,
               ink: ink ?? AppColors.priInk,
               tintAlpha: tintAlpha,
+              keepColors: keepIconColors,
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: 12.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,11 +57,8 @@ class SettingsRow extends StatelessWidget {
                 ],
               ),
             ),
-            if (trailing != null) ...[const SizedBox(width: 12), trailing!],
-            if (onTap != null) ...[
-              const SizedBox(width: 12),
-              const ForwardChevron(),
-            ],
+            if (trailing != null) ...[SizedBox(width: 12.w), trailing!],
+            if (onTap != null) ...[SizedBox(width: 12.w), ForwardChevron()],
           ],
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CoinBalanceCard extends StatelessWidget {
   const CoinBalanceCard({super.key, required this.coins});
@@ -13,10 +14,10 @@ class CoinBalanceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: EdgeInsets.all(18.r),
       decoration: BoxDecoration(
         gradient: AppColors.shopBalance,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(
           color: AppColors.tint(AppColors.gold, .6),
           width: 1.5,
@@ -31,8 +32,8 @@ class CoinBalanceCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 72,
-            height: 72,
+            width: 72.r,
+            height: 72.r,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               boxShadow: [
@@ -44,7 +45,7 @@ class CoinBalanceCard extends StatelessWidget {
             ),
             child: const Image(image: AssetImage(AppImages.coin90)),
           ),
-          const SizedBox(width: 14),
+          SizedBox(width: 14.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +63,7 @@ class CoinBalanceCard extends StatelessWidget {
                       textDirection: TextDirection.ltr,
                       style: AppText.shopBalanceValue,
                     ),
-                    const SizedBox(width: 6),
+                    SizedBox(width: 6.w),
                     Text(
                       context.tr(AppStrings.coinsUnit),
                       style: AppText.shopBalanceUnit,

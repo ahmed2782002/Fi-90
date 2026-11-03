@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StrikeColumn extends StatelessWidget {
   const StrikeColumn({
@@ -33,13 +34,13 @@ class StrikeColumn extends StatelessWidget {
             for (var i = 0; i < 3; i++)
               AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
-                width: 20,
-                height: 20,
-                margin: const EdgeInsetsDirectional.only(end: 4),
+                width: 20.r,
+                height: 20.r,
+                margin: EdgeInsetsDirectional.only(end: 4.w),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: i < strikes ? AppColors.bad : AppColors.s2,
-                  borderRadius: BorderRadius.circular(7),
+                  borderRadius: BorderRadius.circular(7.r),
                   border: Border.all(
                     color: i < strikes ? AppColors.bad : AppColors.line2,
                     width: 1.5,
@@ -51,12 +52,12 @@ class StrikeColumn extends StatelessWidget {
               ),
           ],
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: 5.h),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
           decoration: BoxDecoration(
             color: chipColor,
-            borderRadius: BorderRadius.circular(7),
+            borderRadius: BorderRadius.circular(7.r),
           ),
           child: Text(
             chipLabel,

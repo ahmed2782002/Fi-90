@@ -3,6 +3,7 @@ import 'package:fii90/core/animation/fx.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnswerBoard extends StatelessWidget {
   const AnswerBoard({
@@ -25,23 +26,23 @@ class AnswerBoard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: AppColors.bg2,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
       ),
       child: Stack(
         children: [
           SingleChildScrollView(
-            padding: const EdgeInsets.all(14),
+            padding: EdgeInsets.all(14.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(title, style: AppText.boardTitle),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 if (answers.isEmpty)
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 12,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.w,
+                      vertical: 12.h,
                     ),
                     child: Text(
                       emptyHint,
@@ -50,35 +51,35 @@ class AnswerBoard extends StatelessWidget {
                     ),
                   ),
                 Wrap(
-                  spacing: 6,
-                  runSpacing: 6,
+                  spacing: 6.r,
+                  runSpacing: 6.r,
                   children: [
                     for (final a in answers)
                       Enter(
                         fx: Fx.pop,
                         duration: const Duration(milliseconds: 350),
                         child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 11,
-                            vertical: 7,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 11.w,
+                            vertical: 7.h,
                           ),
                           decoration: BoxDecoration(
                             color: AppColors.s1,
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                             border: Border.all(color: AppColors.line),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Container(
-                                width: 8,
-                                height: 8,
+                                width: 8.r,
+                                height: 8.r,
                                 decoration: BoxDecoration(
                                   color: a.dot,
-                                  borderRadius: BorderRadius.circular(3),
+                                  borderRadius: BorderRadius.circular(3.r),
                                 ),
                               ),
-                              const SizedBox(width: 7),
+                              SizedBox(width: 7.w),
                               Text(a.name, style: AppText.boardChip),
                             ],
                           ),

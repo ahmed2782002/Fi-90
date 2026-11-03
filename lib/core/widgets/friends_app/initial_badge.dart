@@ -1,15 +1,16 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InitialBadge extends StatelessWidget {
-  const InitialBadge({
+  InitialBadge({
     super.key,
     required this.name,
     required this.palette,
-    this.size = 28,
+    double? size,
     this.radius,
-  });
+  }) : size = size ?? 28.r;
 
   final String name;
   final PlayerPalette palette;

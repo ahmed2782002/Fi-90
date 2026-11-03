@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/profile/presentation/view/widgets/performance_row.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PerformanceCard extends StatelessWidget {
   const PerformanceCard({super.key, required this.items});
@@ -13,10 +14,10 @@ class PerformanceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
       ),
       child: Column(
@@ -27,7 +28,7 @@ class PerformanceCard extends StatelessWidget {
             style: AppText.cardTitle,
           ),
           for (final item in items) ...[
-            const SizedBox(height: 12),
+            SizedBox(height: 12.h),
             PerformanceRow(
               label: context.tr(item.modeKey),
               value: item.value,

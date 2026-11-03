@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/feature/home/mock_model/quick_mode.dart';
 import 'package:fii90/feature/home/presentation/view/widgets/quick_mode_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuickModeGrid extends StatelessWidget {
   const QuickModeGrid({super.key, required this.modes, required this.onSelect});
@@ -14,13 +15,13 @@ class QuickModeGrid extends StatelessWidget {
     return Column(
       children: [
         for (var row = 0; row < modes.length; row += 2) ...[
-          if (row > 0) const SizedBox(height: 10),
+          if (row > 0) SizedBox(height: 10.h),
           IntrinsicHeight(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 for (var i = row; i < row + 2 && i < modes.length; i++) ...[
-                  if (i > row) const SizedBox(width: 10),
+                  if (i > row) SizedBox(width: 10.w),
                   Expanded(
                     child: QuickModeCard(
                       title: context.tr(modes[i].titleKey),

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../constants/app_icons.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_text.dart';
+import '../press_scale.dart';
 import 'score_chip.dart';
 
 class MatchHud extends StatelessWidget {
@@ -18,6 +22,7 @@ class MatchHud extends StatelessWidget {
     required this.dots,
     required this.meTurnLabel,
     required this.oppTurnLabel,
+    required this.onInfo,
     this.meTurn = false,
     this.oppTurn = false,
     this.meDelta,
@@ -35,6 +40,7 @@ class MatchHud extends StatelessWidget {
   final List<({Color color, bool active})> dots;
   final String meTurnLabel;
   final String oppTurnLabel;
+  final VoidCallback onInfo;
   final bool meTurn;
   final bool oppTurn;
   final String? meDelta;
@@ -43,7 +49,7 @@ class MatchHud extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(12, 6, 12, 10),
+      padding: EdgeInsets.fromLTRB(12.w, 6.h, 12.w, 10.h),
       child: Row(
         children: [
           ScoreChip(
@@ -56,51 +62,53 @@ class MatchHud extends StatelessWidget {
             turnLabel: meTurnLabel,
             delta: meDelta,
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: 8.w),
           ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 78),
+            constraints: BoxConstraints(minWidth: 78.r),
             child: Column(
               children: [
                 Text(modeName, style: AppText.hudMode(modeInk)),
-                const SizedBox(height: 5),
+                SizedBox(height: 5.h),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     for (final d in dots) ...[
                       AnimatedContainer(
                         duration: const Duration(milliseconds: 300),
-                        width: d.active ? 18 : 6,
-                        height: 5,
-                        margin: const EdgeInsets.symmetric(horizontal: 1.5),
+                        width: d.active ? 18.r : 6.r,
+                        height: 5.r,
+                        margin: EdgeInsets.symmetric(horizontal: 1.5.w),
                         decoration: BoxDecoration(
                           color: d.color,
-                          borderRadius: BorderRadius.circular(9),
+                          borderRadius: BorderRadius.circular(9.r),
                         ),
                       ),
                     ],
                   ],
                 ),
-                const SizedBox(height: 5),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  textDirection: TextDirection.ltr,
-                  children: [
-                    Container(
-                      width: 5,
-                      height: 5,
-                      decoration: BoxDecoration(
-                        color: AppColors.okInk,
-                        shape: BoxShape.circle,
-                      ),
+                SizedBox(height: 4.h),
+                PressScale(
+                  onTap: onInfo,
+                  child: Container(
+                    width: 26.r,
+                    height: 26.r,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: AppColors.tint(modeInk, .12),
+                      shape: BoxShape.circle,
                     ),
-                    const SizedBox(width: 4),
-                    Text('42ms', style: AppText.ping),
-                  ],
+                    child: SvgPicture.asset(
+                      AppIcons.faq,
+                      width: 17.r,
+                      height: 17.r,
+                      colorFilter: ColorFilter.mode(modeInk, BlendMode.srcIn),
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: 8.w),
           ScoreChip(
             name: oppName,
             initial: oppInitial,

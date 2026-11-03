@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/match_app/countdown_ring.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VsCountdown extends StatelessWidget {
   const VsCountdown({super.key, required this.count, required this.goLabel});
@@ -19,8 +20,8 @@ class VsCountdown extends StatelessWidget {
         fx: Fx.pop,
         delay: const Duration(milliseconds: 300),
         child: Container(
-          width: 120,
-          height: 120,
+          width: 120.r,
+          height: 120.r,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: AppColors.tx,
@@ -42,8 +43,8 @@ class VsCountdown extends StatelessWidget {
             boxShadow: AppShadows.sh2,
           ),
           child: CountdownRing(
-            size: 170,
-            width: 11.5,
+            size: 170.r,
+            width: 11.5.r,
             progress: count / 3,
             color: AppColors.pri,
             child: Text('$count', style: AppText.countdown(84)),
@@ -54,10 +55,10 @@ class VsCountdown extends StatelessWidget {
     return Enter(
       fx: Fx.pop,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+        padding: EdgeInsets.symmetric(horizontal: 34.w, vertical: 8.h),
         decoration: BoxDecoration(
           color: AppColors.pri,
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(28.r),
           boxShadow: [
             BoxShadow(
               color: AppColors.tint(AppColors.pri, .5),

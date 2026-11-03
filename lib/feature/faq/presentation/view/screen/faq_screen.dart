@@ -11,6 +11,7 @@ import 'package:fii90/feature/faq/presentation/view_model/faq_cubit.dart';
 import 'package:fii90/feature/faq/presentation/view_model/faq_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FaqScreen extends StatelessWidget {
   const FaqScreen({super.key});
@@ -31,12 +32,12 @@ class FaqScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     for (var i = 0; i < FaqItem.categories.length; i++) ...[
-                      if (i > 0) const SizedBox(width: 8),
+                      if (i > 0) SizedBox(width: 8.w),
                       SelectChip(
                         label: context.tr(FaqItem.categories[i]),
                         selected: state.category == i,
                         gradient: true,
-                        height: 38,
+                        height: 38.r,
                         onTap: () => cubit.selectCategory(i),
                       ),
                     ],
@@ -46,7 +47,7 @@ class FaqScreen extends StatelessWidget {
               Column(
                 children: [
                   for (final item in cubit.items) ...[
-                    if (item != cubit.items.first) const SizedBox(height: 10),
+                    if (item != cubit.items.first) SizedBox(height: 10.h),
                     FaqTile(
                       question: context.tr(item.questionKey),
                       answer: context.tr(item.answerKey),

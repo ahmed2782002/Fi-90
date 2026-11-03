@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/feature/journey/mock_model/leader.dart';
 import 'package:fii90/feature/journey/presentation/view/widgets/podium_column.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LeaderPodium extends StatelessWidget {
   const LeaderPodium({super.key, required this.leaders});
@@ -12,7 +13,7 @@ class LeaderPodium extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 6, bottom: 14),
+      padding: EdgeInsets.only(top: 6.h, bottom: 14.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -26,7 +27,7 @@ class LeaderPodium extends StatelessWidget {
             rankSize: 24,
             rankColor: AppColors.tx2,
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: 8.w),
           PodiumColumn(
             name: context.tr(leaders[0].nameKey),
             rank: 1,
@@ -38,7 +39,7 @@ class LeaderPodium extends StatelessWidget {
             rankColor: AppColors.goldInk,
             first: true,
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: 8.w),
           PodiumColumn(
             name: context.tr(leaders[2].nameKey),
             rank: 3,

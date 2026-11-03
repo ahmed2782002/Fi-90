@@ -11,6 +11,7 @@ import 'package:fii90/feature/auction_round/presentation/view/widgets/pitch_pain
 import 'package:fii90/feature/auction_round/presentation/view/widgets/pitch_token.dart';
 import 'package:fii90/feature/auction_round/presentation/view_model/auction_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TeamPitch extends StatelessWidget {
   const TeamPitch({
@@ -40,7 +41,7 @@ class TeamPitch extends StatelessWidget {
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(
           color: active ? nameColor : AppColors.line,
           width: 1.5,
@@ -54,11 +55,11 @@ class TeamPitch extends StatelessWidget {
           line: AppColors.line2,
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(8, 12, 8, 14),
+          padding: EdgeInsets.fromLTRB(8.w, 12.h, 8.w, 14.h),
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(10, 2, 10, 4),
+                padding: EdgeInsets.fromLTRB(10.w, 2.h, 10.w, 4.h),
                 child: Row(
                   children: [
                     Expanded(
@@ -71,15 +72,15 @@ class TeamPitch extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                        4,
-                        4,
-                        10,
-                        4,
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                        4.w,
+                        4.h,
+                        10.w,
+                        4.h,
                       ),
                       decoration: BoxDecoration(
                         color: AppColors.s1,
-                        borderRadius: BorderRadius.circular(999),
+                        borderRadius: BorderRadius.circular(999.r),
                         border: Border.all(color: AppColors.line),
                       ),
                       child: Row(
@@ -88,12 +89,12 @@ class TeamPitch extends StatelessWidget {
                             icon: AppIcons.person,
                             tint: AppColors.s2,
                             ink: AppColors.dim,
-                            size: 30,
-                            radius: 15,
-                            iconSize: 16,
+                            size: 30.r,
+                            radius: 15.r,
+                            iconSize: 16.r,
                             tintAlpha: 1,
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(width: 8.w),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -119,20 +120,22 @@ class TeamPitch extends StatelessWidget {
               ),
               for (final row in rows)
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  padding: EdgeInsets.symmetric(vertical: 4.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       for (final slot in row)
-                        PitchToken(
-                          slotLabel: context.tr(AuctionPair.slotKeyOf(slot)),
-                          emptyLabel: context.tr(AppStrings.notYet),
-                          freeLabel: context.tr(AppStrings.free),
-                          player: team[slot] == null
-                              ? null
-                              : AuctionPlayer.all[team[slot]!.player],
-                          price: team[slot]?.price ?? 0,
-                          highlight: slot == freshSlot ? glow : null,
+                        Flexible(
+                          child: PitchToken(
+                            slotLabel: context.tr(AuctionPair.slotKeyOf(slot)),
+                            emptyLabel: context.tr(AppStrings.notYet),
+                            freeLabel: context.tr(AppStrings.free),
+                            player: team[slot] == null
+                                ? null
+                                : AuctionPlayer.all[team[slot]!.player],
+                            price: team[slot]?.price ?? 0,
+                            highlight: slot == freshSlot ? glow : null,
+                          ),
                         ),
                     ],
                   ),

@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/stage_app/line_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ModeCard extends StatelessWidget {
   const ModeCard({
@@ -21,11 +22,11 @@ class ModeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 104,
-      height: 176,
+      width: 104.r,
+      height: 176.r,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(30.r),
         border: Border.all(color: color, width: 1.5),
         gradient: LinearGradient(
           begin: const Alignment(-.09, -1),
@@ -43,7 +44,7 @@ class ModeCard extends StatelessWidget {
         children: [
           PositionedDirectional(
             top: -6,
-            end: 8,
+            end: 8.w,
             child: Text(
               number,
               style: AppText.modeNumber.copyWith(
@@ -52,12 +53,12 @@ class ModeCard extends StatelessWidget {
             ),
           ),
           Container(
-            width: 46,
-            height: 46,
+            width: 46.r,
+            height: 46.r,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: AppColors.tint(color, .22),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(16.r),
             ),
             child: LineIcon(icon, color: ink),
           ),

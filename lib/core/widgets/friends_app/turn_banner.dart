@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TurnBanner extends StatelessWidget {
   const TurnBanner({
@@ -18,21 +19,21 @@ class TurnBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final sub = subtitle;
     return Container(
-      constraints: const BoxConstraints(minHeight: 44),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+      constraints: BoxConstraints(minHeight: 44.r),
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 6.h),
       decoration: BoxDecoration(
         color: AppColors.mix(color, .12, AppColors.s1),
-        borderRadius: BorderRadius.circular(sub == null ? 999 : 24),
+        borderRadius: BorderRadius.circular(sub == null ? 999.r : 24.r),
         border: Border.all(color: color, width: 1.5),
       ),
       child: sub == null
           ? Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 8,
+              spacing: 8.r,
               children: [
                 Container(
-                  width: 10,
-                  height: 10,
+                  width: 10.r,
+                  height: 10.r,
                   decoration: BoxDecoration(
                     color: color,
                     shape: BoxShape.circle,
@@ -48,7 +49,7 @@ class TurnBanner extends StatelessWidget {
               ],
             )
           : Column(
-              spacing: 2,
+              spacing: 2.r,
               children: [
                 Text(
                   title,

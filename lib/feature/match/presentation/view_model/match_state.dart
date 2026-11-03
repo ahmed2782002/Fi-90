@@ -2,7 +2,7 @@ import 'package:fii90/core/widgets/app_toast/toast_message.dart';
 import 'package:fii90/feature/match/mock_model/match_mode.dart';
 import 'package:fii90/feature/match/mock_model/round_result.dart';
 
-enum MatchStage { search, vs, intro, round, roundResult, finished, exit }
+enum MatchStage { search, vs, round, roundResult, finished, exit }
 
 class MatchState {
   const MatchState({
@@ -20,7 +20,6 @@ class MatchState {
     this.searchSeconds = 0,
     this.found = false,
     this.vsCount = 5,
-    this.introCount = 4,
     this.roundKey = 0,
     this.toast,
   });
@@ -39,7 +38,6 @@ class MatchState {
   final int searchSeconds;
   final bool found;
   final int vsCount;
-  final int introCount;
   final int roundKey;
   final ToastMessage? toast;
 
@@ -58,7 +56,6 @@ class MatchState {
     int? searchSeconds,
     bool? found,
     int? vsCount,
-    int? introCount,
     int? roundKey,
     ToastMessage? toast,
   }) => MatchState(
@@ -76,7 +73,6 @@ class MatchState {
     searchSeconds: searchSeconds ?? this.searchSeconds,
     found: found ?? this.found,
     vsCount: vsCount ?? this.vsCount,
-    introCount: introCount ?? this.introCount,
     roundKey: roundKey ?? this.roundKey,
     toast: toast,
   );

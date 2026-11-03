@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BankLadderCard extends StatelessWidget {
   const BankLadderCard({
@@ -29,16 +30,16 @@ class BankLadderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: EdgeInsets.all(14.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        spacing: 12,
+        spacing: 12.r,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,14 +57,14 @@ class BankLadderCard extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
-              spacing: 6,
+              spacing: 6.r,
               children: [
                 for (final (i, v) in ladder.indexed)
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
-                    constraints: const BoxConstraints(minWidth: 44),
-                    height: 36,
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    constraints: BoxConstraints(minWidth: 44.r),
+                    height: 36.r,
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: i < chain
@@ -71,7 +72,7 @@ class BankLadderCard extends StatelessWidget {
                           : i == chain
                           ? AppColors.tint(AppColors.gold, .14)
                           : AppColors.s2,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                       border: Border.all(
                         color: i <= chain ? AppColors.gold : AppColors.line,
                         width: 1.5,
@@ -92,7 +93,7 @@ class BankLadderCard extends StatelessWidget {
             ),
           ),
           Row(
-            spacing: 12,
+            spacing: 12.r,
             children: [
               Expanded(
                 child: Column(
@@ -111,12 +112,12 @@ class BankLadderCard extends StatelessWidget {
                 child: PressScale(
                   onTap: onBank,
                   child: Container(
-                    height: 56,
-                    padding: const EdgeInsets.symmetric(horizontal: 22),
+                    height: 56.r,
+                    padding: EdgeInsets.symmetric(horizontal: 22.w),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: AppColors.gold,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                       boxShadow: const [
                         BoxShadow(
                           color: AppColors.goldDeep,

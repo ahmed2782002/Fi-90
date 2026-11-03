@@ -15,6 +15,7 @@ import 'package:fii90/feature/notifications/presentation/view_model/notification
 import 'package:fii90/feature/profile/presentation/view_model/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NotificationsScreen extends StatelessWidget {
@@ -40,12 +41,12 @@ class NotificationsScreen extends StatelessWidget {
               ? PressScale(
                   onTap: cubit.readAll,
                   child: Container(
-                    height: 36,
+                    height: 36.r,
                     alignment: Alignment.center,
-                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    padding: EdgeInsets.symmetric(horizontal: 14.w),
                     decoration: BoxDecoration(
                       color: AppColors.s1,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                       border: Border.all(color: AppColors.line2),
                     ),
                     child: Text(
@@ -58,13 +59,10 @@ class NotificationsScreen extends StatelessWidget {
           children: [
             if (muted)
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 12,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
                 decoration: BoxDecoration(
                   color: AppColors.tint(AppColors.gold, .12),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.r),
                   border: Border.all(color: AppColors.tint(AppColors.gold, .4)),
                 ),
                 child: Text(
@@ -118,19 +116,19 @@ class NotificationsScreen extends StatelessWidget {
                   children: [
                     SvgPicture.asset(
                       AppIcons.notification,
-                      width: 56,
-                      height: 56,
+                      width: 56.r,
+                      height: 56.r,
                       colorFilter: ColorFilter.mode(
                         AppColors.dim,
                         BlendMode.srcIn,
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12.h),
                     Text(
                       context.tr(AppStrings.noNotifications),
                       style: AppText.emptyTitle,
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12.h),
                     Text(
                       context.tr(AppStrings.noNotificationsHint),
                       textAlign: TextAlign.center,

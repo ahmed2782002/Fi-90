@@ -14,6 +14,7 @@ import 'package:fii90/core/widgets/stage_app/info_chip.dart';
 import 'package:fii90/core/widgets/stage_app/stage_glow.dart';
 import 'package:fii90/feature/onboarding/presentation/view/widgets/challenges_slide/mode_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChallengesSlide extends StatelessWidget {
   const ChallengesSlide({super.key});
@@ -110,11 +111,11 @@ class ChallengesSlide extends StatelessWidget {
           Positioned(
             left: 0,
             right: 0,
-            bottom: 14,
+            bottom: 14.r,
             child: Wrap(
               alignment: WrapAlignment.center,
-              spacing: 6,
-              runSpacing: 6,
+              spacing: 6.r,
+              runSpacing: 6.r,
               children: [
                 for (final c in _chips)
                   Enter(

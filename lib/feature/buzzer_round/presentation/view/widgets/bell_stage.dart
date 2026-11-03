@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/theme/gradients.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BellStage extends StatelessWidget {
   const BellStage({
@@ -41,19 +42,19 @@ class BellStage extends StatelessWidget {
         colorFilter: ColorFilter.matrix(
           dimmed ? AppColors.dimMatrix : AppColors.identityMatrix,
         ),
-        child: Image.asset(AppImages.bell3d, width: 236),
+        child: Image.asset(AppImages.bell3d, width: 236.r),
       ),
     );
     return SizedBox(
-      width: 320,
-      height: 300,
+      width: 320.r,
+      height: 300.r,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           Positioned(
-            top: 10,
-            width: 300,
-            height: 250,
+            top: 10.r,
+            width: 300.r,
+            height: 250.r,
             child: Opacity(
               opacity: .55,
               child: DecoratedBox(
@@ -67,10 +68,10 @@ class BellStage extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 10,
-            right: 10,
-            bottom: 6,
-            height: 86,
+            left: 10.w,
+            right: 10.w,
+            bottom: 6.r,
+            height: 86.r,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 gradient: AppColors.tableBase,
@@ -81,10 +82,10 @@ class BellStage extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 10,
-            right: 10,
-            bottom: 18,
-            height: 80,
+            left: 10.w,
+            right: 10.w,
+            bottom: 18.r,
+            height: 80.r,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 gradient: AppColors.tableTop,
@@ -102,7 +103,7 @@ class BellStage extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 40,
+            bottom: 40.r,
             child: Semantics(
               button: true,
               label: semanticLabel,
@@ -128,10 +129,10 @@ class BellStage extends StatelessWidget {
             bottom: -2,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 5.h),
               decoration: BoxDecoration(
                 color: labelColor,
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: BorderRadius.circular(999.r),
               ),
               child: Text(label, style: AppText.bellLabel(labelInk)),
             ),

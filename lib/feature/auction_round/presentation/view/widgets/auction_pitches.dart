@@ -8,6 +8,7 @@ import 'package:fii90/feature/match/mock_model/round_result.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuctionPitches extends StatelessWidget {
   const AuctionPitches({super.key});
@@ -20,10 +21,10 @@ class AuctionPitches extends StatelessWidget {
     final fresh = state.revealing ? cubit.pair.slot : null;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 12,
+      spacing: 12.r,
       children: [
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(6, 4, 6, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(6.w, 4.h, 6.w, 0),
           child: Text(
             context.tr(AppStrings.bothLineups),
             style: AppText.listHeader,

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants/app_icons.dart';
@@ -10,14 +11,14 @@ import 'app_background/app_background.dart';
 import 'press_scale.dart';
 
 class SubPage extends StatelessWidget {
-  const SubPage({
+  SubPage({
     super.key,
     required this.title,
     required this.children,
-    this.gap = 18,
+    double? gap,
     this.bottom,
     this.action,
-  });
+  }) : gap = gap ?? 18.h;
 
   final String title;
   final List<Widget> children;
@@ -33,7 +34,7 @@ class SubPage extends StatelessWidget {
       body: AppBackground(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(18, 9, 18, 30),
+            padding: EdgeInsets.fromLTRB(18.w, 9.h, 18.w, 30.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -45,8 +46,8 @@ class SubPage extends StatelessWidget {
                       child: PressScale(
                         onTap: () => Navigator.of(context).pop(),
                         child: Container(
-                          width: 44,
-                          height: 44,
+                          width: 44.r,
+                          height: 44.r,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             color: AppColors.s1,
@@ -58,8 +59,8 @@ class SubPage extends StatelessWidget {
                                 Directionality.of(context) == TextDirection.ltr,
                             child: SvgPicture.asset(
                               AppIcons.back,
-                              width: 22,
-                              height: 22,
+                              width: 22.r,
+                              height: 22.r,
                               colorFilter: ColorFilter.mode(
                                 AppColors.tx,
                                 BlendMode.srcIn,
@@ -69,7 +70,7 @@ class SubPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    SizedBox(width: 12.w),
                     Expanded(child: Text(title, style: AppText.pageTitle)),
                     ?action,
                   ],

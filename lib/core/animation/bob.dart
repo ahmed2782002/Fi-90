@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'app_curves.dart';
 import 'loop.dart';
 
 class Bob extends StatelessWidget {
-  const Bob({
+  Bob({
     super.key,
     required this.child,
-    this.distance = 7,
+    double? distance,
     this.period = const Duration(seconds: 3),
     this.delay = Duration.zero,
-  });
+  }) : distance = distance ?? 7.r;
 
   final Widget child;
   final double distance;

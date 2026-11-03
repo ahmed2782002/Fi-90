@@ -1,6 +1,7 @@
 import 'package:fii90/core/animation/loop.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PulseRing extends StatelessWidget {
   const PulseRing({super.key, required this.delay});
@@ -14,8 +15,8 @@ class PulseRing extends StatelessWidget {
       delay: Duration(milliseconds: delay),
       hideUntilStart: true,
       child: Container(
-        width: 260,
-        height: 260,
+        width: 260.r,
+        height: 260.r,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(color: AppColors.cy, width: 1.5),

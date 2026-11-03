@@ -14,6 +14,7 @@ import 'package:fii90/feature/journey/presentation/view_model/journey_cubit.dart
 import 'package:fii90/feature/journey/presentation/view_model/journey_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class JourneyScreen extends StatelessWidget {
   const JourneyScreen({super.key});
@@ -26,12 +27,12 @@ class JourneyScreen extends StatelessWidget {
         return SafeArea(
           bottom: false,
           child: Padding(
-            padding: const EdgeInsets.only(top: 9, bottom: 100),
+            padding: EdgeInsets.only(top: 9.h, bottom: 100.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(18, 0, 18, 12),
+                  padding: EdgeInsets.fromLTRB(18.w, 0, 18.w, 12.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -39,7 +40,7 @@ class JourneyScreen extends StatelessWidget {
                         context.tr(AppStrings.navJourney),
                         style: AppText.screenTitle,
                       ),
-                      const SizedBox(height: 12),
+                      SizedBox(height: 12.h),
                       PillSegment(
                         labels: [
                           context.tr(AppStrings.journeyRanking),
@@ -50,12 +51,12 @@ class JourneyScreen extends StatelessWidget {
                         style: AppText.segment,
                         activeGradient: AppColors.grad,
                         activeShadow: AppShadows.segment,
-                        height: 40,
+                        height: 40.r,
                         padding: 4,
                         expand: true,
                       ),
                       if (cubit.isRanking) ...[
-                        const SizedBox(height: 12),
+                        SizedBox(height: 12.h),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
@@ -65,7 +66,7 @@ class JourneyScreen extends StatelessWidget {
                                 i < Leader.boards.length;
                                 i++
                               ) ...[
-                                if (i > 0) const SizedBox(width: 6),
+                                if (i > 0) SizedBox(width: 6.w),
                                 BoardChip(
                                   label: context.tr(Leader.boards[i]),
                                   selected: state.board == i,
@@ -83,10 +84,9 @@ class JourneyScreen extends StatelessWidget {
                   child: cubit.isRanking
                       ? RankingList(leaders: cubit.leaders)
                       : ListView.separated(
-                          padding: const EdgeInsets.fromLTRB(18, 0, 18, 12),
+                          padding: EdgeInsets.fromLTRB(18.w, 0, 18.w, 12.h),
                           itemCount: MatchRecord.mock.length,
-                          separatorBuilder: (_, _) =>
-                              const SizedBox(height: 10),
+                          separatorBuilder: (_, _) => SizedBox(height: 10.h),
                           itemBuilder: (_, i) =>
                               HistoryCard(record: MatchRecord.mock[i]),
                         ),

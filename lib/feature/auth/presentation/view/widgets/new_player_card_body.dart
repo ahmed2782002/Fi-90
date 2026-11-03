@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/auth/presentation/view/widgets/player_stat.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NewPlayerCardBody extends StatelessWidget {
@@ -13,11 +14,11 @@ class NewPlayerCardBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(12, 14, 12, 12),
+      padding: EdgeInsets.fromLTRB(12.w, 14.h, 12.w, 12.h),
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            padding: EdgeInsets.symmetric(horizontal: 4.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,13 +33,10 @@ class NewPlayerCardBody extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 9,
-                    vertical: 2,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 2.h),
                   decoration: BoxDecoration(
                     color: AppColors.tint(AppColors.black, .28),
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                   ),
                   child: Text(
                     context.tr(AppStrings.newPlayer),
@@ -48,10 +46,10 @@ class NewPlayerCardBody extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
           Flexible(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxHeight: 76),
+              constraints: BoxConstraints(maxHeight: 76.r),
               child: AspectRatio(
                 aspectRatio: 1,
                 child: Container(
@@ -74,11 +72,11 @@ class NewPlayerCardBody extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
           Text(context.tr(AppStrings.isItYou), style: AppText.playerHeadline),
-          const SizedBox(height: 8),
-          Container(height: 1, color: AppColors.tint(AppColors.white, .2)),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
+          Container(height: 1.r, color: AppColors.tint(AppColors.white, .2)),
+          SizedBox(height: 8.h),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

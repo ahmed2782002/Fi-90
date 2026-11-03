@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SideScoreCard extends StatelessWidget {
   const SideScoreCard({
@@ -28,31 +29,31 @@ class SideScoreCard extends StatelessWidget {
     final lead = leadLabel;
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.all(18),
+        padding: EdgeInsets.all(18.r),
         decoration: BoxDecoration(
           color: AppColors.s1,
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(28.r),
           border: Border.all(color: AppColors.tint(fill, .4), width: 1.5),
           boxShadow: AppShadows.sh1,
         ),
         child: Column(
           children: [
             Container(
-              width: 40,
-              height: 40,
+              width: 40.r,
+              height: 40.r,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: fill,
-                borderRadius: BorderRadius.circular(13),
+                borderRadius: BorderRadius.circular(13.r),
               ),
               child: Text(initial, style: AppText.bigInitial(17, onFill)),
             ),
-            const SizedBox(height: 6),
+            SizedBox(height: 6.h),
             Text(name, style: AppText.sideName),
-            const SizedBox(height: 6),
+            SizedBox(height: 6.h),
             Text('$score', style: AppText.bigScore),
             if (lead != null) ...[
-              const SizedBox(height: 6),
+              SizedBox(height: 6.h),
               Text(lead, style: AppText.leadTag(ink)),
             ],
           ],

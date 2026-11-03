@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/gradients.dart';
 import 'package:fii90/feature/auth/presentation/view/widgets/new_player_card.dart';
 import 'package:fii90/feature/auth/presentation/view/widgets/pulse_ring.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TiltingPlayerCard extends StatelessWidget {
   const TiltingPlayerCard({super.key});
@@ -18,8 +19,8 @@ class TiltingPlayerCard extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          width: 240,
-          height: 240,
+          width: 240.r,
+          height: 240.r,
           decoration: BoxDecoration(
             gradient: AppGradients.closestSide([
               AppColors.tint(AppColors.cy, .22),

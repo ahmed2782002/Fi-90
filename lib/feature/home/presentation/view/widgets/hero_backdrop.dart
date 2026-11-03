@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/app_background/tiled_svg.dart';
 import 'package:fii90/core/widgets/dashed_ring/dashed_ring_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HeroBackdrop extends StatelessWidget {
   const HeroBackdrop({super.key});
@@ -26,9 +27,9 @@ class HeroBackdrop extends StatelessWidget {
               builder: (context, t, child) =>
                   Transform.rotate(angle: t * 2 * math.pi, child: child),
               child: CustomPaint(
-                size: const Size.square(260),
+                size: Size.square(260.r),
                 painter: DashedRingPainter(
-                  width: 16,
+                  width: 16.r,
                   color: AppColors.tint(AppColors.white, .9),
                 ),
               ),
@@ -39,8 +40,8 @@ class HeroBackdrop extends StatelessWidget {
           child: TiledSvg(asset: AppImages.heroSparkles, opacity: .14),
         ),
         PositionedDirectional(
-          top: 34,
-          end: 10,
+          top: 34.r,
+          end: 10.w,
           child: Text('90', style: AppText.heroWatermark),
         ),
       ],

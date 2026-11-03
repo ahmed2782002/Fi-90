@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CoinsButton extends StatelessWidget {
@@ -26,11 +27,11 @@ class CoinsButton extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Container(
-              height: 44,
-              margin: const EdgeInsetsDirectional.only(start: 14),
-              padding: const EdgeInsetsDirectional.only(start: 44, end: 6),
+              height: 44.r,
+              margin: EdgeInsetsDirectional.only(start: 14.w),
+              padding: EdgeInsetsDirectional.only(start: 44.w, end: 6.w),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: BorderRadius.circular(999.r),
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -43,7 +44,7 @@ class CoinsButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   ConstrainedBox(
-                    constraints: const BoxConstraints(minWidth: 28),
+                    constraints: BoxConstraints(minWidth: 28.r),
                     child: Text(
                       '$coins',
                       textAlign: TextAlign.center,
@@ -51,10 +52,10 @@ class CoinsButton extends StatelessWidget {
                       style: AppText.coins,
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Container(
-                    width: 32,
-                    height: 32,
+                    width: 32.r,
+                    height: 32.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -72,20 +73,20 @@ class CoinsButton extends StatelessWidget {
                     ),
                     child: SvgPicture.asset(
                       AppIcons.plus,
-                      width: 16,
-                      height: 16,
+                      width: 16.r,
+                      height: 16.r,
                     ),
                   ),
                 ],
               ),
             ),
-            const PositionedDirectional(
+            PositionedDirectional(
               start: 0,
               top: -3,
               child: Image(
                 image: AssetImage(AppImages.coin90),
-                width: 50,
-                height: 50,
+                width: 50.r,
+                height: 50.r,
               ),
             ),
           ],

@@ -12,6 +12,7 @@ import 'package:fii90/feature/splash/presentation/view_model/splash_cubit.dart';
 import 'package:fii90/feature/splash/presentation/view_model/splash_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -66,7 +67,7 @@ class SplashScreen extends StatelessWidget {
                           if (!state.isWarmingUp) const SplashHero(),
                           if (!state.isWarmingUp)
                             Positioned(
-                              bottom: 78,
+                              bottom: 78.r,
                               left: 0,
                               right: 0,
                               child: Center(

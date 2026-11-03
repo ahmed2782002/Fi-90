@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FaqTile extends StatelessWidget {
   const FaqTile({
@@ -24,7 +25,7 @@ class FaqTile extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(24.r),
         border: Border.all(color: open ? AppColors.line2 : AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
@@ -35,18 +36,18 @@ class FaqTile extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
             child: Container(
-              constraints: const BoxConstraints(minHeight: 58),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              constraints: BoxConstraints(minHeight: 58.r),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
               child: Row(
                 children: [
                   Expanded(child: Text(question, style: AppText.faqQuestion)),
-                  const SizedBox(width: 12),
+                  SizedBox(width: 12.w),
                   AnimatedRotation(
                     turns: open ? .125 : 0,
                     duration: const Duration(milliseconds: 250),
                     child: Container(
-                      width: 28,
-                      height: 28,
+                      width: 28.r,
+                      height: 28.r,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: open ? null : AppColors.s2,
@@ -70,7 +71,7 @@ class FaqTile extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: open
                 ? Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                    padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 16.h),
                     child: Text(answer, style: AppText.faqAnswer),
                   )
                 : const SizedBox(width: double.infinity),

@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/result_tag.dart';
 import 'package:fii90/feature/journey/mock_model/match_record.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HistoryCard extends StatelessWidget {
   const HistoryCard({super.key, required this.record});
@@ -15,10 +16,10 @@ class HistoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final mode = record.modeKey;
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: EdgeInsets.all(14.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.r),
         border: Border.all(color: AppColors.line),
       ),
       child: Column(
@@ -30,7 +31,7 @@ class HistoryCard extends StatelessWidget {
                 color: record.result.color,
                 background: record.result.background,
               ),
-              const SizedBox(width: 10),
+              SizedBox(width: 10.w),
               Expanded(
                 child: Text(
                   context.tr(
@@ -47,19 +48,19 @@ class HistoryCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Row(
             children: [
               for (final color in record.modes) ...[
                 Container(
-                  width: 8,
-                  height: 8,
+                  width: 8.r,
+                  height: 8.r,
                   decoration: BoxDecoration(
                     color: color,
-                    borderRadius: BorderRadius.circular(3),
+                    borderRadius: BorderRadius.circular(3.r),
                   ),
                 ),
-                const SizedBox(width: 6),
+                SizedBox(width: 6.w),
               ],
               Text(
                 mode == null

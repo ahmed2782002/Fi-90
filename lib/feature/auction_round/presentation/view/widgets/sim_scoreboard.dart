@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SimScoreboard extends StatelessWidget {
   const SimScoreboard({
@@ -36,10 +37,10 @@ class SimScoreboard extends StatelessWidget {
       (opponent, oppAverage),
     ];
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         gradient: AppColors.grad,
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(30.r),
         border: Border.all(color: AppColors.neon, width: 1.5),
         boxShadow: AppShadows.glow,
       ),
@@ -50,13 +51,10 @@ class SimScoreboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 3,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),
                 decoration: BoxDecoration(
                   color: AppColors.tint(AppColors.black, .25),
-                  borderRadius: BorderRadius.circular(999),
+                  borderRadius: BorderRadius.circular(999.r),
                 ),
                 child: Text(
                   context.tr(AppStrings.aiMatch),
@@ -70,7 +68,7 @@ class SimScoreboard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           Row(
             children: [
               for (final (i, (name, avg)) in teams.indexed) ...[
@@ -97,18 +95,18 @@ class SimScoreboard extends StatelessWidget {
               ],
             ],
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           ClipRRect(
-            borderRadius: BorderRadius.circular(9),
+            borderRadius: BorderRadius.circular(9.r),
             child: LinearProgressIndicator(
               value: progress,
-              minHeight: 5,
+              minHeight: 5.r,
               color: AppColors.neon,
               backgroundColor: AppColors.tint(AppColors.white, .18),
             ),
           ),
           if (pens != null) ...[
-            const SizedBox(height: 12),
+            SizedBox(height: 12.h),
             Text(
               context.tr(AppStrings.penalties, args: [pens]),
               textAlign: TextAlign.center,

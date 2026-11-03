@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuctionSetup extends StatelessWidget {
   const AuctionSetup({super.key, required this.onPick});
@@ -37,10 +38,10 @@ class AuctionSetup extends StatelessWidget {
       fx: Fx.fadeUp,
       duration: const Duration(milliseconds: 350),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 18),
+        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 18.h),
         decoration: BoxDecoration(
           color: AppColors.s1,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30.r),
           border: Border.all(color: AppColors.line),
           boxShadow: AppShadows.sh1,
         ),
@@ -50,28 +51,28 @@ class AuctionSetup extends StatelessWidget {
               context.tr(AppStrings.pickAuctionType),
               style: AppText.sheetTitle,
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4.h),
             Text(
               context.tr(AppStrings.budgetDecides),
               textAlign: TextAlign.center,
               style: AppText.screenSubtitle,
             ),
-            const SizedBox(height: 14),
+            SizedBox(height: 14.h),
             Row(
               children: [
                 for (final (i, (size, budget, title, hint, shape, featured))
                     in options.indexed) ...[
-                  if (i > 0) const SizedBox(width: 10),
+                  if (i > 0) SizedBox(width: 10.w),
                   Expanded(
                     child: PressScale(
                       onTap: () => onPick(size),
                       child: Container(
-                        padding: const EdgeInsets.fromLTRB(10, 18, 10, 16),
+                        padding: EdgeInsets.fromLTRB(10.w, 18.h, 10.w, 16.h),
                         decoration: BoxDecoration(
                           color: featured
                               ? AppColors.mix(AppColors.gold, .1, AppColors.s2)
                               : AppColors.s2,
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius: BorderRadius.circular(24.r),
                           border: Border.all(
                             color: featured ? AppColors.gold : AppColors.line2,
                             width: 1.5,
@@ -84,27 +85,27 @@ class AuctionSetup extends StatelessWidget {
                               textDirection: TextDirection.ltr,
                               style: AppText.budgetBig,
                             ),
-                            const SizedBox(height: 6),
+                            SizedBox(height: 6.h),
                             Text(
                               context.tr(title),
                               textAlign: TextAlign.center,
                               style: AppText.optionTitle,
                             ),
-                            const SizedBox(height: 6),
+                            SizedBox(height: 6.h),
                             Text(
                               context.tr(hint),
                               textAlign: TextAlign.center,
                               style: AppText.meta,
                             ),
-                            const SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 3,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10.w,
+                                vertical: 3.h,
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.s3,
-                                borderRadius: BorderRadius.circular(999),
+                                borderRadius: BorderRadius.circular(999.r),
                               ),
                               child: Text(
                                 shape,

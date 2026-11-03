@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:fii90/feature/spy_game/presentation/view/widgets/spy_choice_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpyVoteView extends StatelessWidget {
   const SpyVoteView({
@@ -30,18 +31,18 @@ class SpyVoteView extends StatelessWidget {
     final choice = selected;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 12,
+      spacing: 12.r,
       children: [
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16.r),
           decoration: BoxDecoration(
             color: AppColors.s1,
-            borderRadius: BorderRadius.circular(26),
+            borderRadius: BorderRadius.circular(26.r),
             border: Border.all(color: AppColors.player(voter).fill, width: 1.5),
             boxShadow: AppShadows.sh1,
           ),
           child: Column(
-            spacing: 6,
+            spacing: 6.r,
             children: [
               Text(
                 context.tr(AppStrings.votesNow, args: [players[voter]]),
@@ -82,11 +83,11 @@ class SpyVoteView extends StatelessWidget {
         PressScale(
           onTap: onConfirm,
           child: Container(
-            height: 56,
+            height: 56.r,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: choice == null ? AppColors.transparent : AppColors.redGlow,
-              borderRadius: BorderRadius.circular(999),
+              borderRadius: BorderRadius.circular(999.r),
               border: choice == null
                   ? Border.all(color: AppColors.line2, width: 1.5)
                   : null,

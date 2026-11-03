@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/theme/gradients.dart';
 import 'package:fii90/core/widgets/match_app/points_badge.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TriviaEndOverlay extends StatelessWidget {
   const TriviaEndOverlay({
@@ -26,7 +27,7 @@ class TriviaEndOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     final name = winner;
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(24.r),
       decoration: BoxDecoration(
         color: AppColors.bg,
         gradient: knockedOut
@@ -54,13 +55,13 @@ class TriviaEndOverlay extends StatelessWidget {
                     fx: Fx.pop,
                     delay: Duration(milliseconds: i * 120),
                     child: Container(
-                      width: 46,
-                      height: 46,
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      width: 46.r,
+                      height: 46.r,
+                      margin: EdgeInsets.symmetric(horizontal: 4.w),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: AppColors.bad,
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(15.r),
                       ),
                       child: Text(
                         '✕',
@@ -70,9 +71,9 @@ class TriviaEndOverlay extends StatelessWidget {
                   ),
               ],
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12.h),
             Text(context.tr(AppStrings.threeStrikes), style: AppText.knockout),
-            const SizedBox(height: 12),
+            SizedBox(height: 12.h),
             Text(
               context.tr(AppStrings.leftTheQuestion, args: [loser]),
               style: AppText.cardHeading,
@@ -83,7 +84,7 @@ class TriviaEndOverlay extends StatelessWidget {
               textAlign: TextAlign.center,
               style: AppText.exhaustedTitle,
             ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           if (name != null) ...[
             Text(
               context.tr(
@@ -94,8 +95,8 @@ class TriviaEndOverlay extends StatelessWidget {
               ),
               style: AppText.feedbackTitle(winnerColor ?? AppColors.tx, 16),
             ),
-            const SizedBox(height: 12),
-            const PointsBadge(label: '+20'),
+            SizedBox(height: 12.h),
+            PointsBadge(label: '+20'),
           ] else
             Text(context.tr(AppStrings.drawNoPoints), style: AppText.pageIntro),
         ],

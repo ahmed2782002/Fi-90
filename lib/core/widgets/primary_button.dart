@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/app_shadows.dart';
@@ -6,15 +7,16 @@ import '../theme/app_text.dart';
 import 'press_scale.dart';
 
 class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({
+  PrimaryButton({
     super.key,
     required this.label,
     required this.onTap,
-    this.height = 58,
+    double? height,
     this.style,
     this.expand = true,
-    this.horizontalPadding = 18,
-  });
+    double? horizontalPadding,
+  }) : height = height ?? 58.r,
+       horizontalPadding = horizontalPadding ?? 18.w;
 
   final String label;
   final VoidCallback onTap;
@@ -35,7 +37,7 @@ class PrimaryButton extends StatelessWidget {
           horizontal: expand ? 0 : horizontalPadding,
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(999),
+          borderRadius: BorderRadius.circular(999.r),
           border: Border.all(color: AppColors.neon, width: 1.5),
           gradient: AppColors.grad,
           boxShadow: AppShadows.glow,

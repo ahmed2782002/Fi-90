@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/tinted_icon_box.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ComebackHeader extends StatelessWidget {
   const ComebackHeader({
@@ -31,17 +32,17 @@ class ComebackHeader extends StatelessWidget {
         Row(
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+              padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 3.h),
               decoration: BoxDecoration(
                 color: AppColors.tint(AppColors.m4, .16),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(8.r),
               ),
               child: Text(
                 context.tr(AppStrings.comebackTag, args: [progress]),
                 style: AppText.modeTag(AppColors.m4Ink),
               ),
             ),
-            const SizedBox(width: 8),
+            SizedBox(width: 8.w),
             Expanded(
               child: Text(
                 context.tr(AppStrings.bothCanAnswer),
@@ -49,10 +50,10 @@ class ComebackHeader extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
+              padding: EdgeInsets.symmetric(horizontal: 11.w, vertical: 5.h),
               decoration: BoxDecoration(
                 color: AppColors.s1,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(color: AppColors.line),
               ),
               child: Row(
@@ -63,19 +64,19 @@ class ComebackHeader extends StatelessWidget {
                     context.tr(AppStrings.pointsLabel),
                     style: AppText.pointsCaption,
                   ),
-                  const SizedBox(width: 5),
+                  SizedBox(width: 5.w),
                   Text('$points', style: AppText.pointsValue),
                 ],
               ),
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 13.h),
           decoration: BoxDecoration(
             color: AppColors.s1,
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: BorderRadius.circular(28.r),
             border: Border.all(color: AppColors.line),
             boxShadow: AppShadows.sh1,
           ),
@@ -85,11 +86,11 @@ class ComebackHeader extends StatelessWidget {
                 icon: AppIcons.person,
                 tint: AppColors.m4,
                 ink: AppColors.m4Ink,
-                size: 58,
-                radius: 20,
-                iconSize: 30,
+                size: 58.r,
+                radius: 20.r,
+                iconSize: 30.r,
               ),
-              const SizedBox(width: 14),
+              SizedBox(width: 14.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,23 +99,23 @@ class ComebackHeader extends StatelessWidget {
                       context.tr(AppStrings.whoIsThisPlayer),
                       style: AppText.comebackTitle,
                     ),
-                    const SizedBox(height: 2),
+                    SizedBox(height: 2.h),
                     Text(
                       context.tr(AppStrings.careerHint),
                       style: AppText.meta,
                     ),
                     if (playing) ...[
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8.h),
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius: BorderRadius.circular(9.r),
                         child: LinearProgressIndicator(
                           value: nextClub,
-                          minHeight: 5,
+                          minHeight: 5.r,
                           color: AppColors.m4,
                           backgroundColor: AppColors.s3,
                         ),
                       ),
-                      const SizedBox(height: 6),
+                      SizedBox(height: 6.h),
                       Loop(
                         period: const Duration(seconds: 1),
                         builder: (context, t, child) => Opacity(

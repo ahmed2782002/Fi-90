@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ToggleSwitch extends StatelessWidget {
   const ToggleSwitch({
@@ -23,13 +24,13 @@ class ToggleSwitch extends StatelessWidget {
         onTap: onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          width: 52,
-          height: 32,
-          padding: const EdgeInsets.all(3),
+          width: 52.r,
+          height: 32.r,
+          padding: EdgeInsets.all(3.r),
           decoration: BoxDecoration(
             color: value ? null : AppColors.s3,
             gradient: value ? AppColors.grad : null,
-            borderRadius: BorderRadius.circular(999),
+            borderRadius: BorderRadius.circular(999.r),
             boxShadow: value ? AppShadows.toggle : const [],
           ),
           child: AnimatedAlign(
@@ -38,8 +39,8 @@ class ToggleSwitch extends StatelessWidget {
                 ? AlignmentDirectional.centerStart
                 : AlignmentDirectional.centerEnd,
             child: Container(
-              width: 26,
-              height: 26,
+              width: 26.r,
+              height: 26.r,
               decoration: BoxDecoration(
                 color: AppColors.white,
                 shape: BoxShape.circle,

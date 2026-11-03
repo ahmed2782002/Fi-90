@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PodiumBar extends StatelessWidget {
   const PodiumBar({
@@ -24,11 +25,11 @@ class PodiumBar extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: height,
-      padding: const EdgeInsets.only(top: 12),
+      padding: EdgeInsets.only(top: 12.h),
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(22),
-          bottom: Radius.circular(10),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(22.r),
+          bottom: Radius.circular(10.r),
         ),
         border: Border.all(color: accent, width: 1.5),
         gradient: LinearGradient(
@@ -41,7 +42,7 @@ class PodiumBar extends StatelessWidget {
       child: Column(
         children: [
           Text(rank, style: AppText.podiumRank.copyWith(color: ink)),
-          const SizedBox(height: 2),
+          SizedBox(height: 2.h),
           Text(xp, textDirection: TextDirection.ltr, style: AppText.tag),
         ],
       ),

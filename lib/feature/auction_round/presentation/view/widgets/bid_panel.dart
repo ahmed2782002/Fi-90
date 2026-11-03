@@ -8,6 +8,7 @@ import 'package:fii90/feature/auction_round/presentation/view/widgets/bid_action
 import 'package:fii90/feature/auction_round/presentation/view_model/auction_state.dart';
 import 'package:fii90/feature/auction_round/presentation/view/widgets/bid_status_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BidPanel extends StatelessWidget {
   const BidPanel({
@@ -42,10 +43,10 @@ class BidPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
@@ -87,17 +88,17 @@ class BidPanel extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           ClipRRect(
-            borderRadius: BorderRadius.circular(9),
+            borderRadius: BorderRadius.circular(9.r),
             child: LinearProgressIndicator(
               value: progress,
-              minHeight: 6,
+              minHeight: 6.r,
               color: urgent ? AppColors.bad : AppColors.gold,
               backgroundColor: AppColors.s3,
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           if (mode == BidMode.mine)
             BidActions(
               canRaise: canRaise,
@@ -117,11 +118,7 @@ class BidPanel extends StatelessWidget {
               },
               opponent: mode == BidMode.theirs,
               leading: mode == BidMode.waiting
-                  ? const SpinRing(
-                      size: 14,
-                      color: AppColors.goldGlow,
-                      width: 2,
-                    )
+                  ? SpinRing(size: 14.r, color: AppColors.goldGlow, width: 2.r)
                   : null,
             ),
         ],

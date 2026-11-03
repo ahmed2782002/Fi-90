@@ -14,6 +14,7 @@ import 'package:fii90/feature/trivia_round/presentation/view_model/trivia_cubit.
 import 'package:fii90/feature/trivia_round/presentation/view_model/trivia_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TriviaScreen extends StatelessWidget {
   const TriviaScreen({super.key});
@@ -23,7 +24,7 @@ class TriviaScreen extends StatelessWidget {
     final match = context.read<MatchCubit>();
     return BlocProvider(
       create: (_) => TriviaCubit(
-        question: match.state.question,
+        question: match.trivia[match.state.question],
         skill: match.skill,
         oppKey: match.oppNameKey,
       ),
@@ -53,7 +54,7 @@ class TriviaScreen extends StatelessWidget {
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 28),
+                  padding: EdgeInsets.fromLTRB(16.w, 4.h, 16.w, 28.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -68,8 +69,9 @@ class TriviaScreen extends StatelessWidget {
                           used: state.passUsed.contains(MatchSide.opp),
                           ready: state.passReady(MatchSide.opp),
                         ),
+                        question: match.state.question,
                       ),
-                      const SizedBox(height: 12),
+                      SizedBox(height: 12.h),
                       Expanded(
                         child: TriviaBoardSection(
                           question: match.state.question,
@@ -77,7 +79,7 @@ class TriviaScreen extends StatelessWidget {
                         ),
                       ),
                       if (cubit.myTurn) ...[
-                        const SizedBox(height: 12),
+                        SizedBox(height: 12.h),
                         MyAnswerBar(
                           controller: cubit.input,
                           onSend: cubit.submit,
@@ -86,7 +88,7 @@ class TriviaScreen extends StatelessWidget {
                           strikes: state.strikes[MatchSide.me]!,
                         ),
                       ] else if (cubit.oppTurn) ...[
-                        const SizedBox(height: 12),
+                        SizedBox(height: 12.h),
                         OpponentTurnBar(
                           title: context.tr(AppStrings.oppTurnOf, args: [opp]),
                           initial: match.initialOf(opp),

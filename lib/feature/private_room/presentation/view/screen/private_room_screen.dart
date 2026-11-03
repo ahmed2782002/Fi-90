@@ -17,6 +17,7 @@ import 'package:fii90/feature/private_room/presentation/view_model/private_room_
 import 'package:fii90/feature/private_room/presentation/view_model/private_room_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PrivateRoomScreen extends StatelessWidget {
   const PrivateRoomScreen({super.key, required this.modes});
@@ -53,7 +54,7 @@ class PrivateRoomScreen extends StatelessWidget {
                     style: AppText.segment,
                     activeGradient: AppColors.grad,
                     activeShadow: AppShadows.segment,
-                    height: 44,
+                    height: 44.r,
                     padding: 4,
                     expand: true,
                   ),

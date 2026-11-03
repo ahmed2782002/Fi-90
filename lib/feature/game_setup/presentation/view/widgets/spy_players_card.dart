@@ -8,6 +8,7 @@ import 'package:fii90/core/widgets/friends_app/initial_badge.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpyPlayersCard extends StatelessWidget {
   const SpyPlayersCard({
@@ -26,16 +27,16 @@ class SpyPlayersCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: EdgeInsets.all(14.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(24.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        spacing: 10,
+        spacing: 10.r,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,19 +50,19 @@ class SpyPlayersCard extends StatelessWidget {
           ),
           for (final (i, name) in players.indexed)
             Container(
-              height: 48,
-              padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 6, 0),
+              height: 48.r,
+              padding: EdgeInsetsDirectional.fromSTEB(8.w, 0, 6.w, 0),
               decoration: BoxDecoration(
                 color: AppColors.s2,
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: BorderRadius.circular(999.r),
               ),
               child: Row(
-                spacing: 10,
+                spacing: 10.r,
                 children: [
                   InitialBadge(
                     name: name,
                     palette: AppColors.player(i),
-                    size: 32,
+                    size: 32.r,
                   ),
                   Expanded(child: Text(name, style: AppText.rowTitle)),
                   Semantics(
@@ -70,8 +71,8 @@ class SpyPlayersCard extends StatelessWidget {
                     child: PressScale(
                       onTap: () => onRemove(i),
                       child: SizedBox(
-                        width: 34,
-                        height: 34,
+                        width: 34.r,
+                        height: 34.r,
                         child: Center(
                           child: Text('×', style: AppText.removeMark),
                         ),
@@ -82,21 +83,21 @@ class SpyPlayersCard extends StatelessWidget {
               ),
             ),
           Row(
-            spacing: 8,
+            spacing: 8.r,
             children: [
               Expanded(
                 child: AppTextField(
                   controller: draft,
                   hint: context.tr(AppStrings.playerNameHint),
-                  height: 48,
-                  fontSize: 14,
+                  height: 48.r,
+                  fontSize: 14.sp,
                   onSubmitted: onAdd,
                 ),
               ),
               PrimaryButton(
                 label: context.tr(AppStrings.addPlayer),
                 onTap: onAdd,
-                height: 48,
+                height: 48.r,
                 expand: false,
                 style: AppText.roomShare,
               ),

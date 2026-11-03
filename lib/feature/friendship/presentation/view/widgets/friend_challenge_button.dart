@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FriendChallengeButton extends StatelessWidget {
   const FriendChallengeButton({
@@ -20,13 +21,13 @@ class FriendChallengeButton extends StatelessWidget {
     return PressScale(
       onTap: enabled ? onTap : null,
       child: Container(
-        height: 38,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        height: 38.r,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: enabled ? null : AppColors.s2,
           gradient: enabled ? AppColors.grad : null,
-          borderRadius: BorderRadius.circular(999),
+          borderRadius: BorderRadius.circular(999.r),
           border: Border.all(
             color: enabled ? AppColors.neon : AppColors.line,
             width: 1.5,

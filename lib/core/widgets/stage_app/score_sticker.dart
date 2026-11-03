@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 
@@ -25,10 +26,10 @@ class ScoreSticker extends StatelessWidget {
       transform: Matrix4.skewX(-10 * math.pi / 180)
         ..rotateZ(rotateDeg * math.pi / 180),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 5.h),
         decoration: BoxDecoration(
           color: AppColors.gold,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(color: AppColors.stk, spreadRadius: ring),
             BoxShadow(

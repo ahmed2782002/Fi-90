@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/top_gloss.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlayerCard extends StatelessWidget {
   const PlayerCard({
@@ -29,11 +30,11 @@ class PlayerCard extends StatelessWidget {
     return Transform.rotate(
       angle: angle * math.pi / 180,
       child: Container(
-        width: 132,
-        height: 186,
+        width: 132.r,
+        height: 186.r,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(32.r),
           border: Border.all(color: color, width: 1.5),
           gradient: LinearGradient(
             begin: const Alignment(-.17, -.98),
@@ -54,12 +55,12 @@ class PlayerCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    width: 68,
-                    height: 68,
+                    width: 68.r,
+                    height: 68.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: color,
-                      borderRadius: BorderRadius.circular(24),
+                      borderRadius: BorderRadius.circular(24.r),
                       boxShadow: [
                         BoxShadow(
                           color: AppColors.tint(color, .4),
@@ -73,17 +74,17 @@ class PlayerCard extends StatelessWidget {
                       style: AppText.cardInitial.copyWith(color: onColor),
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Text(context.tr(name), style: AppText.cardName),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 2,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10.w,
+                      vertical: 2.h,
                     ),
                     decoration: BoxDecoration(
                       color: AppColors.s2,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                     ),
                     child: Text(level, style: AppText.tag),
                   ),

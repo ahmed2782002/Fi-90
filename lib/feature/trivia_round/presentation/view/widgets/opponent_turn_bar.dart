@@ -2,6 +2,7 @@ import 'package:fii90/core/animation/loop.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OpponentTurnBar extends StatelessWidget {
   const OpponentTurnBar({
@@ -28,10 +29,10 @@ class OpponentTurnBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
           decoration: BoxDecoration(
             color: AppColors.mix(AppColors.op, .1, AppColors.s1),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.r),
             border: Border.all(color: AppColors.op, width: 1.5),
           ),
           child: Row(
@@ -41,7 +42,7 @@ class OpponentTurnBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(title, style: AppText.turnHeading(AppColors.opInk)),
-                    const SizedBox(height: 3),
+                    SizedBox(height: 3.h),
                     Row(
                       children: [
                         Text(status, style: AppText.statusLine),
@@ -59,11 +60,9 @@ class OpponentTurnBar extends StatelessWidget {
                                 child: child,
                               ),
                               child: Container(
-                                width: 5,
-                                height: 5,
-                                margin: const EdgeInsetsDirectional.only(
-                                  start: 3,
-                                ),
+                                width: 5.r,
+                                height: 5.r,
+                                margin: EdgeInsetsDirectional.only(start: 3.w),
                                 decoration: BoxDecoration(
                                   color: AppColors.op,
                                   shape: BoxShape.circle,
@@ -73,19 +72,19 @@ class OpponentTurnBar extends StatelessWidget {
                       ],
                     ),
                     if (lock != null) ...[
-                      const SizedBox(height: 4),
+                      SizedBox(height: 4.h),
                       Text(lock, style: AppText.lockNote),
                     ],
                   ],
                 ),
               ),
               Container(
-                width: 44,
-                height: 44,
+                width: 44.r,
+                height: 44.r,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: AppColors.op,
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(14.r),
                 ),
                 child: Text(
                   initial,
@@ -95,14 +94,14 @@ class OpponentTurnBar extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Container(
-          height: 56,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          height: 56.r,
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           alignment: AlignmentDirectional.centerStart,
           decoration: BoxDecoration(
             color: AppColors.s2,
-            borderRadius: BorderRadius.circular(999),
+            borderRadius: BorderRadius.circular(999.r),
             border: Border.all(color: AppColors.line, width: 1.5),
           ),
           child: Text(waitLabel, style: AppText.waitLabel),

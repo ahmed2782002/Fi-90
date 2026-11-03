@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/feature/round_result/presentation/view/widgets/side_score_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoundScores extends StatelessWidget {
   const RoundScores({
@@ -33,7 +34,7 @@ class RoundScores extends StatelessWidget {
           ink: AppColors.meInk,
           leadLabel: meScore > oppScore ? aheadLabel : null,
         ),
-        const SizedBox(width: 10),
+        SizedBox(width: 10.w),
         SideScoreCard(
           name: oppName,
           initial: oppInitial,

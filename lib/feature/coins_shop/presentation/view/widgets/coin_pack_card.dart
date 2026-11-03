@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CoinPackCard extends StatelessWidget {
   const CoinPackCard({
@@ -40,10 +41,10 @@ class CoinPackCard extends StatelessWidget {
         alignment: Alignment.topCenter,
         children: [
           Container(
-            padding: const EdgeInsets.fromLTRB(10, 16, 10, 12),
+            padding: EdgeInsets.fromLTRB(10.w, 16.h, 10.w, 12.h),
             decoration: BoxDecoration(
               color: AppColors.s1,
-              borderRadius: BorderRadius.circular(26),
+              borderRadius: BorderRadius.circular(26.r),
               border: label == null
                   ? Border.all(color: AppColors.line)
                   : Border.all(color: tagColor, width: 1.5),
@@ -58,7 +59,7 @@ class CoinPackCard extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 4),
+                SizedBox(height: 4.h),
                 Container(
                   width: coinSize,
                   height: coinSize,
@@ -73,33 +74,33 @@ class CoinPackCard extends StatelessWidget {
                   ),
                   child: const Image(image: AssetImage(AppImages.coin90)),
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: 6.h),
                 Text(
                   amount,
                   textDirection: TextDirection.ltr,
                   style: AppText.packAmount,
                 ),
                 if (gift != null) ...[
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6.h),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 1,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.w,
+                      vertical: 1.h,
                     ),
                     decoration: BoxDecoration(
                       color: AppColors.tint(AppColors.ok, .16),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Text(gift, style: AppText.packBonus),
                   ),
                 ],
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Container(
-                  height: 38,
+                  height: 38.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     gradient: AppColors.grad,
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                     border: Border.all(color: AppColors.neon, width: 1.5),
                     boxShadow: AppShadows.glow,
                   ),
@@ -112,13 +113,10 @@ class CoinPackCard extends StatelessWidget {
             Positioned(
               top: -10,
               child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 2,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 2.h),
                 decoration: BoxDecoration(
                   color: tagColor,
-                  borderRadius: BorderRadius.circular(999),
+                  borderRadius: BorderRadius.circular(999.r),
                 ),
                 child: Text(label, style: AppText.packTag(tagInk)),
               ),

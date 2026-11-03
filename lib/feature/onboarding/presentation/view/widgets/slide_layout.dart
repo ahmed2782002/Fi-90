@@ -2,6 +2,7 @@ import 'package:fii90/core/animation/enter.dart';
 import 'package:fii90/core/animation/fx.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SlideLayout extends StatelessWidget {
   const SlideLayout({
@@ -23,10 +24,10 @@ class SlideLayout extends StatelessWidget {
         Flexible(
           child: FittedBox(
             fit: BoxFit.scaleDown,
-            child: SizedBox(width: 346, height: 340, child: illustration),
+            child: SizedBox(width: 346.r, height: 340.r, child: illustration),
           ),
         ),
-        const SizedBox(height: 26),
+        SizedBox(height: 26.h),
         Enter(
           fx: Fx.fadeUp,
           delay: const Duration(milliseconds: 150),
@@ -37,9 +38,9 @@ class SlideLayout extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: AppText.slideTitle,
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 300),
+                constraints: BoxConstraints(maxWidth: 300.r),
                 child: Text(
                   body,
                   textAlign: TextAlign.center,

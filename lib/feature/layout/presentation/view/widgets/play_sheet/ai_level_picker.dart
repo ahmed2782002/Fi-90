@@ -9,6 +9,7 @@ import 'package:fii90/core/widgets/pill_segment.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:fii90/feature/match/mock_model/match_mode.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AiLevelPicker extends StatelessWidget {
   const AiLevelPicker({
@@ -28,10 +29,10 @@ class AiLevelPicker extends StatelessWidget {
       fx: Fx.fadeIn,
       duration: const Duration(milliseconds: 200),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(2, 2, 2, 0),
+        padding: EdgeInsets.fromLTRB(2.w, 2.h, 2.w, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          spacing: 10,
+          spacing: 10.r,
           children: [
             PillSegment(
               labels: [for (final l in AiLevel.values) context.tr(l.labelKey)],
@@ -40,7 +41,7 @@ class AiLevelPicker extends StatelessWidget {
               style: AppText.segment,
               activeGradient: AppColors.grad,
               activeShadow: AppShadows.segment,
-              height: 38,
+              height: 38.r,
               padding: 4,
               expand: true,
             ),
@@ -52,7 +53,7 @@ class AiLevelPicker extends StatelessWidget {
             PrimaryButton(
               label: context.tr(AppStrings.startVsAi),
               onTap: onStart,
-              height: 54,
+              height: 54.r,
             ),
           ],
         ),

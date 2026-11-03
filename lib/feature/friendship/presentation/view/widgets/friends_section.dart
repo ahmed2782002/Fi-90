@@ -5,6 +5,7 @@ import 'package:fii90/feature/friendship/mock_model/buddy.dart';
 import 'package:fii90/feature/friendship/presentation/view/widgets/buddy_tile.dart';
 import 'package:fii90/feature/friendship/presentation/view/widgets/friend_challenge_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FriendsSection extends StatelessWidget {
   const FriendsSection({
@@ -22,14 +23,14 @@ class FriendsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(8, 2, 8, 0),
+          padding: EdgeInsets.fromLTRB(8.w, 2.h, 8.w, 0),
           child: Text(
             context.tr(AppStrings.friendsHeader, args: ['${friends.length}']),
             style: AppText.listHeader,
           ),
         ),
         for (final f in friends) ...[
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           BuddyTile(
             name: f.translated ? context.tr(f.name) : f.name,
             subtitle: context.tr(f.status.labelKey),

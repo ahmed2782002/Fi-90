@@ -14,6 +14,7 @@ import 'package:fii90/feature/match/mock_model/round_result.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FinalResultScreen extends StatelessWidget {
   const FinalResultScreen({super.key});
@@ -42,14 +43,14 @@ class FinalResultScreen extends StatelessWidget {
       ),
       child: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(18, 21, 18, 40),
+          padding: EdgeInsets.fromLTRB(18.w, 21.h, 18.w, 40.h),
           children: [
             Text(
               'FULL TIME',
               textAlign: TextAlign.center,
               style: AppText.fullTime,
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4.h),
             Enter(
               fx: Fx.pop,
               child: Text(
@@ -71,7 +72,7 @@ class FinalResultScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4.h),
             Text(
               context.tr(
                 cubit.won
@@ -83,7 +84,7 @@ class FinalResultScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: AppText.detailLine,
             ),
-            const SizedBox(height: 14),
+            SizedBox(height: 14.h),
             FinalScoreCard(
               meName: me,
               meScore: state.meScore,
@@ -91,16 +92,16 @@ class FinalResultScreen extends StatelessWidget {
               oppInitial: cubit.initialOf(opp),
               oppScore: state.oppScore,
             ),
-            const SizedBox(height: 14),
+            SizedBox(height: 14.h),
             XpCard(
               title: context.tr(AppStrings.experience),
               xp: cubit.earnedXp,
               progress: ((1240 + cubit.earnedXp) / 1500).clamp(0, 1),
               rankLine: context.tr(AppStrings.rankLine),
-              coins: cubit.won ? 10 : null,
+              coins: cubit.earnedCoins,
             ),
             for (final r in state.rounds) ...[
-              const SizedBox(height: 6),
+              SizedBox(height: 6.h),
               RoundSummaryRow(
                 mode: context.tr(r.mode.nameKey),
                 accent: r.mode.accent,
@@ -119,20 +120,20 @@ class FinalResultScreen extends StatelessWidget {
                 points: r.winner == null ? '0' : '+${r.points}',
               ),
             ],
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             PrimaryButton(
               label: context.tr(AppStrings.rematch),
               onTap: cubit.rematch,
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             PressScale(
               onTap: cubit.cancel,
               child: Container(
-                height: 52,
+                height: 52.r,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: AppColors.s1,
-                  borderRadius: BorderRadius.circular(999),
+                  borderRadius: BorderRadius.circular(999.r),
                   border: Border.all(color: AppColors.line2),
                 ),
                 child: Text(

@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/feature/profile/mock_model/profile_data.dart';
 import 'package:fii90/feature/profile/presentation/view/widgets/stat_pill.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileStats extends StatelessWidget {
   const ProfileStats({super.key, required this.profile});
@@ -18,18 +19,18 @@ class ProfileStats extends StatelessWidget {
           value: '${profile.matches}',
           label: context.tr(AppStrings.statMatchesCount),
         ),
-        const SizedBox(width: 8),
+        SizedBox(width: 8.w),
         StatPill(
           value: '${profile.wins}',
           label: context.tr(AppStrings.statWins),
           color: AppColors.okInk,
         ),
-        const SizedBox(width: 8),
+        SizedBox(width: 8.w),
         StatPill(
           value: '${profile.accuracy}%',
           label: context.tr(AppStrings.statAccuracy),
         ),
-        const SizedBox(width: 8),
+        SizedBox(width: 8.w),
         StatPill(
           value: '${profile.streak}',
           label: context.tr(AppStrings.statStreak),

@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FriendCodeCard extends StatelessWidget {
   const FriendCodeCard({super.key, required this.code, required this.onShare});
@@ -14,15 +15,15 @@ class FriendCodeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
       decoration: BoxDecoration(
         color: AppColors.s2,
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(22.r),
       ),
       child: Row(
         children: [
           Text(context.tr(AppStrings.yourCode), style: AppText.codeLabel),
-          const SizedBox(width: 4),
+          SizedBox(width: 4.w),
           Expanded(
             child: Text(
               code,
@@ -33,16 +34,16 @@ class FriendCodeCard extends StatelessWidget {
               style: AppText.codeValue,
             ),
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10.w),
           PressScale(
             onTap: onShare,
             child: Container(
-              height: 36,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
+              height: 36.r,
+              padding: EdgeInsets.symmetric(horizontal: 14.w),
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: AppColors.s1,
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: BorderRadius.circular(999.r),
                 border: Border.all(color: AppColors.line2),
               ),
               child: Text(

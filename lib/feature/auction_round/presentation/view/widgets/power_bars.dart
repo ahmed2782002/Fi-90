@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PowerBars extends StatelessWidget {
   const PowerBars({super.key, required this.title, required this.rows});
@@ -14,10 +15,10 @@ class PowerBars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: EdgeInsets.all(14.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
@@ -26,25 +27,25 @@ class PowerBars extends StatelessWidget {
         children: [
           Text(title, style: AppText.listHeader),
           for (final r in rows) ...[
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Row(
               children: [
                 SizedBox(
-                  width: 40,
+                  width: 40.r,
                   child: Text(
                     '${r.me}',
                     textAlign: TextAlign.center,
                     style: AppText.powerValue(AppColors.meInk),
                   ),
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 8.w),
                 for (final (i, (value, color, align)) in [
                   (r.me, AppColors.me, AlignmentDirectional.centerStart),
                   (r.opp, AppColors.op, AlignmentDirectional.centerEnd),
                 ].indexed) ...[
                   if (i == 1)
                     SizedBox(
-                      width: 54,
+                      width: 54.r,
                       child: Text(
                         r.label,
                         textAlign: TextAlign.center,
@@ -53,27 +54,27 @@ class PowerBars extends StatelessWidget {
                     ),
                   Expanded(
                     child: Container(
-                      height: 8,
+                      height: 8.r,
                       alignment: align,
                       decoration: BoxDecoration(
                         color: AppColors.s3,
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius: BorderRadius.circular(9.r),
                       ),
                       child: FractionallySizedBox(
                         widthFactor: value / max(1, max(r.me, r.opp)),
                         child: Container(
                           decoration: BoxDecoration(
                             color: color,
-                            borderRadius: BorderRadius.circular(9),
+                            borderRadius: BorderRadius.circular(9.r),
                           ),
                         ),
                       ),
                     ),
                   ),
                 ],
-                const SizedBox(width: 8),
+                SizedBox(width: 8.w),
                 SizedBox(
-                  width: 40,
+                  width: 40.r,
                   child: Text(
                     '${r.opp}',
                     textAlign: TextAlign.center,

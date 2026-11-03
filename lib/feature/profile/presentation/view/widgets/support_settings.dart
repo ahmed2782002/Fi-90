@@ -4,6 +4,7 @@ import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/widgets/settings_app/settings_group.dart';
 import 'package:fii90/core/widgets/settings_app/settings_row.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SupportSettings extends StatelessWidget {
   const SupportSettings({
@@ -41,7 +42,7 @@ class SupportSettings extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16.h),
         SettingsGroup(
           title: context.tr(AppStrings.groupAbout),
           children: [

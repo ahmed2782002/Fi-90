@@ -2,6 +2,7 @@ import 'package:fii90/core/animation/loop.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BidStatusBar extends StatelessWidget {
   const BidStatusBar({
@@ -19,13 +20,13 @@ class BidStatusBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final icon = leading;
     return Container(
-      height: 56,
-      padding: const EdgeInsets.symmetric(horizontal: 18),
+      height: 56.r,
+      padding: EdgeInsets.symmetric(horizontal: 18.w),
       decoration: BoxDecoration(
         color: opponent
             ? AppColors.mix(AppColors.op, .1, AppColors.s1)
             : AppColors.s2,
-        borderRadius: BorderRadius.circular(999),
+        borderRadius: BorderRadius.circular(999.r),
         border: opponent ? Border.all(color: AppColors.op, width: 1.5) : null,
       ),
       child: Row(
@@ -33,7 +34,7 @@ class BidStatusBar extends StatelessWidget {
             ? MainAxisAlignment.spaceBetween
             : MainAxisAlignment.center,
         children: [
-          if (icon != null) ...[icon, const SizedBox(width: 8)],
+          if (icon != null) ...[icon, SizedBox(width: 8.w)],
           Flexible(
             child: Text(
               label,
@@ -58,9 +59,9 @@ class BidStatusBar extends StatelessWidget {
                       child: child,
                     ),
                     child: Container(
-                      width: 7,
-                      height: 7,
-                      margin: const EdgeInsetsDirectional.only(start: 4),
+                      width: 7.r,
+                      height: 7.r,
+                      margin: EdgeInsetsDirectional.only(start: 4.w),
                       decoration: BoxDecoration(
                         color: AppColors.op,
                         shape: BoxShape.circle,

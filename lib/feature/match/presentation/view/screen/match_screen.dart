@@ -10,7 +10,6 @@ import 'package:fii90/feature/match/presentation/view_model/match_cubit.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_state.dart';
 import 'package:fii90/feature/match_vs/presentation/view/screen/vs_screen.dart';
 import 'package:fii90/feature/matchmaking/presentation/view/screen/matchmaking_screen.dart';
-import 'package:fii90/feature/round_intro/presentation/view/screen/round_intro_screen.dart';
 import 'package:fii90/feature/round_result/presentation/view/screen/round_result_screen.dart';
 import 'package:fii90/feature/trivia_round/presentation/view/screen/trivia_screen.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +57,6 @@ class MatchScreen extends StatelessWidget {
                 child: switch (state.stage) {
                   MatchStage.search => const MatchmakingScreen(),
                   MatchStage.vs => const VsScreen(),
-                  MatchStage.intro => const RoundIntroScreen(),
                   MatchStage.round => switch (state.mode) {
                     MatchMode.trivia => const TriviaScreen(),
                     MatchMode.auction => const AuctionScreen(),

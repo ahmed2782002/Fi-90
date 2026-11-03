@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlanCard extends StatelessWidget {
   const PlanCard({
@@ -30,10 +31,10 @@ class PlanCard extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          padding: const EdgeInsets.all(18),
+          padding: EdgeInsets.all(18.r),
           decoration: BoxDecoration(
             color: AppColors.s1,
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: BorderRadius.circular(28.r),
             border: popular
                 ? Border.all(color: AppColors.neon, width: 1.5)
                 : current
@@ -45,16 +46,16 @@ class PlanCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               details,
-              const SizedBox(height: 12),
+              SizedBox(height: 12.h),
               PressScale(
                 onTap: current ? null : onTap,
                 child: Container(
-                  height: 50,
+                  height: 50.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: current ? AppColors.s2 : null,
                     gradient: main ? AppColors.grad : null,
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                     border: main
                         ? Border.all(color: AppColors.neon, width: 1.5)
                         : Border.all(color: AppColors.line2),
@@ -79,12 +80,12 @@ class PlanCard extends StatelessWidget {
         if (popular)
           PositionedDirectional(
             top: -11,
-            start: 18,
+            start: 18.w,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 3.h),
               decoration: BoxDecoration(
                 color: AppColors.gold,
-                borderRadius: BorderRadius.circular(999),
+                borderRadius: BorderRadius.circular(999.r),
               ),
               child: Text(popularLabel, style: AppText.popularBadge),
             ),

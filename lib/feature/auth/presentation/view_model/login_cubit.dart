@@ -12,6 +12,10 @@ class LoginCubit extends Cubit<LoginState> {
 
   void openPrivacy() => emit(const LoginState(status: LoginStatus.privacy));
 
+  // Back to idle once the page is pushed, so tapping the same link again
+  // emits a new state.
+  void reset() => emit(const LoginState());
+
   void signInWithGoogle() =>
       emit(const LoginState(status: LoginStatus.signedIn));
 

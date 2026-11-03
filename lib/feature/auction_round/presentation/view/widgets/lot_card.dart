@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/match_app/fut_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LotCard extends StatelessWidget {
   const LotCard({
@@ -23,18 +24,18 @@ class LotCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(14, 16, 14, 14),
+      padding: EdgeInsets.fromLTRB(14.w, 16.h, 14.w, 14.h),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(30.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
       child: Column(
         children: [
           SizedBox(
-            width: 164,
-            height: 243,
+            width: 164.r,
+            height: 243.r,
             child: FittedBox(
               child: FutCard(
                 palette: AppColors.futMystery,
@@ -47,16 +48,16 @@ class LotCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 14),
+          SizedBox(height: 14.h),
           for (var i = 0; i < clues.length; i++) ...[
-            if (i > 0) const SizedBox(height: 6),
+            if (i > 0) SizedBox(height: 6.h),
             AnimatedContainer(
               duration: const Duration(milliseconds: 300),
-              constraints: const BoxConstraints(minHeight: 40),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              constraints: BoxConstraints(minHeight: 40.r),
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
               decoration: BoxDecoration(
                 color: i < revealed ? AppColors.s2 : null,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(
                   color: i < revealed ? AppColors.line2 : AppColors.line,
                 ),
@@ -64,8 +65,8 @@ class LotCard extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    width: 24,
-                    height: 24,
+                    width: 24.r,
+                    height: 24.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: i < revealed ? AppColors.gold : AppColors.s3,
@@ -78,7 +79,7 @@ class LotCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Expanded(
                     child: Text(
                       i < revealed ? clues[i] : pendingLabel,

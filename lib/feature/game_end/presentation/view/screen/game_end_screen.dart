@@ -14,6 +14,7 @@ import 'package:fii90/feature/game_end/presentation/view/widgets/end_score_tile.
 import 'package:fii90/feature/game_end/presentation/view_model/game_end_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GameEndScreen extends StatelessWidget {
   const GameEndScreen({
@@ -54,7 +55,7 @@ class GameEndScreen extends StatelessWidget {
               Enter(
                 fx: Fx.fadeUp,
                 child: Column(
-                  spacing: 8,
+                  spacing: 8.r,
                   children: [
                     Text(
                       w < 0
@@ -72,7 +73,7 @@ class GameEndScreen extends StatelessWidget {
                 ),
               ),
               Row(
-                spacing: 8,
+                spacing: 8.r,
                 children: [
                   for (final (i, n) in names.indexed)
                     Expanded(
@@ -91,16 +92,16 @@ class GameEndScreen extends StatelessWidget {
               PrimaryButton(
                 label: context.tr(AppStrings.playAgain),
                 onTap: () => Nav.replace(context, again),
-                height: 56,
+                height: 56.r,
               ),
               PressScale(
                 onTap: context.read<GameEndCubit>().save,
                 child: Container(
-                  height: 50,
+                  height: 50.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: AppColors.s1,
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                     border: Border.all(color: AppColors.line2),
                   ),
                   child: Text(
@@ -116,7 +117,7 @@ class GameEndScreen extends StatelessWidget {
               PressScale(
                 onTap: () => Navigator.of(context).pop(),
                 child: SizedBox(
-                  height: 44,
+                  height: 44.r,
                   child: Center(
                     child: Text(
                       context.tr(AppStrings.otherGames),

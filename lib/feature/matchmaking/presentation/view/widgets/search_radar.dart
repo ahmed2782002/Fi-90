@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/dashed_ring/dashed_ring_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchRadar extends StatelessWidget {
   const SearchRadar({super.key, required this.initial, required this.found});
@@ -31,8 +32,8 @@ class SearchRadar extends StatelessWidget {
                   child: Opacity(opacity: .7 * (1 - t), child: child),
                 ),
                 child: Container(
-                  width: 190,
-                  height: 190,
+                  width: 190.r,
+                  height: 190.r,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
@@ -43,15 +44,15 @@ class SearchRadar extends StatelessWidget {
                 ),
               ),
           CustomPaint(
-            size: const Size.square(250),
+            size: Size.square(250.r),
             painter: found
                 ? DashedRingPainter(
-                    width: 13.5,
+                    width: 13.5.r,
                     color: AppColors.me,
                     rest: AppColors.op,
                     progress: .5,
                   )
-                : DashedRingPainter(width: 13.5, color: AppColors.s3),
+                : DashedRingPainter(width: 13.5.r, color: AppColors.s3),
           ),
           if (!found)
             Loop(
@@ -59,21 +60,21 @@ class SearchRadar extends StatelessWidget {
               builder: (context, t, child) =>
                   Transform.rotate(angle: t * 2 * math.pi, child: child),
               child: CustomPaint(
-                size: const Size.square(250),
+                size: Size.square(250.r),
                 painter: DashedRingPainter(
-                  width: 13.5,
+                  width: 13.5.r,
                   color: AppColors.me,
                   progress: .3,
                 ),
               ),
             ),
           Container(
-            width: 104,
-            height: 104,
+            width: 104.r,
+            height: 104.r,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: AppColors.me,
-              borderRadius: BorderRadius.circular(32),
+              borderRadius: BorderRadius.circular(32.r),
               boxShadow: AppShadows.sh2,
             ),
             child: Text(initial, style: AppText.bigInitial(42, AppColors.meOn)),

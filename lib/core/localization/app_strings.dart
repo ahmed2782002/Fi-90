@@ -1,5 +1,6 @@
 abstract final class AppStrings {
   static const appName = 'appName';
+  static const splashTagline = 'splashTagline';
   static const onboardingSkip = 'onboardingSkip';
   static const onboardingNext = 'onboardingNext';
   static const onboardingStart = 'onboardingStart';
@@ -25,8 +26,6 @@ abstract final class AppStrings {
   static const loginTermsAnd = 'loginTermsAnd';
   static const termsAndConditions = 'termsAndConditions';
   static const privacyPolicy = 'privacyPolicy';
-  static const loginTermsSoon = 'loginTermsSoon';
-  static const loginPrivacySoon = 'loginPrivacySoon';
   static const perkLevelRewards = 'perkLevelRewards';
   static const perkRankSaved = 'perkRankSaved';
   static const perkMatchHistory = 'perkMatchHistory';
@@ -299,8 +298,6 @@ abstract final class AppStrings {
   static const aiHardHint = 'aiHardHint';
   static const letsGo = 'letsGo';
   static const ready = 'ready';
-  static const startsAutomatically = 'startsAutomatically';
-  static const roundOf = 'roundOf';
   static const yourTurn = 'yourTurn';
   static const hisTurn = 'hisTurn';
   static const questionOf = 'questionOf';
@@ -376,7 +373,15 @@ abstract final class AppStrings {
   static const thinking = 'thinking';
   static const waitYourTurn = 'waitYourTurn';
   static const threeStrikes = 'threeStrikes';
-  static const threeStrikesOut = 'threeStrikesOut';
+  static const questionNo = [
+    'questionNo1',
+    'questionNo2',
+    'questionNo3',
+    'questionNo4',
+    'questionNo5',
+    'questionNo6',
+    'questionNo7',
+  ];
   static const reachedThreeStrikes = 'reachedThreeStrikes';
   static const leftTheQuestion = 'leftTheQuestion';
   static const wonFewerStrikes = 'wonFewerStrikes';

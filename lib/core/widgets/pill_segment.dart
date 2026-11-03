@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../theme/app_colors.dart';
 import 'press_scale.dart';
 
 class PillSegment extends StatelessWidget {
-  const PillSegment({
+  PillSegment({
     super.key,
     required this.labels,
     required this.index,
@@ -14,11 +15,13 @@ class PillSegment extends StatelessWidget {
     this.activeGradient,
     this.activeColor,
     this.activeText = AppColors.white,
-    this.height = 34,
-    this.padding = 3,
-    this.itemPadding = 13,
+    double? height,
+    double? padding,
+    double? itemPadding,
     this.expand = false,
-  });
+  }) : height = height ?? 34.r,
+       padding = padding ?? 3.r,
+       itemPadding = itemPadding ?? 13.w;
 
   final List<String> labels;
   final int index;
@@ -39,7 +42,7 @@ class PillSegment extends StatelessWidget {
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         color: AppColors.s2,
-        borderRadius: BorderRadius.circular(999),
+        borderRadius: BorderRadius.circular(999.r),
       ),
       child: Row(
         mainAxisSize: expand ? MainAxisSize.max : MainAxisSize.min,
@@ -55,7 +58,7 @@ class PillSegment extends StatelessWidget {
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: itemPadding),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                     gradient: i == index ? activeGradient : null,
                     color: i == index ? activeColor : null,
                     boxShadow: i == index ? activeShadow : const [],

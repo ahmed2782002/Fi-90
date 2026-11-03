@@ -3,6 +3,7 @@ import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ClubSlot extends StatelessWidget {
   const ClubSlot({
@@ -27,7 +28,7 @@ class ClubSlot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: 40, maxHeight: 52),
+      constraints: BoxConstraints(minHeight: 40.r, maxHeight: 52.r),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -37,8 +38,8 @@ class ClubSlot extends StatelessWidget {
             bottom: 0,
             child: Center(
               child: Container(
-                width: 12,
-                height: 12,
+                width: 12.r,
+                height: 12.r,
                 decoration: BoxDecoration(
                   color: AppColors.bg,
                   shape: BoxShape.circle,
@@ -53,10 +54,10 @@ class ClubSlot extends StatelessWidget {
               child: shown
                   ? Container(
                       key: const ValueKey(true),
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      padding: EdgeInsets.symmetric(horizontal: 12.w),
                       decoration: BoxDecoration(
                         color: AppColors.s1,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(
                           color: current ? AppColors.m4 : AppColors.line,
                           width: 1.5,
@@ -73,26 +74,26 @@ class ClubSlot extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            width: 38,
-                            height: 38,
+                            width: 38.r,
+                            height: 38.r,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               color: Color(color),
                               shape: BoxShape.circle,
                             ),
                             child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 3,
-                                vertical: 1,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 3.w,
+                                vertical: 1.h,
                               ),
                               decoration: BoxDecoration(
                                 color: AppColors.tint(AppColors.black, .55),
-                                borderRadius: BorderRadius.circular(4),
+                                borderRadius: BorderRadius.circular(4.r),
                               ),
                               child: Text(abbr, style: AppText.clubAbbr),
                             ),
                           ),
-                          const SizedBox(width: 12),
+                          SizedBox(width: 12.w),
                           Expanded(child: Text(name, style: AppText.clubName)),
                           Text(year, style: AppText.clubYear),
                         ],
@@ -100,9 +101,9 @@ class ClubSlot extends StatelessWidget {
                     )
                   : Container(
                       key: const ValueKey(false),
-                      padding: const EdgeInsets.symmetric(horizontal: 14),
+                      padding: EdgeInsets.symmetric(horizontal: 14.w),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(color: AppColors.line2, width: 1.5),
                       ),
                       child: Row(

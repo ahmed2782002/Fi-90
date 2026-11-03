@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GameHero extends StatelessWidget {
   const GameHero({
@@ -32,7 +33,7 @@ class GameHero extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: hero,
           ),
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(28.r),
           border: Border.all(color: AppColors.line),
         ),
         child: Stack(
@@ -60,9 +61,9 @@ class GameHero extends StatelessWidget {
               ),
             ),
             PositionedDirectional(
-              start: 16,
-              end: 16,
-              bottom: 12,
+              start: 16.w,
+              end: 16.w,
+              bottom: 12.r,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

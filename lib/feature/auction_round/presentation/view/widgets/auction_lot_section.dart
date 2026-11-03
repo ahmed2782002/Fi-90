@@ -8,6 +8,7 @@ import 'package:fii90/feature/match/mock_model/round_result.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuctionLotSection extends StatelessWidget {
   const AuctionLotSection({super.key});
@@ -20,7 +21,7 @@ class AuctionLotSection extends StatelessWidget {
     final holder = state.holder;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 12,
+      spacing: 12.r,
       children: [
         LotCard(
           position: state.clues >= 1 ? cubit.hidden.position : '?',

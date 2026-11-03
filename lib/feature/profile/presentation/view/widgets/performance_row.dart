@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PerformanceRow extends StatelessWidget {
   const PerformanceRow({
@@ -19,24 +20,24 @@ class PerformanceRow extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 78,
+          width: 78.r,
           child: Text(label, style: AppText.performanceLabel),
         ),
-        const SizedBox(width: 10),
+        SizedBox(width: 10.w),
         Expanded(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(9),
+            borderRadius: BorderRadius.circular(9.r),
             child: LinearProgressIndicator(
               value: value / 100,
-              minHeight: 8,
+              minHeight: 8.r,
               color: color,
               backgroundColor: AppColors.s3,
             ),
           ),
         ),
-        const SizedBox(width: 10),
+        SizedBox(width: 10.w),
         SizedBox(
-          width: 34,
+          width: 34.r,
           child: Text(
             '$value%',
             textAlign: TextAlign.end,

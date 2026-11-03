@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NavItem extends StatelessWidget {
@@ -29,11 +30,11 @@ class NavItem extends StatelessWidget {
           children: [
             SvgPicture.asset(
               icon,
-              width: 22,
-              height: 22,
+              width: 22.r,
+              height: 22.r,
               colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4.h),
             Text(label, style: AppText.navLabel(color)),
           ],
         ),

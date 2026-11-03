@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/match_app/spin_ring.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FeedbackPanel extends StatelessWidget {
   const FeedbackPanel({
@@ -32,22 +33,22 @@ class FeedbackPanel extends StatelessWidget {
     final mark = badge;
     final body = Container(
       color: background,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (spinner) const SpinRing(size: 42, color: AppColors.pri),
+          if (spinner) SpinRing(size: 42.r, color: AppColors.pri),
           if (mark != null)
             Enter(
               fx: Fx.pop,
               duration: const Duration(milliseconds: 450),
               child: Container(
-                width: 62,
-                height: 62,
+                width: 62.r,
+                height: 62.r,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: badgeColor,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Text(
                   mark,
@@ -56,7 +57,7 @@ class FeedbackPanel extends StatelessWidget {
               ),
             ),
           for (final line in lines) ...[
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(line.text, textAlign: TextAlign.center, style: line.style),
           ],
         ],

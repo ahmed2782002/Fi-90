@@ -12,6 +12,7 @@ import 'package:fii90/feature/trivia_round/presentation/view_model/trivia_cubit.
 import 'package:fii90/feature/trivia_round/presentation/view_model/trivia_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TriviaBoardSection extends StatelessWidget {
   const TriviaBoardSection({
@@ -48,7 +49,7 @@ class TriviaBoardSection extends StatelessWidget {
           ringColor: urgent ? AppColors.bad : state.current.fill,
           urgent: urgent,
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         Expanded(
           child: AnswerBoard(
             title: context.tr(
@@ -95,12 +96,12 @@ class TriviaBoardSection extends StatelessWidget {
           ),
         ),
         if (cubit.mustAnswer) ...[
-          const SizedBox(height: 12),
+          SizedBox(height: 12.h),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
             decoration: BoxDecoration(
               color: AppColors.tint(AppColors.gold, .14),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(16.r),
               border: Border.all(color: AppColors.tint(AppColors.gold, .45)),
             ),
             child: Text(

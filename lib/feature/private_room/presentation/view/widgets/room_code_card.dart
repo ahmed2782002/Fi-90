@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoomCodeCard extends StatelessWidget {
   const RoomCodeCard({
@@ -26,40 +27,40 @@ class RoomCodeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(18),
+      padding: EdgeInsets.all(18.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
       child: Column(
-        spacing: 12,
+        spacing: 12.r,
         children: [
           Text(context.tr(AppStrings.roomCode), style: AppText.pageIntro),
           Row(
             mainAxisSize: MainAxisSize.min,
             textDirection: TextDirection.ltr,
-            spacing: 8,
+            spacing: 8.r,
             children: [
               for (final c in code.characters)
                 Container(
-                  width: 56,
-                  height: 66,
+                  width: 56.r,
+                  height: 66.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: AppColors.s2,
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(16.r),
                   ),
                   child: Text(c, style: AppText.roomCodeChar),
                 ),
             ],
           ),
           Container(
-            padding: const EdgeInsetsDirectional.fromSTEB(14, 6, 6, 6),
+            padding: EdgeInsetsDirectional.fromSTEB(14.w, 6.h, 6.w, 6.h),
             decoration: BoxDecoration(
               color: AppColors.s2,
-              borderRadius: BorderRadius.circular(999),
+              borderRadius: BorderRadius.circular(999.r),
               border: Border.all(color: AppColors.line),
             ),
             child: Row(
@@ -76,12 +77,12 @@ class RoomCodeCard extends StatelessWidget {
                 PressScale(
                   onTap: onCopy,
                   child: Container(
-                    height: 36,
-                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    height: 36.r,
+                    padding: EdgeInsets.symmetric(horizontal: 14.w),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: AppColors.s1,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                       boxShadow: AppShadows.sh1,
                     ),
                     child: Text(
@@ -94,17 +95,17 @@ class RoomCodeCard extends StatelessWidget {
             ),
           ),
           Row(
-            spacing: 8,
+            spacing: 8.r,
             children: [
               Expanded(
                 child: PressScale(
                   onTap: onWhatsapp,
                   child: Container(
-                    height: 46,
+                    height: 46.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: AppColors.whatsapp,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                     ),
                     child: Text(
                       context.tr(AppStrings.sendWhatsapp),
@@ -117,7 +118,7 @@ class RoomCodeCard extends StatelessWidget {
                 child: PrimaryButton(
                   label: context.tr(AppStrings.shareLink),
                   onTap: onShare,
-                  height: 46,
+                  height: 46.r,
                   style: AppText.roomShare,
                 ),
               ),

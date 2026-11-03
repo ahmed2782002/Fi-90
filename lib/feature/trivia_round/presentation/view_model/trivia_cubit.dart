@@ -14,11 +14,10 @@ enum PassBlock { chain, used, locked }
 
 class TriviaCubit extends Cubit<TriviaState> {
   TriviaCubit({
-    required int question,
+    required this.question,
     required this.skill,
     required this.oppKey,
-  }) : question = TriviaQuestion.mock[question % TriviaQuestion.mock.length],
-       super(const TriviaState()) {
+  }) : super(const TriviaState()) {
     _scheduler.every(const Duration(seconds: 1), _tick);
     _scheduler.after(1500, _turn);
   }

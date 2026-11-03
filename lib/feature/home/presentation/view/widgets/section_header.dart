@@ -1,5 +1,6 @@
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SectionHeader extends StatelessWidget {
   const SectionHeader({
@@ -23,7 +24,7 @@ class SectionHeader extends StatelessWidget {
       textBaseline: TextBaseline.alphabetic,
       children: [
         Flexible(child: Text(title, style: AppText.sectionTitle)),
-        const SizedBox(width: 12),
+        SizedBox(width: 12.w),
         GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: onAction,

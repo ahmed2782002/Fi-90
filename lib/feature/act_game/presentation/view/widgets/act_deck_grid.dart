@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/feature/act_game/presentation/view/widgets/act_card_tile.dart';
 import 'package:fii90/feature/act_game/presentation/view_model/act_game_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ActDeckGrid extends StatelessWidget {
   const ActDeckGrid({
@@ -28,13 +29,13 @@ class ActDeckGrid extends StatelessWidget {
         child: child,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.symmetric(vertical: 8.h),
         child: Column(
-          spacing: 10,
+          spacing: 10.r,
           children: [
             for (final (start, count) in rows)
               Row(
-                spacing: 10,
+                spacing: 10.r,
                 children: [
                   for (var i = start; i < start + count; i++)
                     Expanded(

@@ -17,6 +17,7 @@ import 'package:fii90/feature/photo_game/presentation/view_model/photo_game_cubi
 import 'package:fii90/feature/photo_game/presentation/view_model/photo_game_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PhotoGameScreen extends StatelessWidget {
   const PhotoGameScreen({
@@ -74,7 +75,7 @@ class PhotoGameScreen extends StatelessWidget {
             subtitle: LineupPlayer.caption.of(context),
             children: [
               Row(
-                spacing: 8,
+                spacing: 8.r,
                 children: [
                   for (final (i, n) in names.indexed)
                     Expanded(
@@ -125,16 +126,16 @@ class PhotoGameScreen extends StatelessWidget {
                 hint: context.tr(AppStrings.typePlayerName),
                 sendLabel: context.tr(AppStrings.confirm),
                 onSend: cubit.submit,
-                height: 54,
+                height: 54.r,
               ),
               PressScale(
                 onTap: cubit.skip,
                 child: Container(
-                  height: 48,
+                  height: 48.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: AppColors.s1,
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                     border: Border.all(color: AppColors.line2),
                   ),
                   child: Text(

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../animation/enter.dart';
 import '../../animation/fx.dart';
@@ -28,7 +29,7 @@ abstract final class AppToast {
     _hide();
     final entry = OverlayEntry(
       builder: (context) => Positioned(
-        top: 120,
+        top: 120.r,
         left: 0,
         right: 0,
         child: IgnorePointer(
@@ -39,14 +40,14 @@ abstract final class AppToast {
                 fx: Fx.fadeUp,
                 duration: const Duration(milliseconds: 250),
                 child: Container(
-                  constraints: const BoxConstraints(maxWidth: 330),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 11,
+                  constraints: BoxConstraints(maxWidth: 330.r),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.w,
+                    vertical: 11.h,
                   ),
                   decoration: BoxDecoration(
                     color: message.kind.background,
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(14.r),
                     boxShadow: AppShadows.sh2,
                   ),
                   child: Text(

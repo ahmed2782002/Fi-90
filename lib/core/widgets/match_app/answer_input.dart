@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/app_text.dart';
@@ -7,7 +8,7 @@ import '../press_scale.dart';
 import '../primary_button.dart';
 
 class AnswerInput extends StatelessWidget {
-  const AnswerInput({
+  AnswerInput({
     super.key,
     required this.controller,
     required this.hint,
@@ -15,8 +16,8 @@ class AnswerInput extends StatelessWidget {
     required this.onSend,
     this.accent,
     this.solidButton,
-    this.height = 56,
-  });
+    double? height,
+  }) : height = height ?? 56.r;
 
   final TextEditingController controller;
   final String hint;
@@ -36,13 +37,13 @@ class AnswerInput extends StatelessWidget {
             controller: controller,
             hint: hint,
             height: height,
-            fontSize: 17,
+            fontSize: 17.sp,
             weight: FontWeight.w500,
             accent: accent ?? AppColors.me,
             onSubmitted: onSend,
           ),
         ),
-        const SizedBox(width: 8),
+        SizedBox(width: 8.w),
         solid == null
             ? PrimaryButton(
                 label: sendLabel,
@@ -55,11 +56,11 @@ class AnswerInput extends StatelessWidget {
                 onTap: onSend,
                 child: Container(
                   height: height,
-                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                  padding: EdgeInsets.symmetric(horizontal: 18.w),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: solid,
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                   ),
                   child: Text(
                     sendLabel,

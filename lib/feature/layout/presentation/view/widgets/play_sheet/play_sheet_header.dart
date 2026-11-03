@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlaySheetHeader extends StatelessWidget {
   const PlaySheetHeader({
@@ -20,16 +21,16 @@ class PlaySheetHeader extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: 42,
-          height: 5,
+          width: 42.r,
+          height: 5.r,
           decoration: BoxDecoration(
             color: AppColors.line2,
-            borderRadius: BorderRadius.circular(9),
+            borderRadius: BorderRadius.circular(9.r),
           ),
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         Padding(
-          padding: const EdgeInsets.fromLTRB(4, 2, 4, 4),
+          padding: EdgeInsets.fromLTRB(4.w, 2.h, 4.w, 4.h),
           child: Row(
             children: [
               Expanded(
@@ -50,8 +51,8 @@ class PlaySheetHeader extends StatelessWidget {
                 child: PressScale(
                   onTap: onClose,
                   child: Container(
-                    width: 40,
-                    height: 40,
+                    width: 40.r,
+                    height: 40.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: AppColors.s2,

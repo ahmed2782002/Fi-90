@@ -24,6 +24,7 @@ import 'package:fii90/feature/sound/presentation/view_model/sound_cubit.dart';
 import 'package:fii90/feature/sound/presentation/view_model/sound_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LayoutScreen extends StatelessWidget {
   const LayoutScreen({super.key});
@@ -86,9 +87,9 @@ class LayoutScreen extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    left: 12,
-                    right: 12,
-                    bottom: 22,
+                    left: 12.w,
+                    right: 12.w,
+                    bottom: 22.r,
                     child: AppNavBar(
                       tab: state.tab,
                       onSelect: context.read<LayoutCubit>().select,

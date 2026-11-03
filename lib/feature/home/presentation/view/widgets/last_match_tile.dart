@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/result_tag.dart';
 import 'package:fii90/feature/journey/mock_model/match_record.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LastMatchTile extends StatelessWidget {
   const LastMatchTile({super.key, required this.record});
@@ -14,10 +15,10 @@ class LastMatchTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: EdgeInsets.all(14.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.r),
         border: Border.all(color: AppColors.line),
       ),
       child: Row(
@@ -27,7 +28,7 @@ class LastMatchTile extends StatelessWidget {
             color: record.result.color,
             background: record.result.background,
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           Expanded(
             child: Text(
               context.tr(
@@ -37,13 +38,13 @@ class LastMatchTile extends StatelessWidget {
               style: AppText.lastOpponent,
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           Text(
             record.score,
             textDirection: TextDirection.ltr,
             style: AppText.lastScore,
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           Text(context.tr(record.dateKey), style: AppText.meta),
         ],
       ),

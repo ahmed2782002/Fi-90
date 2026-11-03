@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditAvatar extends StatelessWidget {
   const EditAvatar({super.key, required this.initial});
@@ -13,19 +14,19 @@ class EditAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: EdgeInsets.symmetric(vertical: 6.h),
       child: Column(
         children: [
           Stack(
             clipBehavior: Clip.none,
             children: [
               Container(
-                width: 96,
-                height: 96,
+                width: 96.r,
+                height: 96.r,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: AppColors.me,
-                  borderRadius: BorderRadius.circular(34),
+                  borderRadius: BorderRadius.circular(34.r),
                   boxShadow: AppShadows.glow,
                 ),
                 child: Text(initial, style: AppText.editInitial),
@@ -34,8 +35,8 @@ class EditAvatar extends StatelessWidget {
                 bottom: -4,
                 start: -4,
                 child: Container(
-                  width: 34,
-                  height: 34,
+                  width: 34.r,
+                  height: 34.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     gradient: AppColors.grad,
@@ -47,7 +48,7 @@ class EditAvatar extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Text(context.tr(AppStrings.changePhoto), style: AppText.changePhoto),
         ],
       ),

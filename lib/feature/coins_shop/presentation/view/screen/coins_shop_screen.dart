@@ -10,6 +10,7 @@ import 'package:fii90/feature/coins_shop/presentation/view_model/coins_cubit.dar
 import 'package:fii90/feature/coins_shop/presentation/view_model/coins_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CoinsShopScreen extends StatelessWidget {
   const CoinsShopScreen({super.key});
@@ -43,17 +44,17 @@ class CoinsShopScreen extends StatelessWidget {
           children: [
             CoinBalanceCard(coins: cubit.format(state.coins)),
             Padding(
-              padding: const EdgeInsets.only(top: 6),
+              padding: EdgeInsets.only(top: 6.h),
               child: Column(
                 children: [
                   for (var i = 0; i < cards.length; i += 2) ...[
-                    if (i > 0) const SizedBox(height: 14),
+                    if (i > 0) SizedBox(height: 14.h),
                     IntrinsicHeight(
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Expanded(child: cards[i]),
-                          const SizedBox(width: 10),
+                          SizedBox(width: 10.w),
                           Expanded(
                             child: i + 1 < cards.length
                                 ? cards[i + 1]
@@ -67,19 +68,19 @@ class CoinsShopScreen extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
               decoration: BoxDecoration(
                 color: AppColors.s2,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(20.r),
               ),
               child: Row(
                 children: [
-                  const Image(
+                  Image(
                     image: AssetImage(AppImages.coin90),
-                    width: 26,
-                    height: 26,
+                    width: 26.r,
+                    height: 26.r,
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Expanded(
                     child: Text.rich(
                       TextSpan(

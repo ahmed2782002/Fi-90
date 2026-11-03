@@ -11,6 +11,7 @@ import 'package:fii90/feature/complaint/presentation/view_model/complaint_cubit.
 import 'package:fii90/feature/complaint/presentation/view_model/complaint_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ComplaintScreen extends StatelessWidget {
   const ComplaintScreen({super.key});
@@ -31,7 +32,7 @@ class ComplaintScreen extends StatelessWidget {
             title: context.tr(AppStrings.complaints),
             bottom: PrimaryButton(
               label: context.tr(AppStrings.send),
-              height: 56,
+              height: 56.r,
               style: AppText.actionButton(16),
               onTap: cubit.send,
             ),
@@ -41,8 +42,8 @@ class ComplaintScreen extends StatelessWidget {
                 style: AppText.pageIntro,
               ),
               Wrap(
-                spacing: 8,
-                runSpacing: 8,
+                spacing: 8.r,
+                runSpacing: 8.r,
                 children: [
                   for (var i = 0; i < ComplaintType.mock.length; i++)
                     SelectChip(
@@ -59,7 +60,7 @@ class ComplaintScreen extends StatelessWidget {
                     context.tr(AppStrings.details),
                     style: AppText.fieldLabel,
                   ),
-                  const SizedBox(height: 6),
+                  SizedBox(height: 6.h),
                   AppTextField(
                     controller: cubit.detailsController,
                     hint: context.tr(AppStrings.detailsHint),

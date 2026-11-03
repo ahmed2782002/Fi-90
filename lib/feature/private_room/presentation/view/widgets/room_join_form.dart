@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/app_text_field.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoomJoinForm extends StatelessWidget {
   const RoomJoinForm({
@@ -20,15 +21,15 @@ class RoomJoinForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 12,
+      spacing: 12.r,
       children: [
         Text(context.tr(AppStrings.typeRoomCode), style: AppText.pageIntro),
         AppTextField(
           controller: controller,
           hint: '• • • •',
-          height: 78,
+          height: 78.r,
           ltr: true,
-          fontSize: 40,
+          fontSize: 40.sp,
           weight: FontWeight.w800,
           accent: AppColors.pri,
           onSubmitted: onJoin,

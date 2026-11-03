@@ -17,6 +17,7 @@ import 'package:fii90/feature/act_game/presentation/view_model/act_game_state.da
 import 'package:fii90/feature/game_end/presentation/view/screen/game_end_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ActGameScreen extends StatelessWidget {
   const ActGameScreen({super.key, required this.names, required this.members});
@@ -78,7 +79,7 @@ class ActGameScreen extends StatelessWidget {
             ),
             children: [
               Row(
-                spacing: 8,
+                spacing: 8.r,
                 children: [
                   for (final (i, n) in names.indexed)
                     Expanded(
@@ -112,11 +113,11 @@ class ActGameScreen extends StatelessWidget {
                 PressScale(
                   onTap: cubit.shuffle,
                   child: Container(
-                    height: 48,
+                    height: 48.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: AppColors.s1,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                       border: Border.all(color: AppColors.line2),
                     ),
                     child: Text(

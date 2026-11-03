@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/match_app/countdown_ring.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuestionTimerCard extends StatelessWidget {
   const QuestionTimerCard({
@@ -26,8 +27,8 @@ class QuestionTimerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ring = CountdownRing(
-      size: 72,
-      width: 7.5,
+      size: 72.r,
+      width: 7.5.r,
       progress: seconds / total,
       color: ringColor,
       child: Text(
@@ -36,10 +37,10 @@ class QuestionTimerCard extends StatelessWidget {
       ),
     );
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
@@ -50,22 +51,19 @@ class QuestionTimerCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 9,
-                    vertical: 3,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 3.h),
                   decoration: BoxDecoration(
                     color: AppColors.tint(AppColors.pri, .14),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.r),
                   ),
                   child: Text(tag, style: AppText.modeTag(AppColors.priInk)),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8.h),
                 Text(question, style: AppText.questionText),
               ],
             ),
           ),
-          const SizedBox(width: 14),
+          SizedBox(width: 14.w),
           urgent
               ? Loop(
                   period: const Duration(milliseconds: 600),

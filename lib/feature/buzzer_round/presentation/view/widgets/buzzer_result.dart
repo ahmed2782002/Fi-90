@@ -2,6 +2,7 @@ import 'package:fii90/core/animation/enter.dart';
 import 'package:fii90/core/animation/fx.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuzzerResult extends StatelessWidget {
   const BuzzerResult({
@@ -26,25 +27,25 @@ class BuzzerResult extends StatelessWidget {
           fx: Fx.pop,
           duration: const Duration(milliseconds: 450),
           child: Container(
-            width: 116,
-            height: 116,
+            width: 116.r,
+            height: 116.r,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(38),
+              borderRadius: BorderRadius.circular(38.r),
               border: Border.all(color: color, width: 3),
             ),
             child: Text(mark, style: AppText.resultMark(color)),
           ),
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         Text(
           title,
           textAlign: TextAlign.center,
           style: AppText.resultTitle(color),
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 280),
+          constraints: BoxConstraints(maxWidth: 280.r),
           child: Text(
             subtitle,
             textAlign: TextAlign.center,

@@ -7,6 +7,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BankSwitchCard extends StatelessWidget {
   const BankSwitchCard({
@@ -29,15 +30,15 @@ class BankSwitchCard extends StatelessWidget {
     return Enter(
       fx: Fx.fadeIn,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
         decoration: BoxDecoration(
           color: AppColors.s1,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(30.r),
           border: Border.all(color: AppColors.line),
           boxShadow: AppShadows.sh1,
         ),
         child: Column(
-          spacing: 12,
+          spacing: 12.r,
           children: [
             Text(
               context.tr(AppStrings.teamQuestionsDone, args: [team]),
@@ -58,7 +59,7 @@ class BankSwitchCard extends StatelessWidget {
                 context.tr(AppStrings.lostUnbanked, args: ['$lost']),
                 style: AppText.feedbackNote(AppColors.badInk),
               ),
-            PrimaryButton(label: nextLabel, onTap: onNext, height: 56),
+            PrimaryButton(label: nextLabel, onTap: onNext, height: 56.r),
           ],
         ),
       ),

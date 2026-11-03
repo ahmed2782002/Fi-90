@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/feature/comeback_round/mock_model/comeback_question.dart';
 import 'package:fii90/feature/comeback_round/presentation/view/widgets/club_slot.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ClubTimeline extends StatelessWidget {
   const ClubTimeline({
@@ -20,13 +21,13 @@ class ClubTimeline extends StatelessWidget {
     return Stack(
       children: [
         PositionedDirectional(
-          start: 10,
-          top: 18,
-          bottom: 18,
+          start: 10.w,
+          top: 18.r,
+          bottom: 18.r,
           child: Container(
-            width: 2,
+            width: 2.r,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(2.r),
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -37,11 +38,11 @@ class ClubTimeline extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.only(start: 28),
+          padding: EdgeInsetsDirectional.only(start: 28.w),
           child: Column(
             children: [
               for (var i = 0; i < question.clubs.length; i++) ...[
-                if (i > 0) const SizedBox(height: 6),
+                if (i > 0) SizedBox(height: 6.h),
                 Expanded(
                   child: ClubSlot(
                     number: i + 1,

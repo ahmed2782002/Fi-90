@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/app_background/app_background.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class GameLayer extends StatelessWidget {
@@ -35,7 +36,7 @@ class GameLayer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 9, 16, 10),
+                    padding: EdgeInsets.fromLTRB(16.w, 9.h, 16.w, 10.h),
                     child: Row(
                       children: [
                         Semantics(
@@ -44,8 +45,8 @@ class GameLayer extends StatelessWidget {
                           child: PressScale(
                             onTap: () => Navigator.of(context).pop(),
                             child: Container(
-                              width: 42,
-                              height: 42,
+                              width: 42.r,
+                              height: 42.r,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 color: AppColors.s1,
@@ -58,8 +59,8 @@ class GameLayer extends StatelessWidget {
                                     TextDirection.ltr,
                                 child: SvgPicture.asset(
                                   AppIcons.back,
-                                  width: 20,
-                                  height: 20,
+                                  width: 20.r,
+                                  height: 20.r,
                                   colorFilter: ColorFilter.mode(
                                     AppColors.tx,
                                     BlendMode.srcIn,
@@ -69,7 +70,7 @@ class GameLayer extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,10 +91,10 @@ class GameLayer extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView(
-                      padding: const EdgeInsets.fromLTRB(16, 4, 16, 28),
+                      padding: EdgeInsets.fromLTRB(16.w, 4.h, 16.w, 28.h),
                       children: [
                         for (final (i, child) in children.indexed) ...[
-                          if (i > 0) const SizedBox(height: 12),
+                          if (i > 0) SizedBox(height: 12.h),
                           child,
                         ],
                       ],

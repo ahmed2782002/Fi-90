@@ -14,6 +14,7 @@ import 'package:fii90/feature/match/presentation/view/widgets/round_frame.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuzzerScreen extends StatelessWidget {
   const BuzzerScreen({super.key});
@@ -63,7 +64,7 @@ class BuzzerScreen extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 4, 16, 28),
+                padding: EdgeInsets.fromLTRB(16.w, 4.h, 16.w, 28.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -75,9 +76,9 @@ class BuzzerScreen extends StatelessWidget {
                           ? state.count
                           : null,
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12.h),
                     SizedBox(
-                      height: 32,
+                      height: 32.r,
                       child: Text(
                         statusKey.isEmpty
                             ? ''
@@ -86,7 +87,7 @@ class BuzzerScreen extends StatelessWidget {
                         style: AppText.bellStatus(statusColor),
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    SizedBox(height: 12.h),
                     Expanded(
                       child: phase.bellZone
                           ? BuzzerBellZone(

@@ -1,17 +1,14 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../animation/loop.dart';
 import '../../theme/app_colors.dart';
 
 class SpinRing extends StatelessWidget {
-  const SpinRing({
-    super.key,
-    required this.size,
-    required this.color,
-    this.width = 3,
-  });
+  SpinRing({super.key, required this.size, required this.color, double? width})
+    : width = width ?? 3.r;
 
   final double size;
   final Color color;

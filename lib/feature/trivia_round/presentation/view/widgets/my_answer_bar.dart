@@ -7,6 +7,7 @@ import 'package:fii90/core/widgets/match_app/answer_input.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:fii90/feature/trivia_round/presentation/view_model/trivia_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyAnswerBar extends StatelessWidget {
   const MyAnswerBar({
@@ -39,37 +40,37 @@ class MyAnswerBar extends StatelessWidget {
                 child: child,
               ),
               child: Container(
-                width: 9,
-                height: 9,
+                width: 9.r,
+                height: 9.r,
                 decoration: BoxDecoration(
                   color: AppColors.me,
                   shape: BoxShape.circle,
                 ),
               ),
             ),
-            const SizedBox(width: 8),
+            SizedBox(width: 8.w),
             Text(
               context.tr(AppStrings.yourTurnAnswer),
               style: AppText.turnHeading(AppColors.meInk),
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         AnswerInput(
           controller: controller,
           hint: context.tr(AppStrings.typePlayerName),
           sendLabel: context.tr(AppStrings.send),
           onSend: onSend,
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         PressScale(
           onTap: onPass,
           child: Container(
-            height: 48,
+            height: 48.r,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: ready ? AppColors.tint(AppColors.gold, .14) : AppColors.s2,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(16.r),
               border: Border.all(
                 color: ready ? AppColors.gold : AppColors.line2,
                 width: 1.5,
@@ -85,7 +86,7 @@ class MyAnswerBar extends StatelessWidget {
                     struck: block == PassBlock.used,
                   ),
                 ),
-                const SizedBox(width: 10),
+                SizedBox(width: 10.w),
                 Text(
                   switch (block) {
                     null => context.tr(AppStrings.passUseOnce),

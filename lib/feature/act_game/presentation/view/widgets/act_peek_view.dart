@@ -9,6 +9,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ActPeekView extends StatelessWidget {
   const ActPeekView({
@@ -37,7 +38,7 @@ class ActPeekView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 14,
+      spacing: 14.r,
       children: [
         Text(
           context.tr(AppStrings.phoneWithActor, args: [actor, team]),
@@ -51,12 +52,12 @@ class ActPeekView extends StatelessWidget {
             child: PressScale(
               onTap: onReveal,
               child: Container(
-                width: 236,
-                height: 354,
+                width: 236.r,
+                height: 354.r,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                   color: AppColors.cardDeep,
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(22.r),
                   boxShadow: [
                     BoxShadow(
                       color: AppColors.tint(AppColors.neon, .35),
@@ -75,15 +76,15 @@ class ActPeekView extends StatelessWidget {
                       ),
                     ),
                     PositionedDirectional(
-                      start: 14,
-                      end: 14,
-                      bottom: 16,
-                      height: 42,
+                      start: 14.w,
+                      end: 14.w,
+                      bottom: 16.r,
+                      height: 42.r,
                       child: Container(
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: AppColors.tint(AppColors.cardDeep, .82),
-                          borderRadius: BorderRadius.circular(999),
+                          borderRadius: BorderRadius.circular(999.r),
                           border: Border.all(
                             color: AppColors.tint(AppColors.neon, .6),
                           ),
@@ -103,8 +104,8 @@ class ActPeekView extends StatelessWidget {
           Enter(
             fx: Fx.pop,
             child: Container(
-              width: 230,
-              padding: const EdgeInsets.fromLTRB(12, 12, 12, 16),
+              width: 230.r,
+              padding: EdgeInsets.fromLTRB(12.w, 12.h, 12.w, 16.h),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -115,7 +116,7 @@ class ActPeekView extends StatelessWidget {
                     AppColors.s1,
                   ],
                 ),
-                borderRadius: BorderRadius.circular(32),
+                borderRadius: BorderRadius.circular(32.r),
                 border: Border.all(color: levelColor, width: 2),
                 boxShadow: [
                   BoxShadow(
@@ -126,14 +127,14 @@ class ActPeekView extends StatelessWidget {
                 ],
               ),
               child: Column(
-                spacing: 10,
+                spacing: 10.r,
                 children: [
                   Container(
-                    height: 190,
+                    height: 190.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: AppColors.s2,
-                      borderRadius: BorderRadius.circular(24),
+                      borderRadius: BorderRadius.circular(24.r),
                     ),
                     child: Text(
                       name.characters.first,
@@ -141,13 +142,13 @@ class ActPeekView extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 3,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 12.w,
+                      vertical: 3.h,
                     ),
                     decoration: BoxDecoration(
                       color: levelColor,
-                      borderRadius: BorderRadius.circular(999),
+                      borderRadius: BorderRadius.circular(999.r),
                     ),
                     child: Text(
                       context.tr(
@@ -173,7 +174,7 @@ class ActPeekView extends StatelessWidget {
           PrimaryButton(
             label: context.tr(AppStrings.hideAndStart),
             onTap: onStart,
-            height: 56,
+            height: 56.r,
           ),
         ],
       ],

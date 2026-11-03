@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../constants/app_icons.dart';
@@ -23,8 +24,8 @@ class LogoFace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 56,
-      height: 56,
+      width: 56.r,
+      height: 56.r,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -49,15 +50,19 @@ class LogoFace extends StatelessWidget {
                     1,
                   )
                   ..scaleByDouble(_flyScale, _flyScale, 1, 1),
-                child: SvgPicture.asset(AppIcons.ball, width: 56, height: 56),
+                child: SvgPicture.asset(
+                  AppIcons.ball,
+                  width: 56.r,
+                  height: 56.r,
+                ),
               ),
             ),
           ),
           Positioned(
-            left: 32.6,
-            top: 30.6,
-            width: 14,
-            height: 22.5,
+            left: 32.6.w,
+            top: 30.6.r,
+            width: 14.r,
+            height: 22.5.r,
             child: Image.asset(AppImages.brandFi, fit: BoxFit.contain),
           ),
         ],

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/app_text.dart';
 
 class PointsBadge extends StatelessWidget {
-  const PointsBadge({super.key, required this.label, this.size = 22});
+  PointsBadge({super.key, required this.label, double? size})
+    : size = size ?? 22.r;
 
   final String label;
   final double size;
@@ -21,7 +23,7 @@ class PointsBadge extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           color: AppColors.gold,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(14.r),
           border: Border.all(color: AppColors.stk, width: 2),
           boxShadow: [
             BoxShadow(

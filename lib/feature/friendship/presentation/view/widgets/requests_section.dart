@@ -6,6 +6,7 @@ import 'package:fii90/feature/friendship/mock_model/buddy.dart';
 import 'package:fii90/feature/friendship/presentation/view/widgets/buddy_tile.dart';
 import 'package:fii90/feature/friendship/presentation/view/widgets/round_action.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RequestsSection extends StatelessWidget {
   const RequestsSection({
@@ -25,14 +26,14 @@ class RequestsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(8, 2, 8, 0),
+          padding: EdgeInsets.fromLTRB(8.w, 2.h, 8.w, 0),
           child: Text(
             context.tr(AppStrings.requestsHeader, args: ['${requests.length}']),
             style: AppText.listHeader,
           ),
         ),
         for (final r in requests) ...[
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           BuddyTile(
             name: context.tr(r.name),
             subtitle: 'LV ${r.level} · ${context.tr(r.tierKey ?? '')}',

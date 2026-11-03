@@ -10,6 +10,7 @@ import 'package:fii90/feature/matchmaking/presentation/view/widgets/opponent_fou
 import 'package:fii90/feature/matchmaking/presentation/view/widgets/search_radar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MatchmakingScreen extends StatelessWidget {
   const MatchmakingScreen({super.key});
@@ -33,10 +34,10 @@ class MatchmakingScreen extends StatelessWidget {
           ),
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(22, 9, 22, 44),
+              padding: EdgeInsets.fromLTRB(22.w, 9.h, 22.w, 44.h),
               child: Column(
                 children: [
-                  const SizedBox(height: 16),
+                  SizedBox(height: 16.h),
                   Text(
                     context.tr(AppStrings.quickMatch),
                     style: AppText.screenSubtitle,
@@ -52,18 +53,18 @@ class MatchmakingScreen extends StatelessWidget {
                               .first,
                           found: state.found,
                         ),
-                        const SizedBox(height: 34),
+                        SizedBox(height: 34.h),
                         if (!state.found) ...[
                           Text(
                             context.tr(AppStrings.searchingOpponent),
                             style: AppText.screenTitle,
                           ),
-                          const SizedBox(height: 6),
+                          SizedBox(height: 6.h),
                           Text(
                             context.tr(AppStrings.sameLevelPlayers),
                             style: AppText.pageIntro,
                           ),
-                          const SizedBox(height: 6),
+                          SizedBox(height: 6.h),
                           Text(
                             '00:0${state.searchSeconds.clamp(0, 9)}',
                             textDirection: TextDirection.ltr,
@@ -86,11 +87,11 @@ class MatchmakingScreen extends StatelessWidget {
                     PressScale(
                       onTap: cubit.cancel,
                       child: Container(
-                        height: 54,
+                        height: 54.r,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: AppColors.s1,
-                          borderRadius: BorderRadius.circular(999),
+                          borderRadius: BorderRadius.circular(999.r),
                           border: Border.all(color: AppColors.line2),
                         ),
                         child: Text(

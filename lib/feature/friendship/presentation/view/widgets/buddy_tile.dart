@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/feature/friendship/presentation/view/widgets/buddy_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuddyTile extends StatelessWidget {
   const BuddyTile({
@@ -29,10 +30,10 @@ class BuddyTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(24.r),
         border: Border.all(
           color: highlighted ? AppColors.line2 : AppColors.line,
         ),
@@ -46,7 +47,7 @@ class BuddyTile extends StatelessWidget {
             foreground: foreground,
             dot: dot,
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +57,7 @@ class BuddyTile extends StatelessWidget {
               ],
             ),
           ),
-          for (final action in actions) ...[const SizedBox(width: 12), action],
+          for (final action in actions) ...[SizedBox(width: 12.w), action],
         ],
       ),
     );

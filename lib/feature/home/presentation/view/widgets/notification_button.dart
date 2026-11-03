@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NotificationButton extends StatelessWidget {
@@ -29,19 +30,19 @@ class NotificationButton extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Container(
-              width: 44,
-              height: 44,
+              width: 44.r,
+              height: 44.r,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: AppColors.s1,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(14.r),
                 border: Border.all(color: AppColors.line),
                 boxShadow: AppShadows.sh1,
               ),
               child: SvgPicture.asset(
                 AppIcons.notification,
-                width: 22,
-                height: 22,
+                width: 22.r,
+                height: 22.r,
                 colorFilter: ColorFilter.mode(AppColors.tx2, BlendMode.srcIn),
               ),
             ),
@@ -50,13 +51,13 @@ class NotificationButton extends StatelessWidget {
                 top: -7,
                 end: -7,
                 child: Container(
-                  constraints: const BoxConstraints(minWidth: 24),
-                  height: 24,
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  constraints: BoxConstraints(minWidth: 24.r),
+                  height: 24.r,
+                  padding: EdgeInsets.symmetric(horizontal: 5.w),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: AppColors.bad,
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                     border: Border.all(color: AppColors.bg, width: 2),
                   ),
                   child: Text('$count', style: AppText.countBadge),

@@ -12,6 +12,7 @@ import 'package:fii90/feature/onboarding/presentation/view/widgets/versus_slide/
 import 'package:fii90/feature/onboarding/presentation/view/widgets/versus_slide/versus_players.dart';
 import 'package:fii90/feature/onboarding/presentation/view/widgets/versus_slide/vs_badge.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VersusSlide extends StatelessWidget {
   const VersusSlide({super.key});
@@ -39,8 +40,8 @@ class VersusSlide extends StatelessWidget {
           delay: Duration(milliseconds: 350),
           child: VsBadge(),
         ),
-        const Positioned(
-          top: 18,
+        Positioned(
+          top: 18.r,
           child: Enter(
             fx: Fx.fadeUp,
             delay: Duration(milliseconds: 500),
@@ -48,8 +49,8 @@ class VersusSlide extends StatelessWidget {
           ),
         ),
         PositionedDirectional(
-          bottom: 26,
-          end: 14,
+          bottom: 26.r,
+          end: 14.w,
           child: Enter(
             fx: Fx.pop,
             delay: const Duration(milliseconds: 600),
@@ -59,14 +60,18 @@ class VersusSlide extends StatelessWidget {
           ),
         ),
         PositionedDirectional(
-          top: 44,
-          start: 22,
+          top: 44.r,
+          start: 22.w,
           child: Enter(
             fx: Fx.pop,
             delay: Duration(milliseconds: 700),
             child: Opacity(
               opacity: .8,
-              child: LineIcon(AppIcons.sparkle, color: AppColors.cy, size: 18),
+              child: LineIcon(
+                AppIcons.sparkle,
+                color: AppColors.cy,
+                size: 18.r,
+              ),
             ),
           ),
         ),

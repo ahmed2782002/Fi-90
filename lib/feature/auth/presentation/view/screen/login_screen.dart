@@ -13,8 +13,11 @@ import 'package:fii90/feature/auth/presentation/view/widgets/social_button.dart'
 import 'package:fii90/feature/auth/presentation/view_model/login_cubit.dart';
 import 'package:fii90/feature/auth/presentation/view_model/login_state.dart';
 import 'package:fii90/feature/layout/presentation/view/screen/layout_screen.dart';
+import 'package:fii90/feature/legal/mock_model/legal_section.dart';
+import 'package:fii90/feature/legal/presentation/view/screen/legal_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -24,21 +27,33 @@ class LoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => LoginCubit(),
       child: BlocListener<LoginCubit, LoginState>(
-        listenWhen: (_, s) => s.message != null || s.isSignedIn,
-        listener: (context, state) => state.isSignedIn
-            ? Nav.replace(context, const LayoutScreen())
-            : (ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      context.tr(state.message!),
-                      style: AppText.toast,
-                    ),
-                    backgroundColor: AppColors.s2,
-                    behavior: SnackBarBehavior.floating,
-                  ),
-                )),
+        listenWhen: (_, s) => s.status != LoginStatus.idle,
+        listener: (context, state) {
+          switch (state.status) {
+            case LoginStatus.signedIn:
+              Nav.replace(context, const LayoutScreen());
+            case LoginStatus.terms:
+              Nav.push(
+                context,
+                const LegalScreen(
+                  titleKey: AppStrings.termsAndConditions,
+                  sections: LegalSection.terms,
+                ),
+              );
+              context.read<LoginCubit>().reset();
+            case LoginStatus.privacy:
+              Nav.push(
+                context,
+                const LegalScreen(
+                  titleKey: AppStrings.privacyPolicy,
+                  sections: LegalSection.privacy,
+                ),
+              );
+              context.read<LoginCubit>().reset();
+            case LoginStatus.idle:
+              break;
+          }
+        },
         child: Scaffold(
           backgroundColor: AppColors.bg,
           body: AppBackground(
@@ -55,7 +70,7 @@ class LoginScreen extends StatelessWidget {
               ),
               child: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 39, 24, 10),
+                  padding: EdgeInsets.fromLTRB(24.w, 39.h, 24.w, 10.h),
                   child: Builder(
                     builder: (context) => Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -64,19 +79,21 @@ class LoginScreen extends StatelessWidget {
                           alignment: AlignmentDirectional.centerStart,
                           child: BrandLogo.small(),
                         ),
-                        const SizedBox(height: 26),
-                        Text(
+                        SizedBox(height: 26.h),
+                        // Keep the header one line per locale so the stage
+                        // below gets the same height in Arabic and English.
+                        _OneLine(
                           context.tr(AppStrings.loginTitle),
                           style: AppText.loginTitle,
                         ),
-                        const SizedBox(height: 6),
-                        Text(
+                        SizedBox(height: 6.h),
+                        _OneLine(
                           context.tr(AppStrings.loginSubtitle),
                           style: AppText.loginSubtitle,
                         ),
-                        const SizedBox(height: 26),
+                        SizedBox(height: 26.h),
                         const Expanded(child: PlayerCardStage()),
-                        const SizedBox(height: 26),
+                        SizedBox(height: 26.h),
                         SocialButton(
                           label: context.tr(AppStrings.loginGoogle),
                           icon: AppIcons.google,
@@ -85,7 +102,7 @@ class LoginScreen extends StatelessWidget {
                           foreground: AppColors.googleText,
                           onTap: context.read<LoginCubit>().signInWithGoogle,
                         ),
-                        const SizedBox(height: 12),
+                        SizedBox(height: 12.h),
                         SocialButton(
                           label: context.tr(AppStrings.loginApple),
                           icon: AppIcons.apple,
@@ -95,7 +112,7 @@ class LoginScreen extends StatelessWidget {
                           border: AppColors.tint(AppColors.white, .22),
                           onTap: context.read<LoginCubit>().signInWithApple,
                         ),
-                        const SizedBox(height: 16),
+                        SizedBox(height: 16.h),
                         const LoginTerms(),
                       ],
                     ),
@@ -106,6 +123,22 @@ class LoginScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _OneLine extends StatelessWidget {
+  const _OneLine(this.text, {required this.style});
+
+  final String text;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      alignment: AlignmentDirectional.centerStart,
+      child: Text(text, style: style, maxLines: 1),
     );
   }
 }

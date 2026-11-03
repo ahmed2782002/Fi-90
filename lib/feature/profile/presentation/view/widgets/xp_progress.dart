@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class XpProgress extends StatelessWidget {
   const XpProgress({
@@ -26,12 +27,12 @@ class XpProgress extends StatelessWidget {
             Text('$target', style: AppText.xpProgress),
           ],
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: 5.h),
         ClipRRect(
-          borderRadius: BorderRadius.circular(9),
+          borderRadius: BorderRadius.circular(9.r),
           child: LinearProgressIndicator(
             value: progress,
-            minHeight: 7,
+            minHeight: 7.r,
             color: AppColors.white,
             backgroundColor: AppColors.tint(AppColors.black, .22),
           ),

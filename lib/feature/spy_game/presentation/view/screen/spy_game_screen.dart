@@ -18,6 +18,7 @@ import 'package:fii90/feature/spy_game/presentation/view_model/spy_game_cubit.da
 import 'package:fii90/feature/spy_game/presentation/view_model/spy_game_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpyGameScreen extends StatelessWidget {
   const SpyGameScreen({super.key, required this.players});
@@ -107,7 +108,7 @@ class SpyGameScreen extends StatelessWidget {
                           args: [players[state.index + 1]],
                         ),
                   onTap: state.flipped ? cubit.passOn : cubit.flip,
-                  height: 56,
+                  height: 56.r,
                 ),
               ],
               SpyStep.clue => [

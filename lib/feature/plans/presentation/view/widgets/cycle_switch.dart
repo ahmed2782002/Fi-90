@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CycleSwitch extends StatelessWidget {
   const CycleSwitch({super.key, required this.index, required this.onSelect});
@@ -15,10 +16,10 @@ class CycleSwitch extends StatelessWidget {
   Widget build(BuildContext context) {
     final labels = [AppStrings.cycleMonthly, AppStrings.cycleYearly];
     return Container(
-      padding: const EdgeInsets.all(4),
+      padding: EdgeInsets.all(4.r),
       decoration: BoxDecoration(
         color: AppColors.s2,
-        borderRadius: BorderRadius.circular(999),
+        borderRadius: BorderRadius.circular(999.r),
       ),
       child: Row(
         children: [
@@ -28,10 +29,10 @@ class CycleSwitch extends StatelessWidget {
                 onTap: () => onSelect(i),
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  height: 40,
+                  height: 40.r,
                   decoration: BoxDecoration(
                     gradient: i == index ? AppColors.grad : null,
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                     boxShadow: i == index ? AppShadows.segment : const [],
                   ),
                   child: Row(
@@ -45,15 +46,15 @@ class CycleSwitch extends StatelessWidget {
                         ),
                       ),
                       if (i == 1) ...[
-                        const SizedBox(width: 6),
+                        SizedBox(width: 6.w),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 7,
-                            vertical: 1,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 7.w,
+                            vertical: 1.h,
                           ),
                           decoration: BoxDecoration(
                             color: AppColors.gold,
-                            borderRadius: BorderRadius.circular(7),
+                            borderRadius: BorderRadius.circular(7.r),
                           ),
                           child: Text(
                             context.tr(AppStrings.save40),

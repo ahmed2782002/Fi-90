@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/dashed_ring/dashed_ring_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DailyChallengeCard extends StatelessWidget {
   const DailyChallengeCard({
@@ -25,10 +26,10 @@ class DailyChallengeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
@@ -36,7 +37,7 @@ class DailyChallengeCard extends StatelessWidget {
         children: [
           CustomPaint(
             painter: DashedRingPainter(
-              width: 5.5,
+              width: 5.5.r,
               color: AppColors.gold,
               rest: AppColors.s3,
               progress: progress,
@@ -52,7 +53,7 @@ class DailyChallengeCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 14),
+          SizedBox(width: 14.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +65,7 @@ class DailyChallengeCard extends StatelessWidget {
                   ),
                   style: AppText.dailyMeta,
                 ),
-                const SizedBox(height: 2),
+                SizedBox(height: 2.h),
                 Text(
                   context.tr(AppStrings.dailyChallengeTitle),
                   style: AppText.dailyTitle,
@@ -72,15 +73,15 @@ class DailyChallengeCard extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 14),
+          SizedBox(width: 14.w),
           Transform(
             alignment: Alignment.center,
             transform: Matrix4.skewX(-.1763),
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 5),
+              padding: EdgeInsets.symmetric(horizontal: 11.w, vertical: 5.h),
               decoration: BoxDecoration(
                 color: AppColors.gold,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10.r),
               ),
               child: Text(
                 '+$xp XP',

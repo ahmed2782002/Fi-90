@@ -4,6 +4,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OpponentFoundCard extends StatelessWidget {
   const OpponentFoundCard({
@@ -27,23 +28,23 @@ class OpponentFoundCard extends StatelessWidget {
           fx: Fx.pop,
           child: Text(title, style: AppText.display(24)),
         ),
-        const SizedBox(height: 14),
+        SizedBox(height: 14.h),
         Enter(
           fx: Fx.slideE,
           delay: const Duration(milliseconds: 150),
           child: Container(
-            padding: const EdgeInsets.all(14),
+            padding: EdgeInsets.all(14.r),
             decoration: BoxDecoration(
               color: AppColors.s1,
-              borderRadius: BorderRadius.circular(28),
+              borderRadius: BorderRadius.circular(28.r),
               border: Border.all(color: AppColors.op, width: 1.5),
               boxShadow: AppShadows.sh2,
             ),
             child: Row(
               children: [
                 Container(
-                  width: 54,
-                  height: 54,
+                  width: 54.r,
+                  height: 54.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: AppColors.op,
@@ -54,7 +55,7 @@ class OpponentFoundCard extends StatelessWidget {
                     style: AppText.bigInitial(24, AppColors.opOn),
                   ),
                 ),
-                const SizedBox(width: 14),
+                SizedBox(width: 14.w),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,14 +69,14 @@ class OpponentFoundCard extends StatelessWidget {
                   textDirection: TextDirection.ltr,
                   children: [
                     Container(
-                      width: 7,
-                      height: 7,
+                      width: 7.r,
+                      height: 7.r,
                       decoration: BoxDecoration(
                         color: AppColors.ok,
                         shape: BoxShape.circle,
                       ),
                     ),
-                    const SizedBox(width: 5),
+                    SizedBox(width: 5.w),
                     Text('48ms', style: AppText.latency),
                   ],
                 ),

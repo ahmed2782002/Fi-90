@@ -3,6 +3,7 @@ import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpyChoiceTile extends StatelessWidget {
   const SpyChoiceTile({
@@ -33,8 +34,8 @@ class SpyChoiceTile extends StatelessWidget {
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        constraints: const BoxConstraints(minHeight: 124),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+        constraints: BoxConstraints(minHeight: 124.r),
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 16.h),
         transform: Matrix4.translationValues(0, selected ? -3 : 0, 0),
         decoration: BoxDecoration(
           gradient: RadialGradient(
@@ -48,7 +49,7 @@ class SpyChoiceTile extends StatelessWidget {
             ],
             stops: const [0, .7],
           ),
-          borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(28.r),
           border: Border.all(
             color: selected || mark == null ? color : AppColors.line,
             width: 1.5,
@@ -63,11 +64,11 @@ class SpyChoiceTile extends StatelessWidget {
             Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                spacing: 10,
+                spacing: 10.r,
                 children: [
                   Container(
-                    width: 56,
-                    height: 56,
+                    width: 56.r,
+                    height: 56.r,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: badgeColor ?? color,
@@ -92,13 +93,13 @@ class SpyChoiceTile extends StatelessWidget {
                 top: -6,
                 end: 0,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 3,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 3.h,
                   ),
                   decoration: BoxDecoration(
                     color: color,
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(999.r),
                   ),
                   child: Text(mark, style: AppText.vsTag(AppColors.white)),
                 ),

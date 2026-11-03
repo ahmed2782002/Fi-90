@@ -17,6 +17,7 @@ import 'package:fii90/feature/bank_game/presentation/view_model/bank_game_state.
 import 'package:fii90/feature/game_end/presentation/view/screen/game_end_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BankGameScreen extends StatelessWidget {
   const BankGameScreen({super.key, required this.names, required this.members});
@@ -55,7 +56,7 @@ class BankGameScreen extends StatelessWidget {
                 '${names[state.team]} · ${members[state.team].join(context.tr(AppStrings.nameJoiner))}',
             children: [
               Row(
-                spacing: 8,
+                spacing: 8.r,
                 children: [
                   for (final (i, n) in names.indexed)
                     Expanded(
@@ -93,7 +94,7 @@ class BankGameScreen extends StatelessWidget {
                   PrimaryButton(
                     label: context.tr(AppStrings.answerThenReveal),
                     onTap: cubit.showAnswer,
-                    height: 56,
+                    height: 56.r,
                   )
                 else
                   JudgeButtons(

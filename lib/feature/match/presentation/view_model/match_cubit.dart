@@ -4,6 +4,7 @@ import 'package:fii90/core/widgets/app_toast/toast_message.dart';
 import 'package:fii90/feature/match/mock_model/match_mode.dart';
 import 'package:fii90/feature/match/mock_model/round_result.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_state.dart';
+import 'package:fii90/feature/trivia_round/mock_model/trivia_question.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,6 +30,7 @@ class MatchCubit extends Cubit<MatchState> {
 
   final _scheduler = Scheduler();
   final _deltaTimer = Scheduler();
+  var trivia = const <TriviaQuestion>[];
 
   double get skill => state.vsAi ? state.aiLevel.skill : AiLevel.normal.skill;
 
@@ -49,11 +51,11 @@ class MatchCubit extends Cubit<MatchState> {
 
   bool get lost => state.meScore < state.oppScore;
 
-  int get earnedXp => won
-      ? 120
-      : lost
-      ? 45
-      : 70;
+  bool get isFullMatch => state.modes.length > 1;
+
+  int get earnedXp => won ? (isFullMatch ? 250 : 50) : 0;
+
+  int? get earnedCoins => won ? (isFullMatch ? 50 : 10) : null;
 
   void _go(MatchStage stage) => emit(state.copyWith(stage: stage));
 
@@ -65,27 +67,26 @@ class MatchCubit extends Cubit<MatchState> {
         if (t >= 3) _scheduler.after(2200, () => _go(MatchStage.vs));
       case MatchStage.vs:
         final c = state.vsCount - 1;
-        c < 0 ? _openIntro() : emit(state.copyWith(vsCount: c));
-      case MatchStage.intro:
-        final c = state.introCount - 1;
-        c <= 0 ? startRound() : emit(state.copyWith(introCount: c));
+        c < 0 ? _startRound() : emit(state.copyWith(vsCount: c));
       default:
     }
   }
 
-  void _openIntro() =>
-      emit(state.copyWith(stage: MatchStage.intro, introCount: 4));
-
   void cancel() => _go(MatchStage.exit);
 
-  void startRound() => emit(
-    state.copyWith(
-      stage: MatchStage.round,
-      question: 0,
-      questionWins: const [],
-      roundKey: state.roundKey + 1,
-    ),
-  );
+  void _startRound([int? roundIndex]) {
+    final mode = state.modes[roundIndex ?? state.roundIndex];
+    if (mode == MatchMode.trivia) trivia = TriviaQuestion.deal(mode.questions);
+    emit(
+      state.copyWith(
+        stage: MatchStage.round,
+        roundIndex: roundIndex,
+        question: 0,
+        questionWins: const [],
+        roundKey: state.roundKey + 1,
+      ),
+    );
+  }
 
   void addScore(MatchSide side, int amount) {
     emit(
@@ -171,16 +172,15 @@ class MatchCubit extends Cubit<MatchState> {
       ? emit(
           state.copyWith(
             stage: MatchStage.finished,
-            toast: won ? const ToastMessage(AppStrings.winCoinsToast) : null,
+            toast: won
+                ? ToastMessage(
+                    AppStrings.winCoinsToast,
+                    args: ['${earnedCoins!}'],
+                  )
+                : null,
           ),
         )
-      : emit(
-          state.copyWith(
-            stage: MatchStage.intro,
-            roundIndex: state.roundIndex + 1,
-            introCount: 4,
-          ),
-        );
+      : _startRound(state.roundIndex + 1);
 
   void rematch() => emit(
     MatchState(

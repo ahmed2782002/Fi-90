@@ -8,6 +8,7 @@ import 'package:fii90/core/widgets/friends_app/initial_badge.dart';
 import 'package:fii90/core/widgets/press_scale.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SpyRevealView extends StatelessWidget {
   const SpyRevealView({
@@ -40,12 +41,12 @@ class SpyRevealView extends StatelessWidget {
     final spyName = players[spy];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      spacing: 10,
+      spacing: 10.r,
       children: [
         Enter(
           fx: Fx.fadeUp,
           child: Column(
-            spacing: 6,
+            spacing: 6.r,
             children: [
               Text(context.tr(AppStrings.spy), style: AppText.spyMark(14)),
               Text(spyName, style: AppText.cardTitleBig),
@@ -62,17 +63,17 @@ class SpyRevealView extends StatelessWidget {
         ),
         for (final (j, name) in players.indexed)
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
             decoration: BoxDecoration(
               color: AppColors.s1,
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(18.r),
               border: Border.all(
                 color: j == spy ? AppColors.redGlow : AppColors.line,
                 width: 1.5,
               ),
             ),
             child: Row(
-              spacing: 10,
+              spacing: 10.r,
               children: [
                 InitialBadge(name: name, palette: AppColors.player(j)),
                 Expanded(child: Text(name, style: AppText.chipName)),
@@ -84,12 +85,12 @@ class SpyRevealView extends StatelessWidget {
             ),
           ),
         Container(
-          padding: const EdgeInsets.all(14),
+          padding: EdgeInsets.all(14.r),
           decoration: BoxDecoration(
             color: picked == null
                 ? AppColors.mix(AppColors.bad, .1, AppColors.s1)
                 : AppColors.s1,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(24.r),
             border: Border.all(
               color: picked == null
                   ? AppColors.redGlow
@@ -100,7 +101,7 @@ class SpyRevealView extends StatelessWidget {
             ),
           ),
           child: Column(
-            spacing: 10,
+            spacing: 10.r,
             children: picked == null
                 ? [
                     Text(
@@ -114,18 +115,18 @@ class SpyRevealView extends StatelessWidget {
                     ),
                     for (var r = 0; r < options.length; r += 2)
                       Row(
-                        spacing: 8,
+                        spacing: 8.r,
                         children: [
                           for (var i = r; i < r + 2 && i < options.length; i++)
                             Expanded(
                               child: PressScale(
                                 onTap: () => onGuess(i),
                                 child: Container(
-                                  height: 52,
+                                  height: 52.r,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                     color: AppColors.s1,
-                                    borderRadius: BorderRadius.circular(18),
+                                    borderRadius: BorderRadius.circular(18.r),
                                     border: Border.all(
                                       color: AppColors.line2,
                                       width: 1.5,
@@ -169,7 +170,7 @@ class SpyRevealView extends StatelessWidget {
           PrimaryButton(
             label: context.tr(AppStrings.seePoints),
             onTap: onFinish,
-            height: 56,
+            height: 56.r,
           ),
       ],
     );

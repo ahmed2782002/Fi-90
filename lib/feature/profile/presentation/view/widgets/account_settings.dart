@@ -6,6 +6,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/settings_app/settings_group.dart';
 import 'package:fii90/core/widgets/settings_app/settings_row.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class AccountSettings extends StatelessWidget {
@@ -18,6 +19,7 @@ class AccountSettings extends StatelessWidget {
     required this.requests,
     required this.onEdit,
     required this.onSound,
+    required this.onCoins,
     required this.onPlans,
     required this.onFriends,
   });
@@ -29,6 +31,7 @@ class AccountSettings extends StatelessWidget {
   final int requests;
   final VoidCallback onEdit;
   final VoidCallback onSound;
+  final VoidCallback onCoins;
   final VoidCallback onPlans;
   final VoidCallback onFriends;
 
@@ -54,10 +57,27 @@ class AccountSettings extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16.h),
         SettingsGroup(
           title: context.tr(AppStrings.groupPlanFriends),
           children: [
+            SettingsRow(
+              icon: AppIcons.coin,
+              tint: AppColors.gold,
+              ink: AppColors.goldInk,
+              tintAlpha: .16,
+              keepIconColors: true,
+              title: context.tr(AppStrings.shopTitle),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(AppIcons.coin, width: 18.r, height: 18.r),
+                  SizedBox(width: 4.w),
+                  Text('$coins', style: AppText.rowCoins),
+                ],
+              ),
+              onTap: onCoins,
+            ),
             SettingsRow(
               icon: AppIcons.plans,
               tint: AppColors.gold,
@@ -65,14 +85,6 @@ class AccountSettings extends StatelessWidget {
               tintAlpha: .16,
               title: context.tr(AppStrings.plans),
               subtitle: planHint,
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SvgPicture.asset(AppIcons.coin, width: 18, height: 18),
-                  const SizedBox(width: 4),
-                  Text('$coins', style: AppText.rowCoins),
-                ],
-              ),
               onTap: onPlans,
             ),
             SettingsRow(
@@ -82,13 +94,13 @@ class AccountSettings extends StatelessWidget {
               trailing: requests == 0
                   ? null
                   : Container(
-                      constraints: const BoxConstraints(minWidth: 22),
-                      height: 22,
-                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      constraints: BoxConstraints(minWidth: 22.r),
+                      height: 22.r,
+                      padding: EdgeInsets.symmetric(horizontal: 6.w),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: AppColors.bad,
-                        borderRadius: BorderRadius.circular(999),
+                        borderRadius: BorderRadius.circular(999.r),
                       ),
                       child: Text('$requests', style: AppText.rowBadge),
                     ),

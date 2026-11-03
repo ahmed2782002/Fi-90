@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/match_app/mini_fut_card.dart';
 import 'package:fii90/feature/auction_round/mock_model/auction_player.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PitchToken extends StatelessWidget {
   const PitchToken({
@@ -28,13 +29,13 @@ class PitchToken extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = player;
     return SizedBox(
-      width: 78,
+      width: 78.r,
       child: p == null
           ? Column(
               children: [
                 Container(
-                  width: 54,
-                  height: 54,
+                  width: 54.r,
+                  height: 54.r,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -42,7 +43,7 @@ class PitchToken extends StatelessWidget {
                   ),
                   child: Text(slotLabel, style: AppText.slotLabel),
                 ),
-                const SizedBox(height: 3),
+                SizedBox(height: 3.h),
                 Text(emptyLabel, style: AppText.slotEmpty),
               ],
             )
@@ -57,7 +58,7 @@ class PitchToken extends StatelessWidget {
                     initial: p.short.of(context).characters.first,
                     highlight: highlight,
                   ),
-                  const SizedBox(height: 3),
+                  SizedBox(height: 3.h),
                   Text(
                     p.short.of(context),
                     maxLines: 1,

@@ -16,6 +16,7 @@ import 'package:fii90/feature/match/presentation/view/widgets/round_frame.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ComebackScreen extends StatelessWidget {
   const ComebackScreen({super.key});
@@ -56,7 +57,7 @@ class ComebackScreen extends StatelessWidget {
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 28),
+                  padding: EdgeInsets.fromLTRB(16.w, 4.h, 16.w, 28.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -67,7 +68,7 @@ class ComebackScreen extends StatelessWidget {
                         secondsLeft: cubit.secondsLeft,
                         playing: !state.done,
                       ),
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Expanded(
                         child: ClubTimeline(
                           question: cubit.question,
@@ -78,7 +79,7 @@ class ComebackScreen extends StatelessWidget {
                         ),
                       ),
                       if (state.guesses.isNotEmpty) ...[
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         GuessChips(
                           guesses: [
                             for (final g in state.guesses)
@@ -86,7 +87,7 @@ class ComebackScreen extends StatelessWidget {
                           ],
                         ),
                       ],
-                      const SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       if (cubit.canType)
                         AnswerInput(
                           controller: cubit.input,
@@ -99,12 +100,12 @@ class ComebackScreen extends StatelessWidget {
                       if (state.verifying != null)
                         Row(
                           children: [
-                            const SpinRing(
-                              size: 14,
+                            SpinRing(
+                              size: 14.r,
                               color: AppColors.m4Glow,
-                              width: 2,
+                              width: 2.r,
                             ),
-                            const SizedBox(width: 8),
+                            SizedBox(width: 8.w),
                             Text(
                               context.tr(AppStrings.verifying),
                               style: AppText.statusLine,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
@@ -14,7 +15,7 @@ abstract final class AppText {
     bool tabular = false,
   }) {
     return GoogleFonts.cairo(
-      fontSize: size,
+      fontSize: size.sp,
       fontWeight: weight,
       color: color ?? AppColors.tx,
       height: height,
@@ -37,7 +38,7 @@ abstract final class AppText {
   ];
 
   static TextStyle get logoNine =>
-      GoogleFonts.rubik(fontSize: 40, fontWeight: FontWeight.w900);
+      GoogleFonts.rubik(fontSize: 40.sp, fontWeight: FontWeight.w900);
 
   static TextStyle get splashBrand => _cairo(
     38,
@@ -364,7 +365,7 @@ abstract final class AppText {
     double height = 1,
     double? letterSpacing,
   }) => GoogleFonts.barlowCondensed(
-    fontSize: size,
+    fontSize: size.sp,
     fontWeight: weight,
     color: color,
     height: height,
@@ -410,21 +411,17 @@ abstract final class AppText {
       _cairo(11, weight: FontWeight.w800, color: color);
   static TextStyle get scoreDelta =>
       _cairo(13, weight: FontWeight.w900, color: AppColors.stickerInk);
-  static TextStyle get ringCount =>
-      _cairo(15, weight: FontWeight.w900, tabular: true);
   static TextStyle leadTag(Color color) =>
       _cairo(10, weight: FontWeight.w800, color: color);
 
   static TextStyle get searchTimer =>
       _cairo(14, weight: FontWeight.w700, color: AppColors.mu, tabular: true);
-  static TextStyle get ping =>
-      _cairo(11, weight: FontWeight.w700, color: AppColors.okInk);
   static TextStyle get latency =>
       _cairo(11, weight: FontWeight.w600, color: AppColors.mu);
   static TextStyle bigInitial(double size, Color color) =>
       _cairo(size, weight: FontWeight.w900, color: color);
   static TextStyle get vsName =>
-      _cairo(18, weight: FontWeight.w900, color: AppColors.white);
+      _cairo(24, weight: FontWeight.w900, color: AppColors.tx);
   static TextStyle vsTag(Color color) =>
       _cairo(11, weight: FontWeight.w800, color: color);
   static TextStyle get sideName => _cairo(14, weight: FontWeight.w800);
@@ -433,10 +430,6 @@ abstract final class AppText {
   static TextStyle get readyCount =>
       _cairo(13, weight: FontWeight.w700, color: AppColors.mu);
 
-  static TextStyle get introRound =>
-      _cairo(13, weight: FontWeight.w800, color: AppColors.mu);
-  static TextStyle get introHook =>
-      _cairo(17, weight: FontWeight.w700, color: AppColors.tx2, height: 1.5);
   static TextStyle ruleNumber(Color color) =>
       _cairo(13, weight: FontWeight.w900, color: color);
   static TextStyle get ruleText =>
@@ -555,7 +548,7 @@ abstract final class AppText {
   static TextStyle bellStatus(Color color) =>
       _cairo(15, weight: FontWeight.w700, color: color, height: 1.6);
   static TextStyle get goBadge =>
-      _cairo(12, weight: FontWeight.w900, color: AppColors.stickerInk);
+      _cairo(44, weight: FontWeight.w900, color: AppColors.white);
   static TextStyle get knockout =>
       _cairo(13, weight: FontWeight.w800, color: AppColors.badInk);
   static TextStyle get wrongGuess => _cairo(
@@ -577,10 +570,13 @@ abstract final class AppText {
 
   static TextStyle get budgetLabel =>
       _cairo(10, weight: FontWeight.w700, color: AppColors.mu);
+  static TextStyle get budgetPillLabel =>
+      _cairo(10, weight: FontWeight.w700, color: AppColors.mu, height: 1.4);
   static TextStyle get budgetValue => _cairo(
     16,
     weight: FontWeight.w900,
     color: AppColors.goldInk,
+    height: 1.1,
     tabular: true,
   );
   static TextStyle get budgetBig =>
@@ -665,7 +661,7 @@ abstract final class AppText {
       _cairo(20, weight: FontWeight.w900, color: AppColors.stickerInk);
 
   static TextStyle futRating(Color color) =>
-      _barlow(54, color, height: .9, letterSpacing: -1);
+      _barlow(54, color, height: .9.r, letterSpacing: -1);
   static TextStyle futPosition(Color color) =>
       _barlow(24, color, weight: FontWeight.w700, letterSpacing: .5);
   static TextStyle futName(Color color) =>

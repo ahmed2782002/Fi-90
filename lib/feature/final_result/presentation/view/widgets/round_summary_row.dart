@@ -1,6 +1,7 @@
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoundSummaryRow extends StatelessWidget {
   const RoundSummaryRow({
@@ -23,23 +24,23 @@ class RoundSummaryRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 11.h),
       decoration: BoxDecoration(
         color: AppColors.s1,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16.r),
         border: Border.all(color: AppColors.line),
       ),
       child: Row(
         children: [
           Container(
-            width: 4,
-            height: 30,
+            width: 4.r,
+            height: 30.r,
             decoration: BoxDecoration(
               color: accent,
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(4.r),
             ),
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,11 +50,11 @@ class RoundSummaryRow extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10.w),
           Text(winner, style: AppText.summaryWinner(winnerColor)),
-          const SizedBox(width: 10),
+          SizedBox(width: 10.w),
           SizedBox(
-            width: 34,
+            width: 34.r,
             child: Text(
               points,
               textAlign: TextAlign.end,

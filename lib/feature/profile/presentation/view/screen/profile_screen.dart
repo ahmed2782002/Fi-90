@@ -17,6 +17,7 @@ import 'package:fii90/feature/profile/presentation/view/widgets/profile_stats.da
 import 'package:fii90/feature/profile/presentation/view_model/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -28,19 +29,19 @@ class ProfileScreen extends StatelessWidget {
     return SafeArea(
       bottom: false,
       child: ListView(
-        padding: const EdgeInsets.fromLTRB(18, 9, 18, 110),
+        padding: EdgeInsets.fromLTRB(18.w, 9.h, 18.w, 110.h),
         children: [
           ProfileHeroCard(
             profile: profile,
             name: cubit.state.name ?? context.tr(profile.nameKey),
           ),
-          const SizedBox(height: 14),
+          SizedBox(height: 14.h),
           ProfileStats(profile: profile),
-          const SizedBox(height: 14),
+          SizedBox(height: 14.h),
           PerformanceCard(items: profile.performance),
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
           const ProfileSettings(),
-          const SizedBox(height: 16),
+          SizedBox(height: 16.h),
           SupportSettings(
             onComplaint: () => Nav.push(context, const ComplaintScreen()),
             onFaq: () => Nav.push(context, const FaqScreen()),
@@ -59,14 +60,14 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 14),
+          SizedBox(height: 14.h),
           LogoutButton(
             onTap: () => LogoutSheet.show(
               context,
               onConfirm: () => Nav.resetTo(context, const LoginScreen()),
             ),
           ),
-          const SizedBox(height: 14),
+          SizedBox(height: 14.h),
           Text(
             '${context.tr(AppStrings.appName)} · v1.0.0',
             textAlign: TextAlign.center,

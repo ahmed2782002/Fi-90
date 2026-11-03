@@ -7,6 +7,7 @@ import 'package:fii90/feature/match_vs/presentation/view/widgets/vs_countdown.da
 import 'package:fii90/feature/match_vs/presentation/view/widgets/vs_player_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VsScreen extends StatelessWidget {
   const VsScreen({super.key});
@@ -18,68 +19,74 @@ class VsScreen extends StatelessWidget {
         final cubit = context.read<MatchCubit>();
         final me = context.tr(AppStrings.mockPlayerAhmed);
         final opp = context.tr(cubit.oppNameKey);
-        return Stack(
-          children: [
-            Column(
-              children: [
-                for (final (color, top) in [
-                  (AppColors.me, true),
-                  (AppColors.op, false),
-                ])
-                  Expanded(
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: top
-                              ? Alignment.topCenter
-                              : Alignment.bottomCenter,
-                          end: top
-                              ? Alignment.bottomCenter
-                              : Alignment.topCenter,
-                          colors: [
-                            AppColors.mix(color, .3, AppColors.bg),
-                            AppColors.mix(color, .08, AppColors.bg),
-                          ],
+        // AnimatedSwitcher hands us loose constraints; without filling them the
+        // half backgrounds collapse to zero width and never show.
+        return SizedBox.expand(
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Column(
+                  children: [
+                    for (final (color, top) in [
+                      (AppColors.me, true),
+                      (AppColors.op, false),
+                    ])
+                      Expanded(
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: top
+                                  ? Alignment.topCenter
+                                  : Alignment.bottomCenter,
+                              end: top
+                                  ? Alignment.bottomCenter
+                                  : Alignment.topCenter,
+                              colors: [
+                                AppColors.mix(color, .3, AppColors.bg),
+                                AppColors.mix(color, .08, AppColors.bg),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-              ],
-            ),
-            Positioned(
-              top: 118,
-              left: 26,
-              right: 26,
-              child: VsPlayerBanner(
-                name: me,
-                initial: me.characters.first,
-                level: 'LV 24',
-                tier: context.tr(AppStrings.profileTier),
-                fill: AppColors.me,
-                onFill: AppColors.meOn,
+                  ],
+                ),
               ),
-            ),
-            Positioned(
-              bottom: 118,
-              left: 26,
-              right: 26,
-              child: VsPlayerBanner(
-                name: opp,
-                initial: cubit.initialOf(opp),
-                level: context.tr(cubit.oppLevelKey),
-                tier: context.tr(AppStrings.tierGold1),
-                fill: AppColors.op,
-                onFill: AppColors.opOn,
-                mirrored: true,
+              Positioned(
+                top: 118.r,
+                left: 26.w,
+                right: 26.w,
+                child: VsPlayerBanner(
+                  name: me,
+                  initial: me.characters.first,
+                  level: 'LV 24',
+                  tier: context.tr(AppStrings.profileTier),
+                  fill: AppColors.me,
+                  onFill: AppColors.meOn,
+                ),
               ),
-            ),
-            Center(
-              child: VsCountdown(
-                count: state.vsCount,
-                goLabel: context.tr(AppStrings.letsGo),
+              Positioned(
+                bottom: 118.r,
+                left: 26.w,
+                right: 26.w,
+                child: VsPlayerBanner(
+                  name: opp,
+                  initial: cubit.initialOf(opp),
+                  level: context.tr(cubit.oppLevelKey),
+                  tier: context.tr(AppStrings.tierGold1),
+                  fill: AppColors.op,
+                  onFill: AppColors.opOn,
+                  mirrored: true,
+                ),
               ),
-            ),
-          ],
+              Center(
+                child: VsCountdown(
+                  count: state.vsCount,
+                  goLabel: context.tr(AppStrings.letsGo),
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
