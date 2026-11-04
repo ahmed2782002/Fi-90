@@ -56,6 +56,7 @@ class PitchToken extends StatelessWidget {
                     palette: p.palette,
                     rating: p.rating,
                     initial: p.short.of(context).characters.first,
+                    photo: p.photo,
                     highlight: highlight,
                   ),
                   SizedBox(height: 3.h),

@@ -13,7 +13,7 @@ class ClubSlot extends StatelessWidget {
     required this.current,
     this.name = '',
     this.year = '',
-    this.abbr = '',
+    this.logo = '',
     this.color = 0,
   });
 
@@ -22,7 +22,7 @@ class ClubSlot extends StatelessWidget {
   final bool current;
   final String name;
   final String year;
-  final String abbr;
+  final String logo;
   final int color;
 
   @override
@@ -76,21 +76,19 @@ class ClubSlot extends StatelessWidget {
                           Container(
                             width: 38.r,
                             height: 38.r,
-                            alignment: Alignment.center,
+                            padding: EdgeInsets.all(5.r),
                             decoration: BoxDecoration(
-                              color: Color(color),
+                              color: Colors.white,
                               shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Color(color),
+                                width: 1.5,
+                              ),
                             ),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 3.w,
-                                vertical: 1.h,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppColors.tint(AppColors.black, .55),
-                                borderRadius: BorderRadius.circular(4.r),
-                              ),
-                              child: Text(abbr, style: AppText.clubAbbr),
+                            child: Image.asset(
+                              logo,
+                              fit: BoxFit.contain,
+                              filterQuality: FilterQuality.medium,
                             ),
                           ),
                           SizedBox(width: 12.w),

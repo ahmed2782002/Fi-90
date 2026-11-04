@@ -50,7 +50,7 @@ class ClubTimeline extends StatelessWidget {
                     current: i == revealed - 1 && !done,
                     name: question.clubs[i].name.of(context),
                     year: question.clubs[i].year,
-                    abbr: question.clubs[i].abbr,
+                    logo: question.clubs[i].logo,
                     color: question.clubs[i].color,
                   ),
                 ),

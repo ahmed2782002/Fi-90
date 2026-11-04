@@ -11,6 +11,8 @@ class MatchSimulator {
 
   static AuctionPlayer _player(String key) => AuctionPlayer.all[key]!;
 
+  static AuctionPlayer get _fallback => AuctionPlayer.pool.first;
+
   double _avg(Iterable<int> values) =>
       values.isEmpty ? 0 : values.reduce((a, b) => a + b) / values.length;
 
@@ -28,15 +30,11 @@ class MatchSimulator {
         for (final e in team.entries)
           if (e.key.startsWith(prefix)) _player(e.value.player),
       ];
-      return list.isEmpty ? [_player('park')] : list;
+      return list.isEmpty ? [_fallback] : list;
     }
 
-    final gk = team['GK'] == null
-        ? _player('park')
-        : _player(team['GK']!.player);
-    final co = team['CO'] == null
-        ? _player('park')
-        : _player(team['CO']!.player);
+    final gk = team['GK'] == null ? _fallback : _player(team['GK']!.player);
+    final co = team['CO'] == null ? _fallback : _player(team['CO']!.player);
     final dfs = group('DF'), mfs = group('MF'), fws = group('FW');
     final att =
         .45 * _avg(fws.expand((f) => [f.stats[0], f.stats[1], f.stats[3]])) +

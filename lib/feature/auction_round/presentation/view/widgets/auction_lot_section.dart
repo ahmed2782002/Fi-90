@@ -25,7 +25,6 @@ class AuctionLotSection extends StatelessWidget {
       children: [
         LotCard(
           position: state.clues >= 1 ? cubit.hidden.position : '?',
-          statLabels: cubit.hidden.statLabels,
           clues: [for (final c in cubit.pair.clues) c.of(context)],
           revealed: state.clues,
           pendingLabel: context.tr(AppStrings.clueRevealing),

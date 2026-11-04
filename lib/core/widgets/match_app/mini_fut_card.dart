@@ -11,13 +11,22 @@ class MiniFutCard extends StatelessWidget {
     required this.palette,
     required this.rating,
     required this.initial,
+    this.photo,
     this.highlight,
   });
 
   final FutPalette palette;
   final int rating;
   final String initial;
+  final String? photo;
   final Color? highlight;
+
+  Widget _initial() => Center(
+    child: Text(
+      initial,
+      style: AppText.miniInitial(AppColors.tint(palette.ink, .6)),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -65,22 +74,39 @@ class MiniFutCard extends StatelessWidget {
                 ),
                 child: Stack(
                   children: [
+                    Positioned.fill(
+                      top: 10.r,
+                      left: 10.r,
+                      child: photo == null
+                          ? _initial()
+                          : ShaderMask(
+                              blendMode: BlendMode.dstIn,
+                              shaderCallback: (rect) => const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [Colors.white, Colors.transparent],
+                                stops: [.6, 1],
+                              ).createShader(rect),
+                              child: Image.asset(
+                                photo!,
+                                fit: BoxFit.cover,
+                                alignment: const Alignment(0, -.6),
+                                errorBuilder: (_, _, _) => _initial(),
+                              ),
+                            ),
+                    ),
                     Positioned(
                       left: 4.w,
                       top: 9.r,
                       child: Text(
                         '$rating',
-                        style: AppText.miniRating(palette.ink),
-                      ),
-                    ),
-                    Positioned.fill(
-                      top: 18.r,
-                      child: Center(
-                        child: Text(
-                          initial,
-                          style: AppText.miniInitial(
-                            AppColors.tint(palette.ink, .6),
-                          ),
+                        style: AppText.miniRating(palette.ink).copyWith(
+                          shadows: [
+                            Shadow(
+                              color: palette.background.first,
+                              blurRadius: 4,
+                            ),
+                          ],
                         ),
                       ),
                     ),

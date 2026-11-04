@@ -9,14 +9,12 @@ class LotCard extends StatelessWidget {
   const LotCard({
     super.key,
     required this.position,
-    required this.statLabels,
     required this.clues,
     required this.revealed,
     required this.pendingLabel,
   });
 
   final String position;
-  final List<String> statLabels;
   final List<String> clues;
   final int revealed;
   final String pendingLabel;
@@ -43,8 +41,6 @@ class LotCard extends StatelessWidget {
                 position: position,
                 name: '???',
                 initial: '?',
-                statLabels: statLabels,
-                statValues: const ['??', '??', '??', '??', '??', '??'],
               ),
             ),
           ),

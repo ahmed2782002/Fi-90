@@ -67,6 +67,8 @@ flutter:
     - assets/image/home/
     - assets/image/friends/
     - assets/image/buzzer/
+    - assets/image/comeback/
+    - assets/image/players/
     - assets/icons/
     - assets/translations/
     - assets/sounds/

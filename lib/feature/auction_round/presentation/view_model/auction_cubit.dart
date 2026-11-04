@@ -21,8 +21,9 @@ class AuctionCubit extends Cubit<AuctionState> {
   final _scheduler = Scheduler();
   final _random = Random();
 
-  List<AuctionPair> get pairs =>
-      state.size == 11 ? AuctionPair.eleven : AuctionPair.five;
+  late List<AuctionPair> _pairs = AuctionPair.draw(5, _random);
+
+  List<AuctionPair> get pairs => _pairs;
 
   AuctionPair get pair => pairs[state.pair.clamp(0, pairs.length - 1)];
 
@@ -98,6 +99,7 @@ class AuctionCubit extends Cubit<AuctionState> {
   void pickSize(int size) {
     if (state.phase != AuctionPhase.setup) return;
     final budget = size == 11 ? 250 : 100;
+    _pairs = AuctionPair.draw(size, _random);
     emit(
       state.copyWith(
         size: size,
