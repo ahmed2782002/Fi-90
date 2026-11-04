@@ -1,6 +1,7 @@
 import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/utils/scheduler.dart';
 import 'package:fii90/core/widgets/app_toast/toast_message.dart';
+import 'package:fii90/feature/buzzer_round/mock_model/buzzer_question.dart';
 import 'package:fii90/feature/match/mock_model/match_mode.dart';
 import 'package:fii90/feature/match/mock_model/round_result.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_state.dart';
@@ -31,6 +32,7 @@ class MatchCubit extends Cubit<MatchState> {
   final _scheduler = Scheduler();
   final _deltaTimer = Scheduler();
   var trivia = const <TriviaQuestion>[];
+  var buzzer = const <BuzzerQuestion>[];
 
   double get skill => state.vsAi ? state.aiLevel.skill : AiLevel.normal.skill;
 
@@ -77,6 +79,7 @@ class MatchCubit extends Cubit<MatchState> {
   void _startRound([int? roundIndex]) {
     final mode = state.modes[roundIndex ?? state.roundIndex];
     if (mode == MatchMode.trivia) trivia = TriviaQuestion.deal(mode.questions);
+    if (mode == MatchMode.buzzer) buzzer = BuzzerQuestion.deal(mode.questions);
     emit(
       state.copyWith(
         stage: MatchStage.round,

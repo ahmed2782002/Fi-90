@@ -24,7 +24,7 @@ class BuzzerScreen extends StatelessWidget {
     final match = context.read<MatchCubit>();
     return BlocProvider(
       create: (_) => BuzzerCubit(
-        question: match.state.question,
+        question: match.buzzer[match.state.question],
         skill: match.skill,
         oppKey: match.oppNameKey,
       ),

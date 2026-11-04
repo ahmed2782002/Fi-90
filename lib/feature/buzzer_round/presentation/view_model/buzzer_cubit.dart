@@ -15,11 +15,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BuzzerCubit extends Cubit<BuzzerState> {
   BuzzerCubit({
-    required int question,
+    required this.question,
     required this.skill,
     required this.oppKey,
-  }) : question = BuzzerQuestion.mock[question % BuzzerQuestion.mock.length],
-       super(const BuzzerState()) {
+  }) : super(const BuzzerState()) {
     _scheduler.every(const Duration(seconds: 1), _tick);
   }
 
