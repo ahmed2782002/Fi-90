@@ -257,24 +257,6 @@ const silverPlayers = <AuctionPlayer>[
     ],
   ),
   AuctionPlayer(
-    id: 'achraf_dari',
-    name: LocalizedText('أشرف داري', 'Achraf Dari'),
-    short: LocalizedText('داري', 'Dari'),
-    role: PlayerRole.df,
-    rating: 74,
-    clues: [
-      LocalizedText('مدافع عربي دولي', 'An Arab international defender'),
-      LocalizedText(
-        'مدافع مغربي يلعب في الدوري المصري',
-        'A Moroccan defender in the Egyptian league',
-      ),
-      LocalizedText(
-        'انضم للأهلي قادمًا من بريست الفرنسي',
-        'Joined Al Ahly from French club Brest',
-      ),
-    ],
-  ),
-  AuctionPlayer(
     id: 'mohamed_chibi',
     name: LocalizedText('محمد الشيبي', 'Mohamed Chibi'),
     short: LocalizedText('الشيبي', 'Chibi'),

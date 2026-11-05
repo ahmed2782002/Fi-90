@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/app_text.dart';
-import 'fut_card_clipper.dart';
+import 'fut_card_art.dart';
+import 'fut_card_style.dart';
 
+/// Small shield card used on the pitch: tier art, cut-out photo and rating.
 class MiniFutCard extends StatelessWidget {
   const MiniFutCard({
     super.key,
@@ -21,97 +23,76 @@ class MiniFutCard extends StatelessWidget {
   final String? photo;
   final Color? highlight;
 
-  Widget _initial() => Center(
-    child: Text(
-      initial,
-      style: AppText.miniInitial(AppColors.tint(palette.ink, .6)),
-    ),
-  );
-
   @override
   Widget build(BuildContext context) {
-    final glow = highlight;
-    return Container(
+    final style = FutCardStyle.of(palette);
+    final src = photo;
+    final fallback = src == null
+        ? Center(
+            child: Text(
+              initial,
+              style: AppText.miniInitial(AppColors.tint(style.nameInk, .6)),
+            ),
+          )
+        : Align(
+            alignment: Alignment.bottomCenter,
+            child: Icon(
+              Icons.person_rounded,
+              size: 48.r,
+              color: AppColors.tint(style.nameInk, .3),
+            ),
+          );
+    return SizedBox(
       width: 52.r,
       height: 72.r,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.tint(AppColors.black, .35),
-            offset: const Offset(0, 4),
-            blurRadius: 6,
-          ),
-          if (glow != null) BoxShadow(color: glow, blurRadius: 7),
-        ],
-        borderRadius: BorderRadius.circular(10.r),
-      ),
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Positioned.fill(
-            child: ClipPath(
-              clipper: const FutCardClipper(),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: palette.frame,
-                  ),
-                ),
+            child: CustomPaint(
+              painter: _ShadowPainter(glow: highlight),
+              child: CustomPaint(
+                painter: FutCardArt(style: style, wings: false, name: false),
               ),
             ),
           ),
           Positioned.fill(
             child: ClipPath(
-              clipper: const FutCardClipper(inset: 7.7),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: palette.background,
-                  ),
-                ),
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      top: 10.r,
-                      left: 10.r,
-                      child: photo == null
-                          ? _initial()
-                          : ShaderMask(
-                              blendMode: BlendMode.dstIn,
-                              shaderCallback: (rect) => const LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [Colors.white, Colors.transparent],
-                                stops: [.6, 1],
-                              ).createShader(rect),
-                              child: Image.asset(
-                                photo!,
-                                fit: BoxFit.cover,
-                                alignment: const Alignment(0, -.6),
-                                errorBuilder: (_, _, _) => _initial(),
-                              ),
-                            ),
-                    ),
-                    Positioned(
-                      left: 4.w,
-                      top: 9.r,
-                      child: Text(
-                        '$rating',
-                        style: AppText.miniRating(palette.ink).copyWith(
-                          shadows: [
-                            Shadow(
-                              color: palette.background.first,
-                              blurRadius: 4,
-                            ),
-                          ],
+              clipper: const FutBodyClipper(wings: false, inset: 8),
+              child: Padding(
+                padding: EdgeInsets.only(left: 14.r, top: 8.r),
+                child: src == null
+                    ? fallback
+                    : ShaderMask(
+                        blendMode: BlendMode.dstIn,
+                        shaderCallback: (rect) => const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.white, Colors.transparent],
+                          stops: [.7, 1],
+                        ).createShader(rect),
+                        child: Image.asset(
+                          src,
+                          fit: BoxFit.cover,
+                          alignment: Alignment.topCenter,
+                          errorBuilder: (_, _, _) => fallback,
                         ),
                       ),
-                    ),
-                  ],
-                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 5.r,
+            top: 10.r,
+            child: Text(
+              '$rating',
+              style: AppText.miniRating(style.ratingInk).copyWith(
+                shadows: [
+                  Shadow(
+                    color: Colors.black.withValues(alpha: .55),
+                    blurRadius: 3,
+                  ),
+                ],
               ),
             ),
           ),
@@ -119,4 +100,33 @@ class MiniFutCard extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Drop shadow (and optional highlight glow) that follows the shield shape.
+class _ShadowPainter extends CustomPainter {
+  const _ShadowPainter({this.glow});
+
+  final Color? glow;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final shape = futShieldPath(Offset.zero & size);
+    canvas.drawPath(
+      shape.shift(const Offset(0, 4)),
+      Paint()
+        ..color = Colors.black.withValues(alpha: .35)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+    );
+    if (glow case final g?) {
+      canvas.drawPath(
+        shape,
+        Paint()
+          ..color = g
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6),
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(_ShadowPainter old) => old.glow != glow;
 }

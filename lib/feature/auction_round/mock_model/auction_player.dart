@@ -36,7 +36,7 @@ class AuctionPlayer {
 
   String get card => short.en.toUpperCase();
 
-  String get photo => 'assets/image/players/$id.jpg';
+  String get photo => 'assets/image/players/$id.webp';
 
   String get position =>
       label ??

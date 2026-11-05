@@ -32,8 +32,8 @@ class LotCard extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            width: 164.r,
-            height: 243.r,
+            width: 186.r,
+            height: 248.r,
             child: FittedBox(
               child: FutCard(
                 palette: AppColors.futMystery,
