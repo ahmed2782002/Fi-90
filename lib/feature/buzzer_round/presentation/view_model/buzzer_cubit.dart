@@ -106,7 +106,7 @@ class BuzzerCubit extends Cubit<BuzzerState> {
       case BuzzerPhase.ready:
         final c = state.count - 1;
         if (c > 0) return emit(state.copyWith(count: c));
-        emit(state.copyWith(phase: BuzzerPhase.active, count: 0, seconds: 8));
+        emit(state.copyWith(phase: BuzzerPhase.active, count: 0, seconds: 15));
         _watch.start();
         final (min, max) = _oppWindow;
         _oppAt = min + _random.nextInt(max - min);

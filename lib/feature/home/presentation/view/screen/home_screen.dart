@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/routing/nav.dart';
+import 'package:fii90/feature/auction_round/presentation/view/screen/auction_setup_screen.dart';
 import 'package:fii90/feature/coins_shop/presentation/view/screen/coins_shop_screen.dart';
 import 'package:fii90/feature/coins_shop/presentation/view_model/coins_cubit.dart';
 import 'package:fii90/feature/notifications/presentation/view/screen/notifications_screen.dart';
@@ -94,8 +95,9 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 18.h),
             QuickModeGrid(
               modes: QuickMode.mock,
-              onSelect: (mode) =>
-                  PlaySheet.show(context, modeKey: mode.titleKey),
+              onSelect: (mode) => mode.titleKey == AppStrings.modeAuction
+                  ? Nav.push(context, const AuctionSetupScreen())
+                  : PlaySheet.show(context, modeKey: mode.titleKey),
             ),
             SizedBox(height: 18.h),
             DailyChallengeCard(

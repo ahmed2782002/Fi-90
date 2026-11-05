@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/feature/auction_round/presentation/view/widgets/bid_panel.dart';
+import 'package:fii90/feature/auction_round/presentation/view/widgets/custom_bid_sheet.dart';
 import 'package:fii90/feature/auction_round/presentation/view/widgets/lot_card.dart';
 import 'package:fii90/feature/auction_round/presentation/view_model/auction_cubit.dart';
 import 'package:fii90/feature/match/mock_model/round_result.dart';
@@ -51,6 +52,7 @@ class AuctionLotSection extends StatelessWidget {
           opponent: opponent,
           onRaise: cubit.raise,
           onPass: cubit.pass,
+          onCustomBid: () => CustomBidSheet.show(context),
         ),
       ],
     );

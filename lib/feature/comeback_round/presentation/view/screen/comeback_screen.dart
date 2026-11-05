@@ -88,6 +88,22 @@ class ComebackScreen extends StatelessWidget {
                         ),
                       ],
                       SizedBox(height: 10.h),
+                      if (!state.done && state.verifying == null)
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 6.h),
+                          child: Text(
+                            cubit.canType
+                                ? context.tr(
+                                    AppStrings.comebackAttemptsLeft,
+                                    args: [
+                                      '${cubit.attemptsLeft(MatchSide.me)}',
+                                    ],
+                                  )
+                                : context.tr(AppStrings.comebackNoAttempts),
+                            textAlign: TextAlign.center,
+                            style: AppText.statusLine,
+                          ),
+                        ),
                       if (cubit.canType)
                         AnswerInput(
                           controller: cubit.input,

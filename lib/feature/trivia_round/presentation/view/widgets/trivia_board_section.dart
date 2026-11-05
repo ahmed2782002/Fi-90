@@ -19,10 +19,15 @@ class TriviaBoardSection extends StatelessWidget {
     super.key,
     required this.question,
     required this.total,
+    this.compact = false,
   });
 
   final int question;
   final int total;
+
+  /// Keyboard is open: the section scrolls and the board gets a fixed
+  /// height instead of filling the (now tiny) remaining space.
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +40,7 @@ class TriviaBoardSection extends StatelessWidget {
     final fb = state.feedback;
     final answer = fb?.answer;
     final urgent = state.phase == TriviaPhase.turn && state.seconds <= 3;
-    return Column(
+    final column = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         QuestionTimerCard(
@@ -50,8 +55,8 @@ class TriviaBoardSection extends StatelessWidget {
           urgent: urgent,
         ),
         SizedBox(height: 12.h),
-        Expanded(
-          child: AnswerBoard(
+        _board(
+          AnswerBoard(
             title: context.tr(
               AppStrings.onTheBoard,
               args: ['${state.submitted.length}'],
@@ -112,5 +117,11 @@ class TriviaBoardSection extends StatelessWidget {
         ],
       ],
     );
+    return compact
+        ? ClipRect(child: SingleChildScrollView(child: column))
+        : column;
   }
+
+  Widget _board(Widget child) =>
+      compact ? SizedBox(height: 140.h, child: child) : Expanded(child: child);
 }

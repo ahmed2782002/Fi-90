@@ -123,8 +123,8 @@ class BrandLogo extends StatelessWidget {
             Positioned(
               left: 0,
               top: 0,
-              width: faceSize,
-              height: faceSize,
+              width: faceSize.r,
+              height: faceSize.r,
               child: FittedBox(child: LogoFace(intro: intro)),
             ),
             TopGloss(fraction: glossStop, alpha: glossAlpha),

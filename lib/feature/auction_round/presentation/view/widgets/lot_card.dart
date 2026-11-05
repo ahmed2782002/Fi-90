@@ -31,10 +31,12 @@ class LotCard extends StatelessWidget {
       ),
       child: Column(
         children: [
+          // FIFA-card proportions (~0.69 w/h): taller than the 3:4 canvas.
           SizedBox(
-            width: 186.r,
-            height: 248.r,
+            width: 200.r,
+            height: 290.r,
             child: FittedBox(
+              fit: BoxFit.fill,
               child: FutCard(
                 palette: AppColors.futMystery,
                 rating: '?',

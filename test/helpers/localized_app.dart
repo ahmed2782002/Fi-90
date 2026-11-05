@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/localization/app_localization.dart';
 import 'package:fii90/core/theme/theme_cubit.dart';
+import 'package:fii90/core/utils/app_screen.dart';
+import 'package:fii90/feature/coins_shop/presentation/view_model/coins_cubit.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -19,10 +22,16 @@ Future<void> pumpLocalized(WidgetTester tester, Widget home) async {
       path: AppLocalization.path,
       startLocale: AppLocalization.arabic,
       fallbackLocale: AppLocalization.arabic,
-      child: BlocProvider(
-        create: (_) => ThemeCubit(true),
-        child: Builder(
-          builder: (context) => MaterialApp(
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => ThemeCubit(true)),
+          BlocProvider(create: (_) => CoinsCubit()),
+        ],
+        child: ScreenUtilInit(
+          designSize: AppScreen.designSize,
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, _) => MaterialApp(
             locale: context.locale,
             supportedLocales: context.supportedLocales,
             localizationsDelegates: context.localizationDelegates,

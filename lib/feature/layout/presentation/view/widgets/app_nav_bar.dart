@@ -65,7 +65,7 @@ class AppNavBar extends StatelessWidget {
                           selected: tab == LayoutTab.friends,
                           onTap: () => onSelect(LayoutTab.friends),
                         ),
-                        SizedBox(width: 56.w),
+                        SizedBox(width: 64.r),
                         NavItem(
                           icon: AppIcons.navJourney,
                           label: context.tr(AppStrings.navJourney),

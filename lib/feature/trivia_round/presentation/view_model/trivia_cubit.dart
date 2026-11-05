@@ -179,27 +179,9 @@ class TriviaCubit extends Cubit<TriviaState> {
   void _answer(String text, {bool timeout = false}) {
     final who = state.current;
     final index = timeout ? -1 : AnswerMatcher.indexIn(text, question.bank);
+    // A repeated answer counts as a wrong one: strike + turn passes.
     if (index >= 0 && state.submitted.any((s) => s.index == index)) {
-      input.clear();
-      emit(
-        state.copyWith(
-          phase: TriviaPhase.turn,
-          feedback: (
-            kind: FeedbackKind.dup,
-            who: who,
-            answer: index,
-            text: text,
-            unlock: false,
-            winner: null,
-          ),
-        ),
-      );
-      _scheduler.after(1300, () {
-        if (state.feedback?.kind == FeedbackKind.dup) {
-          emit(state.copyWith(clearFeedback: true));
-        }
-      });
-      return;
+      return _wrong(who, text, false, dup: true);
     }
     index >= 0 ? _correct(who, index, text) : _wrong(who, text, timeout);
   }
@@ -250,7 +232,7 @@ class TriviaCubit extends Cubit<TriviaState> {
     _end(winner, AppStrings.answersExhausted, const []);
   }
 
-  void _wrong(MatchSide who, String text, bool timeout) {
+  void _wrong(MatchSide who, String text, bool timeout, {bool dup = false}) {
     final strikes = state.strikes[who]! + 1;
     final unlock = strikes == 2 && !state.passUsed.contains(who);
     final out = strikes >= 3;
@@ -265,6 +247,8 @@ class TriviaCubit extends Cubit<TriviaState> {
               ? FeedbackKind.out
               : timeout
               ? FeedbackKind.timeout
+              : dup
+              ? FeedbackKind.dup
               : FeedbackKind.bad,
           who: who,
           answer: null,

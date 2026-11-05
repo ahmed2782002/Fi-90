@@ -23,56 +23,103 @@ class FinalScoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final rtl = Directionality.of(context) == TextDirection.rtl;
-    final players = [
-      (meName, meName.characters.first, AppColors.me, AppColors.meOn),
-      (oppName, oppInitial, AppColors.op, AppColors.opOn),
-    ];
     final left = rtl ? oppScore : meScore;
     final right = rtl ? meScore : oppScore;
     return Container(
-      padding: EdgeInsets.all(16.r),
+      padding: EdgeInsets.fromLTRB(16.w, 14.h, 16.w, 16.h),
       decoration: BoxDecoration(
         color: AppColors.s1,
         borderRadius: BorderRadius.circular(28.r),
         border: Border.all(color: AppColors.line),
         boxShadow: AppShadows.sh1,
       ),
-      child: Row(
+      child: Column(
         children: [
-          for (final (i, (name, initial, fill, onFill)) in players.indexed) ...[
-            if (i == 1)
-              Text.rich(
-                TextSpan(
-                  children: [
-                    TextSpan(text: '$left'),
-                    TextSpan(text: '  –  ', style: AppText.finalDash),
-                    TextSpan(text: '$right'),
-                  ],
+          // Players sit on a small row above the score so long names never
+          // get squeezed by the big digits.
+          Row(
+            children: [
+              Expanded(
+                child: _PlayerTag(
+                  name: meName,
+                  initial: meName.characters.first,
+                  fill: AppColors.me,
+                  onFill: AppColors.meOn,
                 ),
-                textDirection: TextDirection.ltr,
-                style: AppText.finalScore,
               ),
-            Expanded(
-              child: Column(
+              SizedBox(width: 10.w),
+              Expanded(
+                child: _PlayerTag(
+                  name: oppName,
+                  initial: oppInitial,
+                  fill: AppColors.op,
+                  onFill: AppColors.opOn,
+                  end: true,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.h),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text.rich(
+              TextSpan(
                 children: [
-                  Container(
-                    width: 50.r,
-                    height: 50.r,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: fill,
-                      borderRadius: BorderRadius.circular(16.r),
-                    ),
-                    child: Text(initial, style: AppText.bigInitial(21, onFill)),
-                  ),
-                  SizedBox(height: 6.h),
-                  Text(name, style: AppText.lastOpponent),
+                  TextSpan(text: '$left'),
+                  TextSpan(text: '  –  ', style: AppText.finalDash),
+                  TextSpan(text: '$right'),
                 ],
               ),
+              textDirection: TextDirection.ltr,
+              style: AppText.finalScore,
             ),
-          ],
+          ),
         ],
       ),
+    );
+  }
+}
+
+class _PlayerTag extends StatelessWidget {
+  const _PlayerTag({
+    required this.name,
+    required this.initial,
+    required this.fill,
+    required this.onFill,
+    this.end = false,
+  });
+
+  final String name;
+  final String initial;
+  final Color fill;
+  final Color onFill;
+  final bool end;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: end ? MainAxisAlignment.end : MainAxisAlignment.start,
+      children: [
+        Container(
+          width: 30.r,
+          height: 30.r,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: fill,
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          child: Text(initial, style: AppText.bigInitial(13, onFill)),
+        ),
+        SizedBox(width: 8.w),
+        Flexible(
+          child: Text(
+            name,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppText.hudName,
+          ),
+        ),
+      ],
     );
   }
 }

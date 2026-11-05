@@ -24,7 +24,7 @@ class AuctionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final match = context.read<MatchCubit>();
     return BlocProvider(
-      create: (_) => AuctionCubit(skill: match.skill),
+      create: (_) => AuctionCubit(skill: match.skill, config: match.auction),
       child: BlocConsumer<AuctionCubit, AuctionState>(
         listener: (context, state) {
           final toast = state.toast, score = state.score, done = state.finished;
@@ -84,7 +84,12 @@ class AuctionScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 12.h),
                       if (state.phase == AuctionPhase.setup)
-                        AuctionSetup(onPick: cubit.pickSize)
+                        AuctionSetup(
+                          config: state.config,
+                          onChanged: cubit.configure,
+                          onStart: cubit.start,
+                          startLabel: context.tr(AppStrings.startAuction),
+                        )
                       else if (sim != null && cubit.inMatch)
                         AuctionMatchView(
                           sim: sim,

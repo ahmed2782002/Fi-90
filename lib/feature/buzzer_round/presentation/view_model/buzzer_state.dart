@@ -29,7 +29,7 @@ class BuzzerState {
   const BuzzerState({
     this.phase = BuzzerPhase.ready,
     this.count = 3,
-    this.seconds = 8,
+    this.seconds = 15,
     this.answerSeconds = 7,
     this.gap = 0,
     this.oppTried = false,

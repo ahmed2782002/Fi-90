@@ -127,7 +127,12 @@ class ComebackQuestion {
       meta: LocalizedText('البرازيل · جناح', 'Brazil · Winger'),
       wrong: ['رونالدينيو', 'فينيسيوس جونيور'],
       clubs: [
-        (name: _san, year: '2009', logo: '${_dir}santos.png', color: 0xFF111111),
+        (
+          name: _san,
+          year: '2009',
+          logo: '${_dir}santos.png',
+          color: 0xFF111111,
+        ),
         (name: _bar, year: '2013', logo: '${_dir}bar.png', color: 0xFFA50044),
         (
           name: LocalizedText('باريس سان جيرمان', 'Paris Saint-Germain'),
@@ -141,7 +146,12 @@ class ComebackQuestion {
           logo: '${_dir}hilal.png',
           color: 0xFF1A4FB3,
         ),
-        (name: _san, year: '2025', logo: '${_dir}santos.png', color: 0xFF111111),
+        (
+          name: _san,
+          year: '2025',
+          logo: '${_dir}santos.png',
+          color: 0xFF111111,
+        ),
       ],
     ),
     ComebackQuestion(

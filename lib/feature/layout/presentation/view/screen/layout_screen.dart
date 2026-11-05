@@ -39,7 +39,6 @@ class LayoutScreen extends StatelessWidget {
         BlocProvider(create: (_) => PlansCubit()),
         BlocProvider(create: (_) => FriendshipCubit()),
         BlocProvider(create: (_) => SoundCubit()),
-        BlocProvider(create: (_) => CoinsCubit()),
         BlocProvider(create: (_) => NotificationsCubit()),
       ],
       child: MultiBlocListener(

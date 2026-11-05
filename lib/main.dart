@@ -5,6 +5,7 @@ import 'package:fii90/core/startup/app_preloader.dart';
 import 'package:fii90/core/theme/app_theme.dart';
 import 'package:fii90/core/theme/theme_cubit.dart';
 import 'package:fii90/core/utils/app_screen.dart';
+import 'package:fii90/feature/coins_shop/presentation/view_model/coins_cubit.dart';
 import 'package:fii90/feature/splash/presentation/view/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +25,15 @@ Future<void> main() async {
       path: AppLocalization.path,
       startLocale: AppLocalization.arabic,
       fallbackLocale: AppLocalization.arabic,
-      child: BlocProvider.value(value: themeCubit, child: const Fii90App()),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider.value(value: themeCubit),
+          // App-wide so match screens (pushed on the root navigator) can
+          // credit their coin rewards to the same balance home shows.
+          BlocProvider(create: (_) => CoinsCubit()),
+        ],
+        child: const Fii90App(),
+      ),
     ),
   );
 }

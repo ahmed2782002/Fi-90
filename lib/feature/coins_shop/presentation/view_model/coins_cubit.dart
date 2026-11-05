@@ -15,6 +15,12 @@ class CoinsCubit extends Cubit<CoinsState> {
 
   String format(int value) => _format.format(value);
 
+  /// Credits match rewards silently (the match shows its own toast).
+  void earn(int amount) {
+    if (amount <= 0) return;
+    emit(CoinsState(coins: state.coins + amount));
+  }
+
   void buy(CoinPack pack) => emit(
     CoinsState(
       coins: state.coins + pack.total,

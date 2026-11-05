@@ -1,8 +1,10 @@
+import 'package:fii90/feature/auction_round/mock_model/auction_options.dart';
 import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/widgets/app_background/app_background.dart';
 import 'package:fii90/core/widgets/app_toast/app_toast.dart';
 import 'package:fii90/feature/auction_round/presentation/view/screen/auction_screen.dart';
 import 'package:fii90/feature/buzzer_round/presentation/view/screen/buzzer_screen.dart';
+import 'package:fii90/feature/coins_shop/presentation/view_model/coins_cubit.dart';
 import 'package:fii90/feature/comeback_round/presentation/view/screen/comeback_screen.dart';
 import 'package:fii90/feature/final_result/presentation/view/screen/final_result_screen.dart';
 import 'package:fii90/feature/match/mock_model/match_mode.dart';
@@ -22,12 +24,14 @@ class MatchScreen extends StatelessWidget {
     this.vsAi = false,
     this.aiLevel = AiLevel.normal,
     this.fromRoom = false,
+    this.auction,
   });
 
   final List<MatchMode> modes;
   final bool vsAi;
   final AiLevel aiLevel;
   final bool fromRoom;
+  final AuctionConfig? auction;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +41,21 @@ class MatchScreen extends StatelessWidget {
         vsAi: vsAi,
         aiLevel: aiLevel,
         fromRoom: fromRoom,
+        auction: auction,
       ),
       child: BlocConsumer<MatchCubit, MatchState>(
-        listenWhen: (a, b) => b.toast != null || b.stage == MatchStage.exit,
+        listenWhen: (a, b) =>
+            b.toast != null ||
+            b.stage == MatchStage.exit ||
+            (a.stage != MatchStage.finished &&
+                b.stage == MatchStage.finished),
         listener: (context, state) {
           final toast = state.toast;
           if (toast != null) AppToast.show(context, toast);
+          if (state.stage == MatchStage.finished) {
+            final coins = context.read<MatchCubit>().claimCoins();
+            if (coins != null) context.read<CoinsCubit>().earn(coins);
+          }
           if (state.stage == MatchStage.exit) Navigator.of(context).pop();
         },
         buildWhen: (a, b) => a.stage != b.stage || a.roundKey != b.roundKey,

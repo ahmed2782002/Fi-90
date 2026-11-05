@@ -53,59 +53,80 @@ class TriviaScreen extends StatelessWidget {
             turn: cubit.turn,
             child: Stack(
               children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(16.w, 4.h, 16.w, 28.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      StrikesHeader(
-                        meStrikes: state.strikes[MatchSide.me]!,
-                        oppStrikes: state.strikes[MatchSide.opp]!,
-                        mePass: (
-                          used: state.passUsed.contains(MatchSide.me),
-                          ready: state.passReady(MatchSide.me),
-                        ),
-                        oppPass: (
-                          used: state.passUsed.contains(MatchSide.opp),
-                          ready: state.passReady(MatchSide.opp),
-                        ),
-                        question: match.state.question,
+                LayoutBuilder(
+                  builder: (context, _) {
+                    // Scaffold strips viewInsets from the body's MediaQuery,
+                    // so read the keyboard height from the View directly.
+                    final keyboard = View.of(context).viewInsets.bottom > 0;
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        16.w,
+                        4.h,
+                        16.w,
+                        keyboard ? 8.h : 28.h,
                       ),
-                      SizedBox(height: 12.h),
-                      Expanded(
-                        child: TriviaBoardSection(
-                          question: match.state.question,
-                          total: match.state.mode.questions,
-                        ),
-                      ),
-                      if (cubit.myTurn) ...[
-                        SizedBox(height: 12.h),
-                        MyAnswerBar(
-                          controller: cubit.input,
-                          onSend: cubit.submit,
-                          onPass: cubit.pass,
-                          block: cubit.passBlock(MatchSide.me),
-                          strikes: state.strikes[MatchSide.me]!,
-                        ),
-                      ] else if (cubit.oppTurn) ...[
-                        SizedBox(height: 12.h),
-                        OpponentTurnBar(
-                          title: context.tr(AppStrings.oppTurnOf, args: [opp]),
-                          initial: match.initialOf(opp),
-                          status: context.tr(
-                            state.typing
-                                ? AppStrings.typing
-                                : AppStrings.thinking,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          // Same child count in both modes so the answer field
+                          // keeps its state (and focus) when the keyboard opens.
+                          if (keyboard)
+                            const SizedBox.shrink()
+                          else
+                            StrikesHeader(
+                              meStrikes: state.strikes[MatchSide.me]!,
+                              oppStrikes: state.strikes[MatchSide.opp]!,
+                              mePass: (
+                                used: state.passUsed.contains(MatchSide.me),
+                                ready: state.passReady(MatchSide.me),
+                              ),
+                              oppPass: (
+                                used: state.passUsed.contains(MatchSide.opp),
+                                ready: state.passReady(MatchSide.opp),
+                              ),
+                              question: match.state.question,
+                            ),
+                          SizedBox(height: keyboard ? 0 : 12.h),
+                          Expanded(
+                            child: TriviaBoardSection(
+                              question: match.state.question,
+                              total: match.state.mode.questions,
+                              compact: keyboard,
+                            ),
                           ),
-                          typing: state.typing,
-                          waitLabel: context.tr(AppStrings.waitYourTurn),
-                          note: state.lastPassBy == MatchSide.me
-                              ? context.tr(AppStrings.youPassedHeMust)
-                              : null,
-                        ),
-                      ],
-                    ],
-                  ),
+                          if (cubit.myTurn) ...[
+                            SizedBox(height: 12.h),
+                            MyAnswerBar(
+                              controller: cubit.input,
+                              onSend: cubit.submit,
+                              onPass: cubit.pass,
+                              block: cubit.passBlock(MatchSide.me),
+                              strikes: state.strikes[MatchSide.me]!,
+                            ),
+                          ] else if (cubit.oppTurn) ...[
+                            SizedBox(height: 12.h),
+                            OpponentTurnBar(
+                              title: context.tr(
+                                AppStrings.oppTurnOf,
+                                args: [opp],
+                              ),
+                              initial: match.initialOf(opp),
+                              status: context.tr(
+                                state.typing
+                                    ? AppStrings.typing
+                                    : AppStrings.thinking,
+                              ),
+                              typing: state.typing,
+                              waitLabel: context.tr(AppStrings.waitYourTurn),
+                              note: state.lastPassBy == MatchSide.me
+                                  ? context.tr(AppStrings.youPassedHeMust)
+                                  : null,
+                            ),
+                          ],
+                        ],
+                      ),
+                    );
+                  },
                 ),
                 if (over && fb != null)
                   Positioned.fill(

@@ -1,5 +1,6 @@
 import 'package:fii90/core/localization/localized_text.dart';
 import 'package:fii90/core/widgets/app_toast/toast_message.dart';
+import 'package:fii90/feature/auction_round/mock_model/auction_options.dart';
 import 'package:fii90/feature/match/mock_model/round_result.dart';
 
 enum BidMode { waiting, mine, theirs, revealing }
@@ -38,6 +39,7 @@ class AuctionState {
   const AuctionState({
     this.phase = AuctionPhase.setup,
     this.size = 0,
+    this.config = const AuctionConfig(),
     this.pair = 0,
     this.clues = 0,
     this.price = 1,
@@ -45,7 +47,7 @@ class AuctionState {
     this.turn = MatchSide.me,
     this.seconds = 10,
     this.teams = const {MatchSide.me: {}, MatchSide.opp: {}},
-    this.budget = const {MatchSide.me: 100, MatchSide.opp: 100},
+    this.budget = const {MatchSide.me: 250, MatchSide.opp: 250},
     this.last,
     this.flip = 0,
     this.sim,
@@ -57,6 +59,7 @@ class AuctionState {
 
   final AuctionPhase phase;
   final int size;
+  final AuctionConfig config;
   final int pair;
   final int clues;
   final int price;
@@ -79,6 +82,7 @@ class AuctionState {
   AuctionState copyWith({
     AuctionPhase? phase,
     int? size,
+    AuctionConfig? config,
     int? pair,
     int? clues,
     int? price,
@@ -99,6 +103,7 @@ class AuctionState {
   }) => AuctionState(
     phase: phase ?? this.phase,
     size: size ?? this.size,
+    config: config ?? this.config,
     pair: pair ?? this.pair,
     clues: clues ?? this.clues,
     price: price ?? this.price,

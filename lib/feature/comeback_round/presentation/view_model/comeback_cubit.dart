@@ -46,7 +46,22 @@ class ComebackCubit extends Cubit<ComebackState> {
       ? (state.elapsed % _interval) / _interval
       : 1;
 
-  bool get canType => !state.done && state.verifying == null;
+  /// Each player gets only [maxAttempts] guesses per question.
+  static const maxAttempts = 2;
+
+  int attemptsUsed(MatchSide side) =>
+      state.guesses.where((g) => g.side == side).length;
+
+  int attemptsLeft(MatchSide side) =>
+      max(0, maxAttempts - attemptsUsed(side));
+
+  bool get _bothOut =>
+      attemptsLeft(MatchSide.me) == 0 && attemptsLeft(MatchSide.opp) == 0;
+
+  bool get canType =>
+      !state.done &&
+      state.verifying == null &&
+      attemptsLeft(MatchSide.me) > 0;
 
   void _tick() {
     if (state.done || state.verifying != null) return;
@@ -57,7 +72,7 @@ class ComebackCubit extends Cubit<ComebackState> {
         : state.revealed;
     emit(state.copyWith(elapsed: k, revealed: revealed));
     if (k >= totalSeconds) return _finish(null);
-    if (k != _aiAt) return;
+    if (k < _aiAt || attemptsLeft(MatchSide.opp) == 0) return;
     final ok = _random.nextDouble() < skill * (.55 + .1 * revealed);
     final used = state.guesses.map((g) => g.text).toSet();
     final wrong = question.wrong.where((w) => !used.contains(w)).toList();
@@ -72,7 +87,9 @@ class ComebackCubit extends Cubit<ComebackState> {
   }
 
   void _guess(MatchSide who, String text) {
-    if (!canType) return;
+    if (state.done || state.verifying != null || attemptsLeft(who) == 0) {
+      return;
+    }
     emit(state.copyWith(verifying: who));
     _scheduler.after(650, () {
       if (state.done) return;
@@ -81,13 +98,18 @@ class ComebackCubit extends Cubit<ComebackState> {
         return _finish(who);
       }
       _aiAt = state.elapsed + 3 + _random.nextInt(5);
+      final guesses = [...state.guesses, (text: text, side: who)];
+      final lastTry =
+          guesses.where((g) => g.side == who).length >= maxAttempts;
       emit(
         state.copyWith(
           clearVerifying: true,
-          guesses: [...state.guesses, (text: text, side: who)],
+          guesses: guesses,
           toast: who == MatchSide.me
-              ? const ToastMessage(
-                  AppStrings.wrongBothRetry,
+              ? ToastMessage(
+                  lastTry
+                      ? AppStrings.comebackLastWrong
+                      : AppStrings.wrongBothRetry,
                   kind: ToastKind.bad,
                 )
               : ToastMessage(
@@ -98,6 +120,8 @@ class ComebackCubit extends Cubit<ComebackState> {
                 ),
         ),
       );
+      // Both players burned their two attempts → draw, nobody scores.
+      if (_bothOut) _finish(null);
     });
   }
 

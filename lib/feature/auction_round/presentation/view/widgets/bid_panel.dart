@@ -25,6 +25,7 @@ class BidPanel extends StatelessWidget {
     required this.opponent,
     required this.onRaise,
     required this.onPass,
+    this.onCustomBid,
   });
 
   final int price;
@@ -39,6 +40,9 @@ class BidPanel extends StatelessWidget {
   final String opponent;
   final VoidCallback onRaise;
   final VoidCallback onPass;
+
+  /// Opens the number pad to type an exact bid (only on the player's turn).
+  final VoidCallback? onCustomBid;
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +72,31 @@ class BidPanel extends StatelessWidget {
                       ),
                       style: AppText.budgetLabel,
                     ),
-                    Text(
-                      '${price}M',
-                      textDirection: TextDirection.ltr,
-                      style: AppText.bidPrice,
+                    GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: mode == BidMode.mine && canRaise
+                          ? onCustomBid
+                          : null,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            '${price}M',
+                            textDirection: TextDirection.ltr,
+                            style: AppText.bidPrice,
+                          ),
+                          if (mode == BidMode.mine &&
+                              canRaise &&
+                              onCustomBid != null) ...[
+                            SizedBox(width: 6.w),
+                            Icon(
+                              Icons.edit_rounded,
+                              size: 18.r,
+                              color: AppColors.gold,
+                            ),
+                          ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -102,7 +127,9 @@ class BidPanel extends StatelessWidget {
           if (mode == BidMode.mine)
             BidActions(
               canRaise: canRaise,
-              hint: hint,
+              hint: canRaise && onCustomBid != null
+                  ? '$hint\n${context.tr(AppStrings.customBidTapHint)}'
+                  : hint,
               onRaise: onRaise,
               onPass: onPass,
             )

@@ -1,3 +1,4 @@
+import 'package:fii90/feature/auction_round/mock_model/auction_options.dart';
 import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/utils/scheduler.dart';
 import 'package:fii90/core/widgets/app_toast/toast_message.dart';
@@ -15,6 +16,7 @@ class MatchCubit extends Cubit<MatchState> {
     bool vsAi = false,
     AiLevel aiLevel = AiLevel.normal,
     bool fromRoom = false,
+    this.auction,
   }) : super(
          MatchState(
            modes: modes,
@@ -29,6 +31,8 @@ class MatchCubit extends Cubit<MatchState> {
     if (vsAi) _scheduler.after(2200, () => _go(MatchStage.vs));
   }
 
+  /// Auction choices made before the match; null shows the in-round setup.
+  final AuctionConfig? auction;
   final _scheduler = Scheduler();
   final _deltaTimer = Scheduler();
   var trivia = const <TriviaQuestion>[];
@@ -58,6 +62,15 @@ class MatchCubit extends Cubit<MatchState> {
   int get earnedXp => won ? (isFullMatch ? 250 : 50) : 0;
 
   int? get earnedCoins => won ? (isFullMatch ? 50 : 10) : null;
+
+  var _coinsClaimed = false;
+
+  /// Returns this match's coin reward once (null if lost or already paid).
+  int? claimCoins() {
+    if (_coinsClaimed || state.stage != MatchStage.finished) return null;
+    _coinsClaimed = true;
+    return earnedCoins;
+  }
 
   void _go(MatchStage stage) => emit(state.copyWith(stage: stage));
 
@@ -185,7 +198,12 @@ class MatchCubit extends Cubit<MatchState> {
         )
       : _startRound(state.roundIndex + 1);
 
-  void rematch() => emit(
+  void rematch() {
+    _coinsClaimed = false;
+    _rematch();
+  }
+
+  void _rematch() => emit(
     MatchState(
       modes: state.modes,
       vsAi: state.vsAi,

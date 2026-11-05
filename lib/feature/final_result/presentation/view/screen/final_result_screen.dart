@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:fii90/core/animation/enter.dart';
 import 'package:fii90/core/animation/fx.dart';
 import 'package:fii90/core/localization/app_strings.dart';
@@ -12,6 +12,7 @@ import 'package:fii90/feature/final_result/presentation/view/widgets/round_summa
 import 'package:fii90/feature/final_result/presentation/view/widgets/xp_card.dart';
 import 'package:fii90/feature/match/mock_model/round_result.dart';
 import 'package:fii90/feature/match/presentation/view_model/match_cubit.dart';
+import 'package:fii90/feature/profile/mock_model/profile_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,6 +46,43 @@ class FinalResultScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.fromLTRB(18.w, 21.h, 18.w, 40.h),
           children: [
+            Center(
+              child: Container(
+                padding: EdgeInsetsDirectional.fromSTEB(5.r, 5.r, 12.w, 5.r),
+                decoration: BoxDecoration(
+                  color: AppColors.s1,
+                  borderRadius: BorderRadius.circular(999.r),
+                  border: Border.all(color: AppColors.line),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 26.r,
+                      height: 26.r,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: AppColors.me,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Text(
+                        me.characters.first,
+                        style: AppText.bigInitial(12, AppColors.meOn),
+                      ),
+                    ),
+                    SizedBox(width: 8.w),
+                    Text(me, style: AppText.hudName),
+                    SizedBox(width: 6.w),
+                    Text(
+                      ProfileData.mock.username,
+                      textDirection: TextDirection.ltr,
+                      style: AppText.meta,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 10.h),
             Text(
               'FULL TIME',
               textAlign: TextAlign.center,

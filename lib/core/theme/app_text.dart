@@ -38,7 +38,7 @@ abstract final class AppText {
   ];
 
   static TextStyle get logoNine =>
-      GoogleFonts.rubik(fontSize: 40.sp, fontWeight: FontWeight.w900);
+      GoogleFonts.rubik(fontSize: 40, fontWeight: FontWeight.w900);
 
   static TextStyle get splashBrand => _cairo(
     38,
@@ -583,6 +583,21 @@ abstract final class AppText {
       _cairo(20, weight: FontWeight.w900, color: AppColors.goldInk);
   static TextStyle get formation =>
       _cairo(13, weight: FontWeight.w600, color: AppColors.mu, height: 1.5);
+  static TextStyle get setupStep =>
+      _cairo(12, weight: FontWeight.w900, color: AppColors.leaderGoldInk);
+  static TextStyle get setupLabel => _cairo(15, weight: FontWeight.w800);
+  static TextStyle get setupVersus =>
+      _cairo(24, weight: FontWeight.w900, height: 1.1);
+  static TextStyle get leagueName =>
+      _cairo(13, weight: FontWeight.w800, height: 1.3);
+  static TextStyle get leagueCode =>
+      _barlow(15, AppColors.white, letterSpacing: .5);
+  static TextStyle powerTitle(Color color) =>
+      _cairo(15, weight: FontWeight.w900, color: color, height: 1.2);
+  static TextStyle powerHint(Color color) =>
+      _cairo(11, weight: FontWeight.w600, color: color, height: 1.45);
+  static TextStyle powerTag(Color color) =>
+      _cairo(10, weight: FontWeight.w800, color: color);
   static TextStyle clueNumber(Color color) =>
       _cairo(12, weight: FontWeight.w800, color: color);
   static TextStyle clueText(Color color) =>

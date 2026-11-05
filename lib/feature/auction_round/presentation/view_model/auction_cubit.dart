@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/utils/scheduler.dart';
 import 'package:fii90/core/widgets/app_toast/toast_message.dart';
+import 'package:fii90/feature/auction_round/mock_model/auction_options.dart';
 import 'package:fii90/feature/auction_round/mock_model/auction_pair.dart';
 import 'package:fii90/feature/auction_round/mock_model/auction_player.dart';
 import 'package:fii90/feature/auction_round/presentation/view_model/auction_state.dart';
@@ -11,8 +12,10 @@ import 'package:fii90/feature/match/mock_model/round_result.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuctionCubit extends Cubit<AuctionState> {
-  AuctionCubit({required this.skill}) : super(const AuctionState()) {
+  AuctionCubit({required this.skill, AuctionConfig? config})
+    : super(AuctionState(config: config ?? const AuctionConfig())) {
     _scheduler.every(const Duration(seconds: 1), _tick);
+    if (config != null) start();
   }
 
   static const turnSeconds = 10;
@@ -96,17 +99,35 @@ class AuctionCubit extends Cubit<AuctionState> {
   int goals(MatchSide side) =>
       shownEvents.where((e) => e.goal && e.side == side).length;
 
-  void pickSize(int size) {
-    if (state.phase != AuctionPhase.setup) return;
-    final budget = size == 11 ? 250 : 100;
-    _pairs = AuctionPair.draw(size, _random);
+  /// In-round setup, used only when the match didn't come with a config
+  /// (e.g. a full match started from the home hero card).
+  void configure(AuctionConfig config) {
+    if (state.phase != AuctionPhase.setup || state.size != 0) return;
+    final budget = config.squad.budget;
     emit(
       state.copyWith(
-        size: size,
+        config: config,
         budget: {MatchSide.me: budget, MatchSide.opp: budget},
       ),
     );
-    _scheduler.after(350, () => _lot(0));
+  }
+
+  /// Locks the setup choices and opens the first lot.
+  /// The league does not filter the pool and the power cards are not
+  /// playable yet; both only get recorded here for now.
+  void start() {
+    if (state.phase != AuctionPhase.setup || state.size != 0) return;
+    final squad = state.config.squad;
+    _pairs = AuctionPair.draw(squad.players, _random);
+    emit(
+      state.copyWith(
+        size: squad.players,
+        budget: {MatchSide.me: squad.budget, MatchSide.opp: squad.budget},
+      ),
+    );
+    // Open the first lot right away: a delay here left the round in the
+    // setup phase long enough for the setup screen to flash before bidding.
+    _lot(0);
   }
 
   void _lot(int index) {
@@ -150,11 +171,33 @@ class AuctionCubit extends Cubit<AuctionState> {
 
   void raise() => _raise(MatchSide.me);
 
+  /// Typed bid: must beat the current price and fit the budget.
+  void bidTo(int amount) => _raise(MatchSide.me, to: amount);
+
+  int get maxBid => state.budget[MatchSide.me]!;
+
+  bool get myBidTurn =>
+      state.phase == AuctionPhase.bid && state.turn == MatchSide.me;
+
   void pass() => _pass(MatchSide.me);
 
-  void _raise(MatchSide who) {
+  void _raise(MatchSide who, {int? to}) {
     if (state.phase != AuctionPhase.bid || state.turn != who) return;
-    final next = state.price + 1;
+    final next = to ?? state.price + 1;
+    if (next <= state.price) {
+      if (who == MatchSide.me) {
+        emit(
+          state.copyWith(
+            toast: ToastMessage(
+              AppStrings.customBidTooLow,
+              kind: ToastKind.warn,
+              args: ['${state.price}'],
+            ),
+          ),
+        );
+      }
+      return;
+    }
     if (next > state.budget[who]!) {
       if (who == MatchSide.me) {
         emit(

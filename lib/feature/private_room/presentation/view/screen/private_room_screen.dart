@@ -1,3 +1,4 @@
+import 'package:fii90/feature/auction_round/mock_model/auction_options.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/routing/nav.dart';
@@ -20,9 +21,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PrivateRoomScreen extends StatelessWidget {
-  const PrivateRoomScreen({super.key, required this.modes});
+  const PrivateRoomScreen({super.key, required this.modes, this.auction});
 
   final List<MatchMode> modes;
+  final AuctionConfig? auction;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,10 @@ class PrivateRoomScreen extends StatelessWidget {
           final toast = state.toast;
           if (toast != null) AppToast.show(context, toast);
           if (state.started) {
-            Nav.replace(context, MatchScreen(modes: modes, fromRoom: true));
+            Nav.replace(
+              context,
+              MatchScreen(modes: modes, fromRoom: true, auction: auction),
+            );
           }
         },
         builder: (context, state) {

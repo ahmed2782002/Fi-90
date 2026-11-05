@@ -1,3 +1,4 @@
+import 'package:fii90/feature/auction_round/mock_model/auction_options.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fii90/core/constants/app_icons.dart';
 import 'package:fii90/core/localization/app_strings.dart';
@@ -16,18 +17,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlaySheet extends StatelessWidget {
-  const PlaySheet({super.key, this.modeKey});
+  const PlaySheet({super.key, this.modeKey, this.auction});
 
   final String? modeKey;
+  final AuctionConfig? auction;
 
-  static Future<void> show(BuildContext context, {String? modeKey}) {
+  static Future<void> show(
+    BuildContext context, {
+    String? modeKey,
+    AuctionConfig? auction,
+  }) {
     return showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
       useRootNavigator: true,
       backgroundColor: AppColors.transparent,
       barrierColor: AppColors.scrim,
-      builder: (_) => PlaySheet(modeKey: modeKey),
+      builder: (_) => PlaySheet(modeKey: modeKey, auction: auction),
     );
   }
 
@@ -72,8 +78,10 @@ class PlaySheet extends StatelessWidget {
                   ink: AppColors.priInk,
                   title: context.tr(AppStrings.onlineOpponent),
                   subtitle: context.tr(AppStrings.onlineOpponentHint),
-                  onTap: () =>
-                      Nav.popAndPush(context, MatchScreen(modes: cubit.modes)),
+                  onTap: () => Nav.popAndPush(
+                    context,
+                    MatchScreen(modes: cubit.modes, auction: auction),
+                  ),
                 ),
                 PlayOption(
                   icon: AppIcons.inviteFriend,
@@ -84,7 +92,7 @@ class PlaySheet extends StatelessWidget {
                   subtitle: context.tr(AppStrings.bringFriendHint),
                   onTap: () => Nav.popAndPush(
                     context,
-                    PrivateRoomScreen(modes: cubit.modes),
+                    PrivateRoomScreen(modes: cubit.modes, auction: auction),
                   ),
                 ),
                 PlayOption(
@@ -108,6 +116,7 @@ class PlaySheet extends StatelessWidget {
                         modes: cubit.modes,
                         vsAi: true,
                         aiLevel: state.level,
+                        auction: auction,
                       ),
                     ),
                   ),
