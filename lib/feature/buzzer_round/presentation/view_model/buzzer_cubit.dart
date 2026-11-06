@@ -149,7 +149,7 @@ class BuzzerCubit extends Cubit<BuzzerState> {
     );
     _scheduler.after(
       1700,
-      () => emit(state.copyWith(phase: BuzzerPhase.answer, answerSeconds: 7)),
+      () => emit(state.copyWith(phase: BuzzerPhase.answer, answerSeconds: BuzzerState.answerTime)),
     );
   }
 
@@ -168,7 +168,7 @@ class BuzzerCubit extends Cubit<BuzzerState> {
         () => emit(
           state.copyWith(
             phase: BuzzerPhase.answer,
-            answerSeconds: 7,
+            answerSeconds: BuzzerState.answerTime,
             rebound: true,
           ),
         ),

@@ -28,11 +28,16 @@ class BuzzerQuestion {
     BuzzerLevel.hard,
   ];
 
+  // Questions already shown this app session, per level. Each new round draws
+  // unseen questions first; a level's history resets once all of it is seen.
+  static final _seen = {
+    for (final level in BuzzerLevel.values) level: <BuzzerQuestion>{},
+  };
+
   static List<BuzzerQuestion> deal(int count, [Random? random]) {
     final r = random ?? Random();
     final pools = {
-      for (final level in BuzzerLevel.values)
-        level: mock.where((q) => q.level == level).toList()..shuffle(r),
+      for (final level in BuzzerLevel.values) level: _poolOf(level, r),
     };
     final used = {for (final level in BuzzerLevel.values) level: 0};
     BuzzerQuestion take(BuzzerLevel level) {
@@ -46,7 +51,34 @@ class BuzzerQuestion {
     while (out.length < count) {
       out.addAll([for (final level in _pattern) take(level)]..shuffle(r));
     }
-    return out.take(count).toList();
+    final dealt = out.take(count).toList();
+    _remember(dealt);
+    return dealt;
+  }
+
+  /// Unseen questions of [level] shuffled first, then the seen ones shuffled.
+  static List<BuzzerQuestion> _poolOf(BuzzerLevel level, Random r) {
+    final all = mock.where((q) => q.level == level);
+    final seen = _seen[level]!;
+    return [
+      ...all.where((q) => !seen.contains(q)).toList()..shuffle(r),
+      ...all.where(seen.contains).toList()..shuffle(r),
+    ];
+  }
+
+  static void _remember(List<BuzzerQuestion> dealt) {
+    for (final level in BuzzerLevel.values) {
+      final seen = _seen[level]!;
+      final now = dealt.where((q) => q.level == level);
+      seen.addAll(now);
+      // Everything seen: start over, but keep this round's questions out of
+      // the next one.
+      if (seen.length >= mock.where((q) => q.level == level).length) {
+        seen
+          ..clear()
+          ..addAll(now);
+      }
+    }
   }
 
   static const mock = [

@@ -26,11 +26,14 @@ enum BuzzerPhase {
 }
 
 class BuzzerState {
+  /// Seconds the player gets to type an answer after ringing the bell.
+  static const answerTime = 20;
+
   const BuzzerState({
     this.phase = BuzzerPhase.ready,
     this.count = 3,
     this.seconds = 15,
-    this.answerSeconds = 7,
+    this.answerSeconds = answerTime,
     this.gap = 0,
     this.oppTried = false,
     this.rebound = false,
