@@ -4,7 +4,6 @@ import 'package:fii90/core/animation/fx.dart';
 import 'package:fii90/core/constants/app_icons.dart';
 import 'package:fii90/core/localization/app_strings.dart';
 import 'package:fii90/core/theme/app_colors.dart';
-import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/primary_button.dart';
 import 'package:fii90/core/widgets/tinted_icon_box.dart';
@@ -16,7 +15,8 @@ import 'package:fii90/feature/auction_round/presentation/view/widgets/setup/squa
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-/// Pre-auction lobby: match size, league and power cards, then start.
+/// Pre-auction lobby: match format, league and one optional power card.
+/// Leaving the defaults (all leagues, no card) is the quick way in.
 class AuctionSetup extends StatelessWidget {
   const AuctionSetup({
     super.key,
@@ -33,21 +33,22 @@ class AuctionSetup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cards = <AuctionPowerCard?>[null, ...AuctionPowerCard.values];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         _step(0, const _Header()),
-        SizedBox(height: 14.h),
+        SizedBox(height: 16.h),
         _step(
           1,
-          _Panel(
-            children: [
-              SetupSectionHeader(
-                step: 1,
-                title: context.tr(AppStrings.matchSizeLabel),
-              ),
-              SizedBox(height: 12.h),
-              Row(
+          _Section(
+            header: SetupSectionHeader(
+              step: 1,
+              title: context.tr(AppStrings.matchSizeLabel),
+            ),
+            child: IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   for (final (i, squad) in AuctionSize.values.indexed) ...[
                     if (i > 0) SizedBox(width: 10.w),
@@ -61,71 +62,54 @@ class AuctionSetup extends StatelessWidget {
                   ],
                 ],
               ),
-            ],
+            ),
           ),
         ),
         SizedBox(height: 12.h),
         _step(
           2,
-          _Panel(
-            children: [
-              SetupSectionHeader(
-                step: 2,
-                title: context.tr(AppStrings.leagueLabel),
-              ),
-              SizedBox(height: 12.h),
-              for (var r = 0; r < AuctionLeague.values.length; r += 2) ...[
-                if (r > 0) SizedBox(height: 10.h),
-                Row(
-                  children: [
-                    for (final (i, league)
-                        in AuctionLeague.values.skip(r).take(2).indexed) ...[
-                      if (i > 0) SizedBox(width: 10.w),
-                      Expanded(
-                        child: LeagueTile(
-                          league: league,
-                          selected: config.league == league,
-                          onTap: () =>
-                              onChanged(config.copyWith(league: league)),
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-              ],
-            ],
+          _Section(
+            header: SetupSectionHeader(
+              step: 2,
+              title: context.tr(AppStrings.leagueLabel),
+              value: context.tr(config.league.nameKey),
+            ),
+            child: _HorizontalRow(
+              height: LeagueTile.width + 64.h,
+              itemCount: AuctionLeague.values.length,
+              itemBuilder: (i) {
+                final league = AuctionLeague.values[i];
+                return LeagueTile(
+                  league: league,
+                  selected: config.league == league,
+                  onTap: () => onChanged(config.copyWith(league: league)),
+                );
+              },
+            ),
           ),
         ),
         SizedBox(height: 12.h),
         _step(
           3,
-          _Panel(
-            children: [
-              SetupSectionHeader(
-                step: 3,
-                title: context.tr(AppStrings.powerCardsLabel),
-                hint: context.tr(AppStrings.powerCardsHint),
-              ),
-              SizedBox(height: 14.h),
-              IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    for (final (i, card)
-                        in AuctionPowerCard.values.indexed) ...[
-                      if (i > 0) SizedBox(width: 10.w),
-                      Expanded(
-                        child: PowerCardTile(
-                          card: card,
-                          selected: config.cards.contains(card),
-                          onTap: () => onChanged(config.toggle(card)),
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-            ],
+          _Section(
+            header: SetupSectionHeader(
+              step: 3,
+              title: context.tr(AppStrings.powerCardsLabel),
+              hint: context.tr(AppStrings.powerCardsHint),
+              value: context.tr(config.card?.titleKey ?? AppStrings.noCard),
+            ),
+            child: _HorizontalRow(
+              height: PowerCardTile.width + 92.h,
+              itemCount: cards.length,
+              itemBuilder: (i) {
+                final card = cards[i];
+                return PowerCardTile(
+                  card: card,
+                  selected: config.card == card,
+                  onTap: () => onChanged(config.withCard(card)),
+                );
+              },
+            ),
           ),
         ),
         SizedBox(height: 18.h),
@@ -190,24 +174,57 @@ class _Header extends StatelessWidget {
   }
 }
 
-class _Panel extends StatelessWidget {
-  const _Panel({required this.children});
+/// Soft container that groups a section header with its options.
+class _Section extends StatelessWidget {
+  const _Section({required this.header, required this.child});
 
-  final List<Widget> children;
+  final Widget header;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(14.w, 14.h, 14.w, 14.h),
+      padding: EdgeInsets.fromLTRB(12.w, 12.h, 12.w, 12.h),
       decoration: BoxDecoration(
-        color: AppColors.s1,
-        borderRadius: BorderRadius.circular(26.r),
+        color: AppColors.tint(AppColors.s1, .55),
+        borderRadius: BorderRadius.circular(24.r),
         border: Border.all(color: AppColors.line),
-        boxShadow: AppShadows.sh1,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: children,
+        children: [
+          header,
+          SizedBox(height: 10.h),
+          child,
+        ],
+      ),
+    );
+  }
+}
+
+/// Side-scrolling row of fixed-width options.
+class _HorizontalRow extends StatelessWidget {
+  const _HorizontalRow({
+    required this.height,
+    required this.itemCount,
+    required this.itemBuilder,
+  });
+
+  final double height;
+  final int itemCount;
+  final Widget Function(int index) itemBuilder;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
+        padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 6.h),
+        itemCount: itemCount,
+        separatorBuilder: (_, _) => SizedBox(width: 10.w),
+        itemBuilder: (_, i) => itemBuilder(i),
       ),
     );
   }

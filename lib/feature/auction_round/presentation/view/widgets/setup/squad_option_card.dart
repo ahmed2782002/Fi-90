@@ -7,7 +7,9 @@ import 'package:fii90/feature/auction_round/mock_model/auction_options.dart';
 import 'package:fii90/feature/auction_round/presentation/view/widgets/setup/selected_check.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+/// Match format option: artwork banner, name, short hint and its budget.
 class SquadOptionCard extends StatelessWidget {
   const SquadOptionCard({
     super.key,
@@ -23,144 +25,107 @@ class SquadOptionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final accent = AppColors.gold;
+    final radius = BorderRadius.circular(22.r);
     return PressScale(
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 220),
-        padding: EdgeInsets.fromLTRB(12.w, 14.h, 12.w, 12.h),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24.r),
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: selected
-                ? [AppColors.mix(accent, .18, AppColors.s2), AppColors.s1]
-                : [AppColors.s2, AppColors.s1],
-          ),
+          color: selected
+              ? AppColors.mix(accent, .1, AppColors.s1)
+              : AppColors.s1,
+          borderRadius: radius,
           border: Border.all(
-            color: selected ? accent : AppColors.line2,
+            color: selected ? accent : AppColors.line,
             width: selected ? 2 : 1.2,
           ),
           boxShadow: selected
               ? [
                   BoxShadow(
-                    color: AppColors.tint(AppColors.goldGlow, .28),
-                    blurRadius: 20,
+                    color: AppColors.tint(AppColors.goldGlow, .3),
+                    blurRadius: 18,
                   ),
                 ]
               : null,
         ),
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Column(
-              children: [
-                _Formation(shape: squad.shape, selected: selected),
-                SizedBox(height: 12.h),
-                Text(context.tr(squad.titleKey), style: AppText.setupVersus),
-                SizedBox(height: 2.h),
-                Text(
-                  context.tr(squad.hintKey),
-                  textAlign: TextAlign.center,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppText.meta,
+        child: ClipRRect(
+          borderRadius: radius,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Stack(
+                children: [
+                  AspectRatio(
+                    aspectRatio: 3 / 2,
+                    child: AnimatedOpacity(
+                      duration: const Duration(milliseconds: 220),
+                      opacity: selected ? 1 : .7,
+                      child: SvgPicture.asset(squad.image, fit: BoxFit.cover),
+                    ),
+                  ),
+                  PositionedDirectional(
+                    top: 8.r,
+                    end: 8.r,
+                    child: SelectedCheck(selected: selected, color: accent),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(10.w, 8.h, 10.w, 10.h),
+                child: Column(
+                  children: [
+                    Text(
+                      context.tr(squad.titleKey),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppText.powerTitle(AppColors.tx),
+                    ),
+                    Text(
+                      context.tr(squad.hintKey),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppText.meta.copyWith(fontSize: 11.sp),
+                    ),
+                    SizedBox(height: 8.h),
+                    _Budget(budget: squad.budget, selected: selected),
+                  ],
                 ),
-                SizedBox(height: 10.h),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 10.w,
-                    vertical: 4.h,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.tint(accent, selected ? .18 : .1),
-                    borderRadius: BorderRadius.circular(999.r),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        context.tr(AppStrings.budgetLabel),
-                        style: AppText.powerTag(AppColors.goldInk),
-                      ),
-                      SizedBox(width: 6.w),
-                      Text(
-                        '${squad.budget}M',
-                        textDirection: TextDirection.ltr,
-                        style: AppText.budgetBig.copyWith(fontSize: 15.sp),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            PositionedDirectional(
-              top: -4.h,
-              end: -2.w,
-              child: SelectedCheck(selected: selected, color: accent),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-/// Small pitch with one dot per player laid out in [shape] plus a keeper.
-class _Formation extends StatelessWidget {
-  const _Formation({required this.shape, required this.selected});
+class _Budget extends StatelessWidget {
+  const _Budget({required this.budget, required this.selected});
 
-  final String shape;
+  final int budget;
   final bool selected;
 
   @override
   Widget build(BuildContext context) {
-    final lines = [...shape.split('-').map(int.parse).toList().reversed, 1];
-    final pitch = AppColors.mix(
-      AppColors.ok,
-      selected ? .22 : .12,
-      AppColors.s1,
-    );
     return Container(
-      height: 82.h,
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),
       decoration: BoxDecoration(
-        color: pitch,
-        borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: AppColors.tint(AppColors.white, .12)),
+        color: AppColors.tint(AppColors.gold, selected ? .18 : .08),
+        borderRadius: BorderRadius.circular(999.r),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          for (final (i, count) in lines.indexed)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                for (var p = 0; p < count; p++)
-                  AnimatedContainer(
-                    duration: Duration(milliseconds: 200 + i * 60),
-                    width: 9.r,
-                    height: 9.r,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: i == lines.length - 1
-                          ? AppColors.goldInk
-                          : selected
-                          ? AppColors.white
-                          : AppColors.tx2,
-                      boxShadow: selected
-                          ? [
-                              BoxShadow(
-                                color: AppColors.tint(AppColors.white, .45),
-                                blurRadius: 6,
-                              ),
-                            ]
-                          : null,
-                    ),
-                  ),
-              ],
-            ),
+          Text(
+            context.tr(AppStrings.budgetLabel),
+            style: AppText.powerTag(AppColors.goldInk),
+          ),
+          SizedBox(width: 6.w),
+          Text(
+            '${budget}M',
+            textDirection: TextDirection.ltr,
+            style: AppText.budgetBig.copyWith(fontSize: 14.sp),
+          ),
         ],
       ),
     );

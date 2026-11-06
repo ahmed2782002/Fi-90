@@ -5,6 +5,7 @@ import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/match_app/answer_input.dart';
 import 'package:fii90/core/widgets/match_app/countdown_ring.dart';
 import 'package:fii90/core/widgets/match_app/spin_ring.dart';
+import 'package:fii90/feature/buzzer_round/presentation/view_model/buzzer_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -47,8 +48,8 @@ class BuzzerAnswerZone extends StatelessWidget {
         CountdownRing(
           size: 112.r,
           width: 9.5.r,
-          progress: seconds / 7,
-          color: seconds <= 2 ? AppColors.bad : AppColors.me,
+          progress: seconds / BuzzerState.answerTime,
+          color: seconds <= 5 ? AppColors.bad : AppColors.me,
           child: Text('$seconds', style: AppText.countdown(44)),
         ),
         SizedBox(height: 16.h),

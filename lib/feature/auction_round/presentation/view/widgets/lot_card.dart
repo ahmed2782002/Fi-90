@@ -2,6 +2,7 @@ import 'package:fii90/core/theme/app_colors.dart';
 import 'package:fii90/core/theme/app_shadows.dart';
 import 'package:fii90/core/theme/app_text.dart';
 import 'package:fii90/core/widgets/match_app/fut_card.dart';
+import 'package:fii90/core/widgets/match_app/fut_card_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -31,12 +32,10 @@ class LotCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // FIFA-card proportions (~0.69 w/h): taller than the 3:4 canvas.
           SizedBox(
-            width: 200.r,
-            height: 290.r,
+            width: 216.r,
+            height: 216.r / FutCardStyle.aspect,
             child: FittedBox(
-              fit: BoxFit.fill,
               child: FutCard(
                 palette: AppColors.futMystery,
                 rating: '?',

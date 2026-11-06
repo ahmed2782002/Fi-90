@@ -13,6 +13,7 @@ class ComebackDoneOverlay extends StatelessWidget {
   const ComebackDoneOverlay({
     super.key,
     required this.player,
+    required this.image,
     required this.meta,
     required this.revealed,
     required this.points,
@@ -22,6 +23,7 @@ class ComebackDoneOverlay extends StatelessWidget {
   });
 
   final String player;
+  final String image;
   final String meta;
   final int revealed;
   final int points;
@@ -54,12 +56,13 @@ class ComebackDoneOverlay extends StatelessWidget {
             fx: Fx.pop,
             duration: const Duration(milliseconds: 600),
             child: Container(
-              width: 128.r,
-              height: 128.r,
+              width: 160.r,
+              height: 200.r,
               alignment: Alignment.center,
+              clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
                 color: AppColors.s1,
-                borderRadius: BorderRadius.circular(42.r),
+                borderRadius: BorderRadius.circular(36.r),
                 border: Border.all(color: AppColors.m4, width: 2),
                 boxShadow: [
                   BoxShadow(
@@ -68,9 +71,19 @@ class ComebackDoneOverlay extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Text(
-                player.characters.first,
-                style: AppText.bigInitial(52, AppColors.m4Ink),
+              child: Image.asset(
+                image,
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
+                filterQuality: FilterQuality.high,
+                errorBuilder: (_, _, _) => Center(
+                  child: Text(
+                    player.characters.first,
+                    style: AppText.bigInitial(52, AppColors.m4Ink),
+                  ),
+                ),
               ),
             ),
           ),

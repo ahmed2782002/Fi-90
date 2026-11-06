@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3FD4FF"/>
+      <stop offset="1" stop-color="#072A7A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE27A"/>
+      <stop offset="1" stop-color="#E09A00"/>
+    </linearGradient>
+    <clipPath id="shield"><path d="M100 40 L152 56 L152 104 C152 136 130 158 100 172 C70 158 48 136 48 104 L48 56 Z"/></clipPath>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg)"/>
+  <g fill="#FFFFFF" fill-opacity="0.08">
+    <path d="M100 110 L70 0 L130 0 Z"/>
+    <path d="M100 110 L200 60 L200 120 Z"/>
+    <path d="M100 110 L0 60 L0 120 Z"/>
+  </g>
+
+  <!-- laurel -->
+  <g fill="#2EE59D" stroke="#0C6B38" stroke-width="1.5">
+    <ellipse cx="34" cy="150" rx="5" ry="11" transform="rotate(-30 34 150)"/>
+    <ellipse cx="26" cy="128" rx="5" ry="11" transform="rotate(-12 26 128)"/>
+    <ellipse cx="24" cy="104" rx="5" ry="11" transform="rotate(4 24 104)"/>
+    <ellipse cx="28" cy="80" rx="5" ry="11" transform="rotate(20 28 80)"/>
+    <ellipse cx="166" cy="150" rx="5" ry="11" transform="rotate(30 166 150)"/>
+    <ellipse cx="174" cy="128" rx="5" ry="11" transform="rotate(12 174 128)"/>
+    <ellipse cx="176" cy="104" rx="5" ry="11" transform="rotate(-4 176 104)"/>
+    <ellipse cx="172" cy="80" rx="5" ry="11" transform="rotate(-20 172 80)"/>
+  </g>
+  <g fill="none" stroke="#0C6B38" stroke-width="3" stroke-linecap="round">
+    <path d="M60 172 Q24 140 32 72"/>
+    <path d="M140 172 Q176 140 168 72"/>
+  </g>
+
+  <path d="M100 40 L152 56 L152 104 C152 136 130 158 100 172 C70 158 48 136 48 104 L48 56 Z" fill="#000000" fill-opacity="0.3" transform="translate(0 6)"/>
+  <g clip-path="url(#shield)">
+    <rect x="40" y="30" width="40" height="150" fill="#009246"/>
+    <rect x="80" y="30" width="40" height="150" fill="#FFFFFF"/>
+    <rect x="120" y="30" width="40" height="150" fill="#CE2B37"/>
+  </g>
+  <path d="M100 40 L152 56 L152 104 C152 136 130 158 100 172 C70 158 48 136 48 104 L48 56 Z" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- big star -->
+  <path d="M100 76 L107 94 L126 95 L111 107 L116 126 L100 115 L84 126 L89 107 L74 95 L93 94 Z" fill="url(#gold)" stroke="#7A4A00" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- small stars -->
+  <g fill="#FFE27A">
+    <path d="M100 18 L103 26 L111 27 L105 32 L107 40 L100 36 L93 40 L95 32 L89 27 L97 26 Z"/>
+  </g>
+</svg>

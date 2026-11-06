@@ -175,6 +175,8 @@ class MatchCubit extends Cubit<MatchState> {
       detailArgs: args,
       translateArgs: translateArgs,
     );
+    // Every round, including a single-mode game's only round, shows the round
+    // summary first; next() moves on to the final result after the last one.
     emit(
       state.copyWith(
         stage: MatchStage.roundResult,
@@ -184,18 +186,12 @@ class MatchCubit extends Cubit<MatchState> {
     );
   }
 
+  ToastMessage? get _winToast => won
+      ? ToastMessage(AppStrings.winCoinsToast, args: ['${earnedCoins!}'])
+      : null;
+
   void next() => isLastRound
-      ? emit(
-          state.copyWith(
-            stage: MatchStage.finished,
-            toast: won
-                ? ToastMessage(
-                    AppStrings.winCoinsToast,
-                    args: ['${earnedCoins!}'],
-                  )
-                : null,
-          ),
-        )
+      ? emit(state.copyWith(stage: MatchStage.finished, toast: _winToast))
       : _startRound(state.roundIndex + 1);
 
   void rematch() {
