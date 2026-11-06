@@ -532,8 +532,6 @@ abstract final class AppText {
       _cairo(12, weight: FontWeight.w600, color: AppColors.mu);
   static TextStyle get lastCall =>
       _cairo(13, weight: FontWeight.w800, color: AppColors.badInk);
-  static TextStyle get bothHint =>
-      _cairo(12, weight: FontWeight.w600, color: AppColors.mu);
   static TextStyle get waitLabel =>
       _cairo(14, weight: FontWeight.w700, color: AppColors.opInk);
   static TextStyle get noPoints =>

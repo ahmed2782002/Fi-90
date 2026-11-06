@@ -8,7 +8,6 @@ import 'package:fii90/core/widgets/match_app/spin_ring.dart';
 import 'package:fii90/feature/comeback_round/presentation/view/widgets/club_timeline.dart';
 import 'package:fii90/feature/comeback_round/presentation/view/widgets/comeback_done_overlay.dart';
 import 'package:fii90/feature/comeback_round/presentation/view/widgets/comeback_header.dart';
-import 'package:fii90/feature/comeback_round/presentation/view/widgets/guess_chips.dart';
 import 'package:fii90/feature/comeback_round/presentation/view_model/comeback_cubit.dart';
 import 'package:fii90/feature/comeback_round/presentation/view_model/comeback_state.dart';
 import 'package:fii90/feature/match/mock_model/round_result.dart';
@@ -78,15 +77,6 @@ class ComebackScreen extends StatelessWidget {
                           done: state.done,
                         ),
                       ),
-                      if (state.guesses.isNotEmpty) ...[
-                        SizedBox(height: 10.h),
-                        GuessChips(
-                          guesses: [
-                            for (final g in state.guesses)
-                              (text: g.text, color: g.side.fill),
-                          ],
-                        ),
-                      ],
                       SizedBox(height: 10.h),
                       if (!state.done && state.verifying == null)
                         Padding(
@@ -135,6 +125,7 @@ class ComebackScreen extends StatelessWidget {
                   Positioned.fill(
                     child: ComebackDoneOverlay(
                       player: cubit.question.name.of(context),
+                      image: cubit.question.image,
                       meta: context.tr(
                         AppStrings.stations,
                         args: [

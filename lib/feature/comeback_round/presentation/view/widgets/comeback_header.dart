@@ -42,13 +42,7 @@ class ComebackHeader extends StatelessWidget {
                 style: AppText.modeTag(AppColors.m4Ink),
               ),
             ),
-            SizedBox(width: 8.w),
-            Expanded(
-              child: Text(
-                context.tr(AppStrings.bothCanAnswer),
-                style: AppText.bothHint,
-              ),
-            ),
+            const Spacer(),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 11.w, vertical: 5.h),
               decoration: BoxDecoration(

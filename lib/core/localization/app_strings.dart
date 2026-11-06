@@ -422,7 +422,6 @@ abstract final class AppStrings {
   static const pointsLabel = 'pointsLabel';
   static const whoIsThisPlayer = 'whoIsThisPlayer';
   static const careerHint = 'careerHint';
-  static const bothCanAnswer = 'bothCanAnswer';
   static const secondsLeft = 'secondsLeft';
   static const clubNumber = 'clubNumber';
   static const knowHimHint = 'knowHimHint';

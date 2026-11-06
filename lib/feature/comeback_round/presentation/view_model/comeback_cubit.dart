@@ -17,14 +17,21 @@ class ComebackCubit extends Cubit<ComebackState> {
     required this.oppKey,
     required this.meScore,
     required this.oppScore,
-  }) : question =
-           ComebackQuestion.mock[question % ComebackQuestion.mock.length],
+  }) : question = ComebackQuestion.mock[_order[question % _order.length]],
        super(const ComebackState()) {
     _aiAt = 6 + _random.nextInt(7);
     _scheduler.every(const Duration(seconds: 1), _tick);
   }
 
-  static const totalSeconds = 20;
+  static const totalSeconds = 40;
+
+  /// Clubs are revealed across this window, leaving the rest for last guesses.
+  static const _revealSeconds = 32;
+
+  /// Shuffled once per app run so each match draws different players
+  /// without repeating one inside the same match.
+  static final _order = List.generate(ComebackQuestion.mock.length, (i) => i)
+    ..shuffle();
 
   final ComebackQuestion question;
   final double skill;
@@ -36,7 +43,11 @@ class ComebackCubit extends Cubit<ComebackState> {
   final _random = Random();
   late int _aiAt;
 
-  int get _interval => max(2, 16 ~/ max(1, question.clubs.length - 1));
+  /// Sides whose guess is being checked. Both players may have one in flight;
+  /// checks resolve in submit order, so the first correct answer wins.
+  final _pending = <MatchSide>{};
+
+  int get _interval => max(2, _revealSeconds ~/ max(1, question.clubs.length - 1));
 
   int get points => 45 - 5 * state.revealed;
 
@@ -52,19 +63,18 @@ class ComebackCubit extends Cubit<ComebackState> {
   int attemptsUsed(MatchSide side) =>
       state.guesses.where((g) => g.side == side).length;
 
-  int attemptsLeft(MatchSide side) =>
-      max(0, maxAttempts - attemptsUsed(side));
+  int attemptsLeft(MatchSide side) => max(0, maxAttempts - attemptsUsed(side));
 
   bool get _bothOut =>
       attemptsLeft(MatchSide.me) == 0 && attemptsLeft(MatchSide.opp) == 0;
 
   bool get canType =>
       !state.done &&
-      state.verifying == null &&
+      !_pending.contains(MatchSide.me) &&
       attemptsLeft(MatchSide.me) > 0;
 
   void _tick() {
-    if (state.done || state.verifying != null) return;
+    if (state.done || _pending.isNotEmpty) return;
     final k = state.elapsed + 1;
     final revealed =
         k % _interval == 0 && state.revealed < question.clubs.length
@@ -87,11 +97,13 @@ class ComebackCubit extends Cubit<ComebackState> {
   }
 
   void _guess(MatchSide who, String text) {
-    if (state.done || state.verifying != null || attemptsLeft(who) == 0) {
+    if (state.done || _pending.contains(who) || attemptsLeft(who) == 0) {
       return;
     }
-    emit(state.copyWith(verifying: who));
+    _pending.add(who);
+    if (who == MatchSide.me) emit(state.copyWith(verifying: who));
     _scheduler.after(650, () {
+      _pending.remove(who);
       if (state.done) return;
       if (AnswerMatcher.matches(text, question.aliases)) {
         emit(state.copyWith(clearVerifying: true));
@@ -99,11 +111,10 @@ class ComebackCubit extends Cubit<ComebackState> {
       }
       _aiAt = state.elapsed + 3 + _random.nextInt(5);
       final guesses = [...state.guesses, (text: text, side: who)];
-      final lastTry =
-          guesses.where((g) => g.side == who).length >= maxAttempts;
+      final lastTry = guesses.where((g) => g.side == who).length >= maxAttempts;
       emit(
         state.copyWith(
-          clearVerifying: true,
+          clearVerifying: who == MatchSide.me,
           guesses: guesses,
           toast: who == MatchSide.me
               ? ToastMessage(
