@@ -462,6 +462,14 @@ abstract final class AppStrings {
   static const goldenCard = 'goldenCard';
   static const goldenCardHint = 'goldenCardHint';
   static const oneUse = 'oneUse';
+  static const leagueAll = 'leagueAll';
+  static const leagueAllHint = 'leagueAllHint';
+  static const revealCard = 'revealCard';
+  static const revealCardHint = 'revealCardHint';
+  static const freezeCard = 'freezeCard';
+  static const freezeCardHint = 'freezeCardHint';
+  static const noCard = 'noCard';
+  static const noCardHint = 'noCardHint';
   static const startAuction = 'startAuction';
   static const chooseOpponent = 'chooseOpponent';
   static const auctionStage = 'auctionStage';
