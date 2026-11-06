@@ -67,8 +67,11 @@ flutter:
     - assets/image/home/
     - assets/image/friends/
     - assets/image/buzzer/
-    - assets/image/comeback/
+    - assets/image/comeback/club_icons/
+    - assets/image/comeback/player_images/
     - assets/image/players/
+    - assets/image/cards/
+    - assets/image/auction/
     - assets/icons/
     - assets/translations/
     - assets/sounds/

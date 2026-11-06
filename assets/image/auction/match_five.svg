@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3A0F2E"/>
+      <stop offset="0.5" stop-color="#0B1440"/>
+      <stop offset="1" stop-color="#06306A"/>
+    </linearGradient>
+    <radialGradient id="glowL" cx="70" cy="110" r="130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF4B4B" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#FF4B4B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowR" cx="230" cy="110" r="130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3FD4FF" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#3FD4FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="spot" cx="150" cy="98" r="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFE9A8" stop-opacity="0.95"/>
+      <stop offset="0.35" stop-color="#FFC640" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#FFC640" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF7A66"/>
+      <stop offset="1" stop-color="#B8001F"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6FB8FF"/>
+      <stop offset="1" stop-color="#1A1AD6"/>
+    </linearGradient>
+    <clipPath id="ball"><circle cx="0" cy="0" r="19"/></clipPath>
+  </defs>
+
+  <rect width="300" height="200" fill="url(#bg)"/>
+  <rect width="300" height="200" fill="url(#glowL)"/>
+  <rect width="300" height="200" fill="url(#glowR)"/>
+
+  <!-- futsal cage net -->
+  <g stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1.2">
+    <path d="M0 20 L60 -20 M0 60 L120 -20 M0 100 L180 -20 M0 140 L240 -20 M0 180 L300 -20 M40 200 L300 26 M100 200 L300 66 M160 200 L300 106 M220 200 L300 146"/>
+    <path d="M300 20 L240 -20 M300 60 L180 -20 M300 100 L120 -20 M300 140 L60 -20 M300 180 L0 -20 M260 200 L0 26 M200 200 L0 66 M140 200 L0 106 M80 200 L0 146"/>
+  </g>
+
+  <!-- court floor -->
+  <path d="M0 162 Q150 140 300 162 L300 200 L0 200 Z" fill="#000428" fill-opacity="0.5"/>
+  <path d="M0 162 Q150 140 300 162" fill="none" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="2"/>
+  <ellipse cx="150" cy="168" rx="56" ry="8" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="2"/>
+
+  <!-- left jersey -->
+  <g transform="translate(80 102) rotate(-9)">
+    <ellipse cx="0" cy="62" rx="44" ry="6" fill="#000000" fill-opacity="0.35"/>
+    <path d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z" fill="url(#red)" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M-22 -46 C-15 -34 15 -34 22 -46" fill="none" stroke="#FFC640" stroke-width="4"/>
+    <path d="M-48 -34 L-62 -4" stroke="#FFFFFF" stroke-width="5" stroke-opacity="0.6"/>
+    <path d="M48 -34 L62 -4" stroke="#FFFFFF" stroke-width="5" stroke-opacity="0.6"/>
+    <path d="M9 -16 L-8 -16 L-10 1 C-3 -4 11 -2 11 11 C11 25 -6 27 -12 18" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- right jersey -->
+  <g transform="translate(220 102) rotate(9)">
+    <ellipse cx="0" cy="62" rx="44" ry="6" fill="#000000" fill-opacity="0.35"/>
+    <path d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z" fill="url(#blue)" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M-22 -46 C-15 -34 15 -34 22 -46" fill="none" stroke="#3FD4FF" stroke-width="4"/>
+    <path d="M-48 -34 L-62 -4" stroke="#FFFFFF" stroke-width="5" stroke-opacity="0.6"/>
+    <path d="M48 -34 L62 -4" stroke="#FFFFFF" stroke-width="5" stroke-opacity="0.6"/>
+    <path d="M9 -16 L-8 -16 L-10 1 C-3 -4 11 -2 11 11 C11 25 -6 27 -12 18" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- clash -->
+  <circle cx="150" cy="98" r="62" fill="url(#spot)"/>
+  <g transform="translate(150 98)" fill="#FFE27A">
+    <path d="M0 -50 L5 0 L0 50 L-5 0 Z"/>
+    <path d="M0 -50 L5 0 L0 50 L-5 0 Z" transform="rotate(45)"/>
+    <path d="M0 -50 L5 0 L0 50 L-5 0 Z" transform="rotate(90)"/>
+    <path d="M0 -50 L5 0 L0 50 L-5 0 Z" transform="rotate(135)"/>
+  </g>
+  <path d="M155 56 L139 86 L151 86 L144 108 L165 78 L153 78 L161 56 Z" fill="#FFC640" stroke="#7A4A00" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- ball -->
+  <g transform="translate(150 122)">
+    <circle r="20" fill="#FFFFFF" stroke="#0B1440" stroke-width="2"/>
+    <g clip-path="url(#ball)">
+      <polygon points="0,-7 6.66,-2.16 4.11,5.66 -4.11,5.66 -6.66,-2.16" fill="#0B1440"/>
+      <g fill="#0B1440">
+        <polygon points="0,-6 5.7,-1.85 3.53,4.85 -3.53,4.85 -5.7,-1.85" transform="rotate(36) translate(0 -19) rotate(180)"/>
+        <polygon points="0,-6 5.7,-1.85 3.53,4.85 -3.53,4.85 -5.7,-1.85" transform="rotate(108) translate(0 -19) rotate(180)"/>
+        <polygon points="0,-6 5.7,-1.85 3.53,4.85 -3.53,4.85 -5.7,-1.85" transform="rotate(180) translate(0 -19) rotate(180)"/>
+        <polygon points="0,-6 5.7,-1.85 3.53,4.85 -3.53,4.85 -5.7,-1.85" transform="rotate(252) translate(0 -19) rotate(180)"/>
+        <polygon points="0,-6 5.7,-1.85 3.53,4.85 -3.53,4.85 -5.7,-1.85" transform="rotate(324) translate(0 -19) rotate(180)"/>
+      </g>
+      <g stroke="#0B1440" stroke-width="1.6">
+        <line x1="0" y1="-7" x2="0" y2="-14"/>
+        <line x1="0" y1="-7" x2="0" y2="-14" transform="rotate(72)"/>
+        <line x1="0" y1="-7" x2="0" y2="-14" transform="rotate(144)"/>
+        <line x1="0" y1="-7" x2="0" y2="-14" transform="rotate(216)"/>
+        <line x1="0" y1="-7" x2="0" y2="-14" transform="rotate(288)"/>
+      </g>
+    </g>
+    <ellipse cx="-7" cy="-9" rx="6" ry="3.5" fill="#FFFFFF" fill-opacity="0.7" transform="rotate(-30)"/>
+  </g>
+</svg>

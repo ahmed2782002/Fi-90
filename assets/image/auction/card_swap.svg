@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1F5BFF"/>
+      <stop offset="1" stop-color="#061A5A"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="120" cy="120" r="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3FD4FF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#3FD4FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF7A66"/>
+      <stop offset="1" stop-color="#B8001F"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7DFFC8"/>
+      <stop offset="1" stop-color="#0C9E5E"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" fill="url(#bg)"/>
+  <circle cx="120" cy="120" r="110" fill="url(#halo)"/>
+  <g fill="#FFFFFF" fill-opacity="0.06">
+    <path d="M120 120 L90 0 L150 0 Z"/>
+    <path d="M120 120 L240 90 L240 150 Z"/>
+    <path d="M120 120 L150 240 L90 240 Z"/>
+    <path d="M120 120 L0 150 L0 90 Z"/>
+  </g>
+
+  <!-- swap arrows ring -->
+  <g fill="none" stroke="#3FD4FF" stroke-width="12" stroke-linecap="round">
+    <path d="M40 104 A82 82 0 0 1 182 66"/>
+    <path d="M200 136 A82 82 0 0 1 58 174"/>
+  </g>
+  <path d="M196 46 L196 84 L160 76 Z" fill="#3FD4FF" stroke="#3FD4FF" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M44 194 L44 156 L80 164 Z" fill="#3FD4FF" stroke="#3FD4FF" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- outgoing jersey (red, faded) -->
+  <g transform="translate(88 118) scale(0.72) rotate(-10)" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round">
+    <path d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z" fill="url(#red)" fill-opacity="0.85"/>
+    <path d="M6 -20 L-14 8 L14 8 M6 -20 L6 24" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- incoming jersey (green) -->
+  <g transform="translate(150 124) scale(0.8) rotate(8)" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round">
+    <path d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z" fill="url(#green)"/>
+    <path d="M-12 -16 C-12 -26 12 -26 12 -14 C12 -2 -14 10 -14 22 L14 22" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

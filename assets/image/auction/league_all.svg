@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2A1FD1"/>
+      <stop offset="1" stop-color="#081536"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="100" cy="100" r="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3FD4FF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#3FD4FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="globe" cx="0.38" cy="0.32" r="0.8">
+      <stop offset="0" stop-color="#9FE9FF"/>
+      <stop offset="0.5" stop-color="#3FA0FF"/>
+      <stop offset="1" stop-color="#1A1AD6"/>
+    </radialGradient>
+    <clipPath id="g"><circle cx="100" cy="100" r="46"/></clipPath>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg)"/>
+  <g fill="#FFFFFF" fill-opacity="0.06">
+    <path d="M100 100 L80 0 L120 0 Z"/>
+    <path d="M100 100 L200 80 L200 120 Z"/>
+    <path d="M100 100 L120 200 L80 200 Z"/>
+    <path d="M100 100 L0 120 L0 80 Z"/>
+    <path d="M100 100 L176 0 L200 24 Z"/>
+    <path d="M100 100 L24 200 L0 176 Z"/>
+  </g>
+  <circle cx="100" cy="100" r="90" fill="url(#halo)"/>
+
+  <!-- orbit -->
+  <ellipse cx="100" cy="100" rx="78" ry="26" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="2.5" transform="rotate(-20 100 100)"/>
+
+  <!-- globe -->
+  <circle cx="100" cy="100" r="46" fill="url(#globe)" stroke="#FFFFFF" stroke-width="3"/>
+  <g clip-path="url(#g)" fill="none" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="2">
+    <ellipse cx="100" cy="100" rx="20" ry="46"/>
+    <line x1="100" y1="54" x2="100" y2="146"/>
+    <path d="M54 84 Q100 74 146 84"/>
+    <path d="M54 116 Q100 126 146 116"/>
+    <line x1="54" y1="100" x2="146" y2="100"/>
+  </g>
+  <ellipse cx="84" cy="80" rx="14" ry="8" fill="#FFFFFF" fill-opacity="0.35" transform="rotate(-30 84 80)"/>
+
+  <!-- league dots on orbit -->
+  <g stroke="#FFFFFF" stroke-width="2.5">
+    <circle cx="28" cy="122" r="10" fill="#FF4B4B"/>
+    <circle cx="66" cy="148" r="9" fill="#FFC640"/>
+    <circle cx="172" cy="78" r="10" fill="#B45CFF"/>
+    <circle cx="140" cy="54" r="9" fill="#2EE59D"/>
+  </g>
+
+  <!-- stars -->
+  <g fill="#FFE27A">
+    <path d="M160 140 L163 148 L171 151 L163 154 L160 162 L157 154 L149 151 L157 148 Z"/>
+    <path d="M40 40 L42.5 46.5 L49 49 L42.5 51.5 L40 58 L37.5 51.5 L31 49 L37.5 46.5 Z"/>
+  </g>
+</svg>

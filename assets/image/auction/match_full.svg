@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#050B2E"/>
+      <stop offset="1" stop-color="#14287A"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF6D6" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#FFF6D6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1F9E5A"/>
+      <stop offset="1" stop-color="#0C6B38"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF7A66"/>
+      <stop offset="1" stop-color="#B8001F"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6FB8FF"/>
+      <stop offset="1" stop-color="#1A1AD6"/>
+    </linearGradient>
+    <clipPath id="pitch"><path d="M-30 200 L58 98 L242 98 L330 200 Z"/></clipPath>
+    <clipPath id="ball"><circle cx="0" cy="0" r="9"/></clipPath>
+  </defs>
+
+  <rect width="300" height="200" fill="url(#sky)"/>
+
+  <!-- floodlight beams -->
+  <path d="M30 18 L-10 200 L130 200 Z" fill="url(#beam)"/>
+  <path d="M270 18 L310 200 L170 200 Z" fill="url(#beam)"/>
+
+  <!-- stands -->
+  <path d="M0 52 Q150 22 300 52 L300 104 L0 104 Z" fill="#101E58"/>
+  <g fill="none" stroke-linecap="round" stroke-width="4">
+    <path d="M6 60 Q150 32 294 60" stroke="#FF6A5C" stroke-dasharray="0.1 9" stroke-opacity="0.8"/>
+    <path d="M6 70 Q150 43 294 70" stroke="#FFC640" stroke-dasharray="0.1 8" stroke-dashoffset="4" stroke-opacity="0.75"/>
+    <path d="M6 80 Q150 54 294 80" stroke="#3FD4FF" stroke-dasharray="0.1 9" stroke-opacity="0.8"/>
+    <path d="M6 90 Q150 65 294 90" stroke="#FFFFFF" stroke-dasharray="0.1 7" stroke-dashoffset="3" stroke-opacity="0.55"/>
+  </g>
+  <rect x="0" y="94" width="300" height="6" fill="#1A1AD6"/>
+  <rect x="0" y="94" width="300" height="2" fill="#3FD4FF" fill-opacity="0.7"/>
+
+  <!-- floodlights -->
+  <g>
+    <rect x="28" y="4" width="4" height="54" fill="#2A3A7A"/>
+    <rect x="16" y="6" width="28" height="14" rx="3" fill="#2A3A7A"/>
+    <circle cx="23" cy="13" r="3.5" fill="#FFF6D6"/>
+    <circle cx="30" cy="13" r="3.5" fill="#FFF6D6"/>
+    <circle cx="37" cy="13" r="3.5" fill="#FFF6D6"/>
+    <rect x="268" y="4" width="4" height="54" fill="#2A3A7A"/>
+    <rect x="256" y="6" width="28" height="14" rx="3" fill="#2A3A7A"/>
+    <circle cx="263" cy="13" r="3.5" fill="#FFF6D6"/>
+    <circle cx="270" cy="13" r="3.5" fill="#FFF6D6"/>
+    <circle cx="277" cy="13" r="3.5" fill="#FFF6D6"/>
+  </g>
+
+  <!-- pitch -->
+  <g clip-path="url(#pitch)">
+    <rect x="-30" y="98" width="360" height="102" fill="url(#grass)"/>
+    <rect x="-30" y="108" width="360" height="12" fill="#FFFFFF" fill-opacity="0.07"/>
+    <rect x="-30" y="134" width="360" height="17" fill="#FFFFFF" fill-opacity="0.07"/>
+    <rect x="-30" y="172" width="360" height="28" fill="#FFFFFF" fill-opacity="0.07"/>
+  </g>
+  <g fill="none" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="2">
+    <path d="M-30 200 L58 98 L242 98 L330 200"/>
+    <path d="M27 134 L273 134"/>
+    <ellipse cx="150" cy="134" rx="42" ry="12"/>
+    <path d="M118 98 L114 108 L186 108 L182 98"/>
+  </g>
+  <circle cx="150" cy="134" r="2.5" fill="#FFFFFF"/>
+
+  <!-- red squad -->
+  <g stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" fill="url(#red)">
+    <path transform="translate(26 150) scale(0.42)" d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z"/>
+    <path transform="translate(92 150) scale(0.42)" d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z"/>
+    <path transform="translate(58 172) scale(0.52)" d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z"/>
+  </g>
+  <!-- blue squad -->
+  <g stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round" fill="url(#blue)">
+    <path transform="translate(208 150) scale(0.42)" d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z"/>
+    <path transform="translate(274 150) scale(0.42)" d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z"/>
+    <path transform="translate(242 172) scale(0.52)" d="M-22 -46 L-48 -34 L-62 -4 L-41 6 L-34 -6 L-34 50 Q0 56 34 50 L34 -6 L41 6 L62 -4 L48 -34 L22 -46 C15 -34 -15 -34 -22 -46 Z"/>
+  </g>
+
+  <!-- ball on the spot -->
+  <g transform="translate(150 166)">
+    <ellipse cx="0" cy="10" rx="12" ry="3" fill="#000000" fill-opacity="0.3"/>
+    <circle r="10" fill="#FFFFFF" stroke="#0B1440" stroke-width="1.5"/>
+    <g clip-path="url(#ball)">
+      <polygon points="0,-3.5 3.33,-1.08 2.06,2.83 -2.06,2.83 -3.33,-1.08" fill="#0B1440"/>
+      <g fill="#0B1440">
+        <circle r="3" cx="0" cy="-9.5" transform="rotate(36)"/>
+        <circle r="3" cx="0" cy="-9.5" transform="rotate(108)"/>
+        <circle r="3" cx="0" cy="-9.5" transform="rotate(180)"/>
+        <circle r="3" cx="0" cy="-9.5" transform="rotate(252)"/>
+        <circle r="3" cx="0" cy="-9.5" transform="rotate(324)"/>
+      </g>
+    </g>
+  </g>
+</svg>
